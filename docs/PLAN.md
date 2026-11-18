@@ -64,11 +64,11 @@ Salvare ID e valori dopo ogni modifica e riprenderli alla riapertura. «Ricominc
 | 20–21 | Fotografie e giardino | Percorrere album da 8 e 12 scatti e aprire tutti i messaggi con 5 e 10 luci. |
 | 21–22 | Stanza, quaderno e cartelli | Lasciare e riprendere una partita fino al completamento. Aggiungere un cartello dalla sola configurazione. |
 | 22–23 | Rivelazione, finale e contenuti disponibili | Aprire e riaprire il finale dopo tre visite anche lasciando intatti album, messaggi e Sudoku. |
-| 23 | Rifinitura, build e pubblicazione manuale | Percorso completo su telefono e desktop, verifica del sito pubblicato e ricarica diretta di una scena. Tenere il 24 come margine. |
+| 23 | Rifinitura, build e pubblicazione da `main` | Percorso completo su telefono e desktop, verifica del sito pubblicato e ricarica diretta di una scena. Tenere il 24 come margine. |
 
 Limitare i test automatici a tre gruppi. Verificare lo sblocco in ordini diversi, dopo duplicati e ricarica. Per la navigazione coprire accesso diretto, finale protetto, ritorno dal dettaglio e input rapidi. Per il Sudoku verificare coerenza degli indizi, una sola soluzione per ogni schema, immutabilità delle celle fisse e condizione di completamento. Eseguire inoltre il controllo TypeScript e la build Vite. Verificare manualmente a 320 px, su telefono con barre del browser visibili, su desktop, da tastiera e con movimento ridotto.
 
-La base Vite è `/Biolas-Journey/`. Eseguire `npm run deploy` per compilare e pubblicare `dist` sul ramo `gh-pages`. In Settings → Pages scegliere Deploy from a branch, `gh-pages`, `/(root)`. Per ogni aggiornamento dei sorgenti ripetere il comando di deploy dopo le verifiche locali.
+La base Vite è `/Biolas-Journey/`. Ogni push su `main` esegue il workflow Pages con Node 24 e pubblica la build `dist` come artefatto. In Settings → Pages la sorgente è GitHub Actions.
 
 Il saluto e il testo introduttivo sono definitivi per questa fase. Restano da consegnare scatti e didascalie di gruppo, audio, sprite definitive, messaggi, destinazioni dei cartelli e contenuti del finale.
 
