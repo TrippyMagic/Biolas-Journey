@@ -40,7 +40,13 @@ export function mountAlbum(scene: HTMLElement) {
       print.style.setProperty('--order', String(order))
       const paper = document.createElement('span')
       paper.className = 'paper'
-      paper.append(photoImage(photo, true))
+      const image = photoImage(photo, true)
+      const size = () => {
+        if (image.naturalHeight) paper.style.setProperty('--ratio', String(image.naturalWidth / image.naturalHeight))
+      }
+      image.addEventListener('load', size, { once: true })
+      size()
+      paper.append(image)
       print.append(paper)
       line.append(print)
       observer.observe(print)

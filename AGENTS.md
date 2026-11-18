@@ -24,3 +24,5 @@ Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/
 Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
 
 Solo il tocco sullo zaino dopo il game over registra la raccolta. Prima della raccolta la schiena di Viola è libera.
+
+Le polaroid adottano le proporzioni della fotografia orientata. Viola compare in basso a sinistra nell’album, in basso a destra in giardino e al fianco del tavolo nella stanza. Il computer grigio apre Vinted in una finestra pixel art. Minimizza conserva la pagina per la riapertura dal computer, Chiudi la scarica. Il disco continua a suonare fra le scene. I comandi usano Pixelify Sans e il game over ha un gradiente pastello con teschi saltellanti.

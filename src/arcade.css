@@ -1,0 +1,24 @@
+button, .sudoku-grid button, .signs a, [data-detail=computer] a { font-family: 'Pixelify Sans',ui-monospace,monospace; font-weight: 500 }
+.scene-traveler { --actor-size: clamp(30px,6.5svh,62px); position: absolute; z-index: 1; bottom: max(15px,4svh) }
+[data-scene=giardino] .scene-traveler { right: 7% }
+[data-scene=fotografie] .scene-traveler { left: 5% }
+.room-set .scene-traveler { left: 5%; bottom: 12% }
+.room-set .table-item { width: 22% }
+.room-set .turntable-item { left: 15% }
+.room-set .book-item { right: 39% }
+.computer-item { right: 15% }
+.computer-item i { display: block; width: min(100%,13svh); aspect-ratio: 1; background: url('./art/computer.svg') center bottom / contain no-repeat }
+[data-scene=giochi] dialog[data-detail=computer] { width: min(94vw,980px); padding: 8px; background: #bdbbc4; border: 4px solid #595565; box-shadow: inset 3px 3px #ece9e0, inset -3px -3px #88828f, 5px 7px #453c4c }
+[data-detail=computer] iframe { display: block; width: 100%; height: min(66svh,680px); border: 4px inset #aca8b3; background: white }
+[data-detail=computer] a { display: inline-block; padding: 10px; color: #333244 }
+.room-set:has(~ dialog[data-minimized]) .computer-item span { outline: 2px dashed #5a5264 }
+section.game-over { overflow: hidden; isolation: isolate; color: #51394e; background: radial-gradient(ellipse at 24% 20%,#fff0d8aa,transparent 50%),linear-gradient(155deg,#c6bddf,#ecc6d2 56%,#f8d4b6) }
+section.game-over h1 { font-family: 'Pixelify Sans',monospace; text-shadow: 2px 3px #fff0df }
+section.game-over button { color: #51394e; border: 2px solid #976f85; box-shadow: 3px 4px #ac8598 }
+.skulls { position: absolute; inset: 0; pointer-events: none; z-index: -1 }
+.skulls i { position: absolute; width: clamp(22px,4vw,45px); aspect-ratio: 1; top: 27%; left: 16%; background: url('./art/skull.svg') center / contain; animation: skull-hop 1.8s ease-in-out infinite alternate }
+.skulls i:nth-child(2) { top: 21%; left: 69%; animation-delay: -.6s }
+.skulls i:nth-child(3) { top: 72%; left: 31%; animation-delay: -1.4s }
+.skulls i:nth-child(4) { top: 65%; left: 80%; animation-delay: -.9s }
+.skulls i:nth-child(5) { top: 82%; left: 58%; animation-delay: -.3s }
+@keyframes skull-hop { to { transform: translateY(-22px) rotate(9deg) } }

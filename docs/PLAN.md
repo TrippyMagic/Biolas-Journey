@@ -45,7 +45,7 @@ Caricare all'inizio cielo e sagome della mappa. Preparare il fondale della desti
 
 ## Giradischi e personaggi
 
-Copiare i file audio destinati al regalo in `public/media/audio/`. Per esempio, una voce può avere `"title": "Il nostro disco"` e `"src": "media/audio/disco-1.mp3"`. Il primo gesto avvia il disco scelto. Pausa e ripresa conservano il punto di ascolto. Si può cambiare disco durante la riproduzione. Al termine passa al brano successivo e dall’ultimo torna al primo. La musica prosegue chiudendo il dettaglio e giocando a Sudoku. Uscendo dalla stanza si ferma.
+Copiare i file audio destinati al regalo in `public/media/audio/`. Per esempio, una voce può avere `"title": "Il nostro disco"` e `"src": "media/audio/disco-1.mp3"`. Il primo gesto avvia il disco scelto. Pausa e ripresa conservano il punto di ascolto. Si può cambiare disco durante la riproduzione. Al termine passa al brano successivo e dall’ultimo torna al primo. La musica prosegue chiudendo il dettaglio e giocando a Sudoku. L’ascolto continua sulla mappa e nelle altre scene. Il riavvio del viaggio ferma la riproduzione.
 
 In LibreSprite esportare ciascuna posa come PNG trasparente con i fotogrammi in **una riga orizzontale**, tutti della stessa misura, senza margini fra i riquadri. Tenere i piedi alla stessa altezza e orientare i personaggi verso destra. Copiare i PNG in `public/media/characters/`. Per ogni posa impostare `src`, `frameWidth`, `frameHeight`, `frames` e `fps`. Per esempio, quattro fotogrammi da 24×32 richiedono un PNG da 96×32, `frames: 4` e, per sei fotogrammi al secondo, `fps: 6`. Una posa singola usa `frames: 1`. Con il percorso di salto vuoto viene usata la posa ferma lungo tutta la traiettoria.
 
@@ -85,3 +85,5 @@ Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/
 Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
 
 Solo il tocco sullo zaino dopo il game over registra la raccolta. Prima della raccolta la schiena di Viola è libera.
+
+Le polaroid adottano le proporzioni della fotografia orientata. Viola compare in basso a sinistra nell’album, in basso a destra in giardino e al fianco del tavolo nella stanza. Il computer grigio apre Vinted in una finestra pixel art. Minimizza conserva la pagina per la riapertura dal computer, Chiudi la scarica. Il disco continua a suonare fra le scene. I comandi usano Pixelify Sans e il game over ha un gradiente pastello con teschi saltellanti.

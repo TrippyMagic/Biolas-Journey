@@ -62,7 +62,7 @@ Disegnare la lucciola dentro un pulsante HTML fermo di almeno 48×48 px. La luce
 
 ### 5 · Stanza delle varie cosine
 
-La finestra illumina un tavolo di legno. Il giradischi occupa il lato sinistro, il quaderno il destro. Il dettaglio del giradischi ingrandisce lo stesso oggetto. La scelta di una traccia posa il vinile sul piatto e il braccio entra mentre il disco gira. La pausa ferma il disco e ritira il braccio. Fissare i cartelli agli stipiti delle uscite dietro il tavolo. Su telefono collocarli sopra il piano, su desktop ai due lati. Per ulteriori cartelli usare assi successive e spazio verticale. Con elenco vuoto rimangono gli stipiti. Le assi configurate combinano grafica pixel art e link HTML con etichetta leggibile.
+La finestra illumina un tavolo di legno. Il giradischi occupa il lato sinistro, il quaderno il centro e il computer grigio il lato destro. Il dettaglio del giradischi ingrandisce lo stesso oggetto. La scelta di una traccia posa il vinile sul piatto e il braccio entra mentre il disco gira. La pausa ferma il disco e ritira il braccio. Fissare i cartelli agli stipiti delle uscite dietro il tavolo. Su telefono collocarli sopra il piano, su desktop ai due lati. Per ulteriori cartelli usare assi successive e spazio verticale. Con elenco vuoto rimangono gli stipiti. Le assi configurate combinano grafica pixel art e link HTML con etichetta leggibile.
 
 Il quaderno porta a una vista dall’alto del tavolo. La griglia è stampata su un foglio a righe con angolo ripiegato e bordo di carta in ombra sul legno. La griglia HTML occupa la larghezza utile, fino a 450 px, con confini dei riquadri 3×3 distinguibili. A 320 px riservare circa 32 px per cella e almeno 44 px per ogni tasto numerico. Due file ospitano cifre 1–9 e cancellazione. In orizzontale, se c'è spazio, spostarle a lato. Rendere riconoscibili indizi, selezione ed errori anche attraverso peso, contorno o segno. Tenere visibili il ritorno e i comandi di partita. Chiudendo il quaderno si ritrova il tavolo, tornando alla mappa si ritrova la finestra.
 
@@ -93,3 +93,5 @@ Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/
 Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
 
 Solo il tocco sullo zaino dopo il game over registra la raccolta. Prima della raccolta la schiena di Viola è libera.
+
+Le polaroid adottano le proporzioni della fotografia orientata. Viola compare in basso a sinistra nell’album, in basso a destra in giardino e al fianco del tavolo nella stanza. Il computer grigio apre Vinted in una finestra pixel art. Minimizza conserva la pagina per la riapertura dal computer, Chiudi la scarica. Il disco continua a suonare fra le scene. I comandi usano Pixelify Sans e il game over ha un gradiente pastello con teschi saltellanti.

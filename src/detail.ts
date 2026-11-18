@@ -21,17 +21,23 @@ export function syncDetail(scene: HTMLElement) {
   const render = renderers.get(scene)
   if (!render) return
   const id = history.state?.detail
-  let dialog = scene.querySelector('dialog')
+  let dialog = scene.querySelector<HTMLDialogElement>('dialog[open]')
   if (!id) {
     if (dialog) {
       const target = dialog.dataset.detail
       dialog.close()
-      dialog.remove()
+      if (!dialog.hasAttribute('data-minimized')) dialog.remove()
       Array.from(scene.querySelectorAll<HTMLElement>('[data-open]')).find(el => el.dataset.open === target)?.focus()
     }
     return
   }
   if (dialog?.dataset.detail === id) return
+  const minimized = scene.querySelector<HTMLDialogElement>('dialog[data-minimized]')
+  if (!dialog && minimized && minimized.dataset.detail === id) {
+    delete minimized.dataset.minimized
+    minimized.showModal()
+    return
+  }
   if (!dialog) {
     dialog = document.createElement('dialog')
     dialog.setAttribute('aria-label', content.names[scene.dataset.scene as keyof typeof content.names])

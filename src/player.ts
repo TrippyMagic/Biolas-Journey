@@ -10,7 +10,7 @@ function deck() {
   return el
 }
 
-export function roomPlayer(scene: HTMLElement) {
+function createPlayer() {
   const audio = new Audio()
   const tracks = content.tracks.filter(track => track.src.trim()).slice(0, 3)
   const miniature = deck()
@@ -19,6 +19,8 @@ export function roomPlayer(scene: HTMLElement) {
   let failed = false
   let revision = 0
   let updatePanel = () => {}
+
+  let largeDeck: HTMLElement | undefined
 
   function refresh() {
     miniature.classList.toggle('spinning', !audio.paused)
@@ -33,7 +35,10 @@ export function roomPlayer(scene: HTMLElement) {
       selection = index
       audio.src = import.meta.env.BASE_URL + tracks[index].src
       loaded = true
-      scene.querySelectorAll('.disc-loader').forEach(disc => {
+      const decks = [miniature, largeDeck]
+      decks.forEach(surface => {
+        const disc = surface?.querySelector('.disc-loader')
+        if (!disc) return
         if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
           disc.animate([{ transform: 'translate(-18px,-34px)', opacity: 0 }, { transform: 'translate(0,0)', opacity: 1 }], { duration: 450, easing: 'ease-out' })
       })
@@ -46,18 +51,20 @@ export function roomPlayer(scene: HTMLElement) {
   audio.onplay = audio.onpause = refresh
   audio.onerror = () => { if (audio.hasAttribute('src')) { failed = true; loaded = false; refresh() } }
   audio.onended = () => start((selection + 1) % tracks.length)
-  scene.addEventListener('depart', () => {
+  function reset() {
     revision++
-    audio.onended = audio.onplay = audio.onpause = audio.onerror = null
+    selection = 0
+    failed = loaded = false
     audio.pause()
     audio.removeAttribute('src')
     audio.load()
-  }, { once: true })
+  }
 
   function panel(body: HTMLElement) {
     const title = document.createElement('h2')
     title.textContent = content.ui.turntable
     const large = deck()
+    largeDeck = large
     const choices = document.createElement('div')
     choices.className = 'record-sleeves'
     const buttons = tracks.map((track, i) => {
@@ -84,5 +91,14 @@ export function roomPlayer(scene: HTMLElement) {
     }
     refresh()
   }
-  return { miniature, panel }
+  function detach() { largeDeck = undefined; updatePanel = () => {} }
+  return { miniature, panel, detach, reset }
 }
+
+let player: ReturnType<typeof createPlayer> | undefined
+export function roomPlayer(scene: HTMLElement) {
+  player ??= createPlayer()
+  scene.addEventListener('depart', player.detach, { once: true })
+  return player
+}
+export function resetPlayer() { player?.reset() }

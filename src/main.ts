@@ -3,6 +3,9 @@ import '@fontsource/dm-sans/latin-400.css'
 import './styles.css'
 import './interiors.css'
 import './map.css'
+import '@fontsource/pixelify-sans/latin-500.css'
+import './arcade.css'
+import { resetPlayer } from './player'
 import { jumpTo } from './actors'
 import { syncDetail } from './detail'
 import { clearGame } from './sudoku'
@@ -86,7 +89,11 @@ async function display(id: Scene) {
       retry.dataset.action = 'retry'
       retry.textContent = content.ui.retry
       next.className = 'game-over'
-      next.replaceChildren(title, retry)
+      const skulls = document.createElement('div')
+      skulls.className = 'skulls'
+      skulls.setAttribute('aria-hidden','true')
+      skulls.append(...Array.from({ length: 5 }, () => document.createElement('i')))
+      next.replaceChildren(skulls, title, retry)
     } else next.classList.remove('flight-entry','falling')
   }
   next.inert = false
@@ -157,6 +164,7 @@ world.addEventListener('click', async event => {
   if (action === 'reset') {
     if (!confirm(content.confirmReset)) return
     progress = readProgress(null)
+    resetPlayer()
     clearGame()
     resetAlbum()
     document.querySelector('#announcement')!.textContent = ''

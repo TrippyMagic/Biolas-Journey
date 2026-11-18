@@ -25,3 +25,7 @@
 }
 
 @media (max-width:699px) and (orientation:portrait) { .photo-line:has(.print:nth-child(5)) { grid-template-columns: repeat(6,minmax(0,1fr)); gap: 21px 3% } .photo-line:has(.print:nth-child(5)) .print { grid-column: span 2 } .photo-line:has(.print:nth-child(5)) .print:nth-child(4) { grid-column: 2 / span 2 } }
+
+.paper { --max-height: clamp(76px,20svh,190px); width: min(100%,calc(var(--max-height) * var(--ratio,1))); aspect-ratio: var(--ratio,1); margin-inline: auto; padding: 0 }
+.print .paper img { position: absolute; inset: 3% 4% 7%; width: 92%; height: 90%; background: transparent; object-fit: contain }
+@media(min-width:700px) { .paper { --max-height: clamp(125px,35svh,340px) } }

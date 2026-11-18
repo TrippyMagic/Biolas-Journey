@@ -106,7 +106,31 @@ export function mountRoom(scene: HTMLElement) {
     link.setAttribute('aria-label', sign.label + ', ' + content.ui.newTab)
     signs.append(link)
   }
-  room.append(signs, record, book)
+  const computer = control('', () => openDetail(scene,'computer'))
+  computer.className = 'table-item computer-item'
+  computer.dataset.open = 'computer'
+  const computerLabel = document.createElement('span')
+  computerLabel.textContent = content.computer.title
+  computer.append(document.createElement('i'), computerLabel)
+  room.append(signs, record, book, computer)
   scene.append(room)
-  registerDetail(scene, (id,body) => id === 'giradischi' ? player.panel(body) : notebook(body))
+  registerDetail(scene, (id,body) => {
+    if (id === 'giradischi') return player.panel(body)
+    if (id !== 'computer') return notebook(body)
+    const dialog = body.closest('dialog')!
+    const screen = document.createElement('iframe')
+    screen.title = content.computer.site
+    screen.src = content.computer.url
+    const external = document.createElement('a')
+    external.href = content.computer.url
+    external.target = '_blank'
+    external.rel = 'noopener noreferrer'
+    external.textContent = content.computer.open
+    const minimize = control(content.computer.minimize, () => {
+      dialog.dataset.minimized = 'true'
+      history.back()
+    })
+    dialog.querySelector('header')!.insertBefore(minimize, dialog.querySelector('header')!.lastChild)
+    body.append(screen, external)
+  })
 }

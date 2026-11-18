@@ -255,5 +255,12 @@
         "fps": 6
       }
     }
+  },
+  "computer": {
+    "title": "Computer",
+    "site": "Vinted",
+    "url": "https://www.vinted.com/",
+    "open": "Apri Vinted in una nuova scheda",
+    "minimize": "Minimizza"
   }
 }
