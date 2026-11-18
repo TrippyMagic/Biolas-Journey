@@ -6,9 +6,10 @@ import { isIsland, islands, unlocked, type Destination, type Scene, type Progres
 import photographs from './art/fotografie.svg'
 import willow from './art/giardino.svg'
 import cottage from './art/giochi.svg'
-import lookout from './art/finale.svg'
+import { mountFinale } from './finale'
+import planet from './art/finale.svg'
 
-const art = { fotografie: photographs, giardino: willow, giochi: cottage, finale: lookout }
+const art = { fotografie: photographs, giardino: willow, giochi: cottage, finale: planet }
 export const star = '<svg viewBox="0 0 32 40" aria-hidden="true"><path fill="currentColor" d="M16 0l3 13 3 4 10 3-10 3-3 4-3 13-3-13-3-4L0 20l10-3 3-4z"/></svg>'
 function button(action: string, label: string, className: string) {
   const el = document.createElement('button')
@@ -73,8 +74,11 @@ export function makeScene(id: Scene, progress: Progress) {
     if (id === 'giardino') mountGarden(el)
     if (id === 'giochi') mountRoom(el)
   } else {
-    el.className = 'arrival'
-    el.append(button('back', content.back, 'back'), motif(id), heading(content.names[id]))
+    el.className = 'planet-scene'
+    const title = heading(content.names[id])
+    title.className = 'sr'
+    el.append(button('back', content.back, 'back'), title)
+    mountFinale(el)
   }
   return el
 }

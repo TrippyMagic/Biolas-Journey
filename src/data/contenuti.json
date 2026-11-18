@@ -5,12 +5,12 @@
   "reset": "Ricomincia il viaggio",
   "confirmReset": "Ricominciare il viaggio e cancellare visite e partita?",
   "back": "← Mappa",
-  "revealed": "Una nuova isola è apparsa: il belvedere.",
+  "revealed": "È apparsa una nuova destinazione: un altro pianeta.",
   "names": {
     "fotografie": "Fotografie",
     "giardino": "Giardino delle lucciole",
     "giochi": "Stanza dei giochi",
-    "finale": "Belvedere"
+    "finale": "Un altro pianeta"
   },
   "messages": [
     {
@@ -113,5 +113,16 @@
     "restartGame": "Ricomincia partita",
     "nextGame": "Altro schema",
     "newTab": "apre una nuova scheda"
+  },
+  "finale": {
+    "photo": {
+      "src": "media/photos/studio-3.svg",
+      "alt": "[Fotografia finale]"
+    },
+    "photoPlaceholder": "[Fotografia finale]",
+    "dedication": [
+      "[Dedica finale]"
+    ],
+    "landscapeAlt": "La Terra azzurra è bassa nel cielo stellato, oltre i crateri del pianeta."
   }
 }

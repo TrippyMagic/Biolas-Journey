@@ -1,6 +1,6 @@
 # Biolas-Journey
 
-Esperienza web da regalare a Viola il 24 novembre 2026. La mappa collega tre piccole isole illustrate e un belvedere finale. Progettare prima per telefono e mantenere il viaggio continuo anche su desktop.
+Esperienza web da regalare a Viola il 24 novembre 2026. La mappa collega tre piccole isole illustrate e un pianeta dal quale si vede la Terra in basso. Progettare prima per telefono e mantenere il viaggio continuo anche su desktop.
 
 ## Invarianti
 
@@ -15,4 +15,4 @@ Usare Vite, TypeScript, CSS modulare, HTML/SVG e Motion per le sequenze coordina
 
 Seguire [il piano tecnico](docs/PLAN.md) per logica, verifiche mirate e pubblicazione manuale sotto `/Biolas-Journey/`. Seguire [la specifica visiva](docs/VISUAL_DESIGN.md) per composizione, asset e movimento. Dopo ogni modifica aggiornare qui e nei due documenti lo stato effettivo.
 
-Sono implementati intro, mappa, album, giardino, stanza con Sudoku e accesso al belvedere. Per i contenuti modificare `src/data/contenuti.json` e copiare le foto in `public/media/photos/`. Restano la lettera e la fotografia finale. Usare Node 24, `npm ci`, `npm run dev`, `npm test` e `npm run build`. Pubblicazione manuale con `npm run deploy` su `gh-pages`.
+Sono implementati intro, mappa, album, giardino, stanza con Sudoku e finale spaziale. Per i contenuti modificare `src/data/contenuti.json` e copiare le foto in `public/media/photos/`. La sezione `finale` dello stesso JSON configura una foto e i paragrafi della dedica. Usare Node 24, `npm ci`, `npm run dev`, `npm test` e `npm run build`. Pubblicazione manuale con `npm run deploy` su `gh-pages`.

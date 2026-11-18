@@ -1,0 +1,52 @@
+[data-location=finale] .sky {
+  background: radial-gradient(ellipse at 65% 92%, #655f86, transparent 60%),
+    linear-gradient(#1c1e35, #353753 63%, #545573);
+}
+[data-location=finale] :is(.horizon,.cloud) { visibility: hidden }
+[data-location=finale] .sky::before { visibility: hidden }
+[data-location=finale] .stars i { animation: none }
+.planet-scene { padding: 0 }
+.planet-reading {
+  height: 100%; overflow: auto; display: flex; flex-direction: column;
+  padding-top: max(76px, calc(env(safe-area-inset-top) + 68px));
+}
+.planet-spread {
+  flex: 1 0 auto; display: grid; align-content: center; justify-items: center; gap: 18px;
+  padding: 8px max(20px,env(safe-area-inset-right)) 12px max(20px,env(safe-area-inset-left));
+  animation: planet-paper .6s .18s backwards;
+}
+.planet-print {
+  display: grid; place-items: center; width: min(64vw, 260px); height: clamp(110px,22svh,220px);
+  border: 7px solid var(--cream); border-bottom-width: 15px; border-radius: var(--radius-print);
+  background: #c8c5d2; box-shadow: var(--shadow-print); color: var(--night);
+  transform: rotate(-2deg);
+}
+.planet-print img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain }
+.planet-letter {
+  position: relative; width: min(100%,54ch); padding: clamp(22px,4vw,46px);
+  text-align: left; color: var(--night); background: var(--cream); border-radius: 3px 10px 3px 3px;
+  box-shadow: var(--shadow-print); font: 500 clamp(17px,2vw,20px)/1.5 'Spectral', Georgia, serif;
+  overflow-wrap: anywhere;
+}
+.planet-letter p { white-space: pre-line; margin: 0 }
+.planet-letter p + p { margin-top: 1em }
+.planet-landscape {
+  position: relative; flex: 0 0 clamp(155px,33svh,320px);
+  background: url('./art/earth.svg') 68% 5% / auto 67% no-repeat;
+}
+.planet-landscape::after {
+  content: ''; position: absolute; inset: 43% 0 0;
+  background: url('./art/planet-surface.svg') center bottom / 100% 100% no-repeat;
+}
+.planet-landscape::before {
+  content: '✦'; position: absolute; left: 36%; top: 30%; color: var(--cream);
+  animation: breathe 4s ease-in-out infinite alternate;
+}
+@keyframes planet-paper { from { opacity: 0; transform: translateY(6px) } }
+@media (min-width:768px) {
+  .planet-spread { grid-template-columns: minmax(180px,290px) minmax(260px,54ch); justify-content: center; align-items: center; gap: clamp(28px,5vw,72px) }
+  .planet-print { width: 100%; height: clamp(160px,27svh,270px) }
+}
+@media (prefers-reduced-motion:reduce) {
+  .planet-spread,.planet-landscape::before { animation: none }
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <clipPath id="disc"><circle cx="48" cy="48" r="44"/></clipPath>
+    <linearGradient id="water" x2=".85" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#b4e5e3"/><stop offset=".42" stop-color="#639ebf"/><stop offset="1" stop-color="#526e9c"/></linearGradient>
+    <radialGradient id="night" cx=".25" cy=".22" r=".79"><stop offset=".44" stop-color="#30355b" stop-opacity="0"/><stop offset=".86" stop-color="#30355b" stop-opacity=".28"/><stop offset="1" stop-color="#252741" stop-opacity=".82"/></radialGradient>
+  </defs>
+  <circle cx="48" cy="48" r="45" fill="#c5e0e5"/>
+  <g clip-path="url(#disc)">
+    <circle cx="48" cy="48" r="44" fill="url(#water)"/>
+    <g fill="#a5bd9e" shape-rendering="crispEdges">
+      <path d="M3 23h8v-5h13v-5h9v4h6v5h-7v4h-5v7h-6v5h-6v6h5v5h-6v-4H9v-7H5z"/>
+      <path d="M18 48h9v4h8v4h7v6h-4v7h-5v5h-4v9h-4v-9h-3V63h-5z"/>
+      <path d="M54 26h5v-6h5v-4h4v7h9v-4h13v16h-5v6h-7v-4h-6v5h-5v-8h-9v3h-8v-5h4z"/>
+      <path d="M52 39h16v5h7v7h6l-6 8h-5v9h-4v5h-5v-6h-3V56h-8v-5h-4v-7h6z"/>
+    </g>
+    <g fill="#ede9db" opacity=".74">
+      <path d="M4 26q13-8 24-6t17-3q-8 8-21 6T4 28zm35 12q12-6 21-4t23-4q-9 9-21 8t-23 2zM7 54q9-4 17-1t17 0q-8 5-18 2T7 56zm45 9q8-5 16-4t17-5q-6 8-16 8t-17 3z"/>
+      <path d="M29 9q15-7 36 0l-9 3-10-1-5 3-9-1zm1 77q14-4 22-1t18-2l-3 9H32z"/>
+    </g>
+    <circle cx="48" cy="48" r="44" fill="url(#night)"/>
+  </g>
+</svg>

@@ -1,10 +1,10 @@
 # Biolas-Journey · Specifica visiva
 
-La mappa è il soggetto principale. Ogni isola anticipa un oggetto che Viola ritroverà ingrandito nella scena. Il filo, il salice, la finestra e il parapetto guidano l'occhio durante il viaggio. Il cielo lega le sei inquadrature, dal crepuscolo dell'intro al tramonto delle fotografie, alla luce della lampada, fino alla notte del belvedere.
+La mappa è il soggetto principale. Ogni isola anticipa un oggetto che Viola ritroverà ingrandito nella scena. Il filo, il salice, la finestra e la Terra bassa sul suolo craterizzato guidano l'occhio durante il viaggio. Il cielo lega le sei inquadrature, dal crepuscolo dell'intro al tramonto delle fotografie, alla luce della lampada, fino al cielo profondo del pianeta finale.
 
 ## Materiali e token condivisi
 
-**Stato realizzato.** Tre sagome di nuvola con profili distinti attraversano il cielo sopra i rilievi. La mappa lascia il cielo libero dal titolo. Album con stampe oscillanti, radura con salice e lucciole, stanza illustrata con quaderno e vista Sudoku sono navigabili. Il belvedere conserva la sola inquadratura di arrivo.
+**Stato realizzato.** Tre sagome di nuvola con profili distinti attraversano il cielo sopra i rilievi. La mappa lascia il cielo libero dal titolo. Album con stampe oscillanti, radura con salice e lucciole, stanza illustrata con quaderno e vista Sudoku sono navigabili. La quarta destinazione apre il panorama spaziale con fotografia e dedica.
 
 | Token CSS previsto | Valore | Impiego |
 |---|---|---|
@@ -42,11 +42,11 @@ Organizzare la scena in tre piani. Stelle e foschia delineano il fondo, le isole
 | Fotografie | 29%, 29% | 21%, 44% | Due pali con tre stampe chiare |
 | Giardino | 69%, 51% | 51%, 61% | Salice ricadente con tre luci basse |
 | Giochi | 32%, 74% | 79%, 43% | Tetto spiovente, finestra ambrata e tavolino visibile |
-| Belvedere | 73%, 17% | 54%, 22% | Parapetto e stella alta |
+| Un altro pianeta | 73%, 17% | 54%, 22% | Disco azzurro sopra una falce di roccia rosata |
 
 Le tre isole iniziali disegnano una S sul telefono e misurano circa un terzo della larghezza ciascuna. Nome breve e sagoma appartengono allo stesso pulsante. Alla pressione l'isola sale di 2 px, quindi la camera converge sul suo oggetto. Al ritorno una stella piena segna la visita anche con il nome accessibile «visitata».
 
-Prima delle tre visite, il settore del belvedere contiene solo cielo. Alla prima apertura utile della mappa, le tre stelle brillano in sequenza e una nuvola si apre sul parapetto. Durata complessiva circa 900 ms. Lasciare attivi i controlli. Nelle aperture successive il belvedere fa già parte del paesaggio.
+Prima delle tre visite, il settore del pianeta finale contiene solo cielo. Alla prima apertura utile della mappa, le tre stelle brillano in sequenza e una nuvola si apre sul pianeta. Durata complessiva circa 900 ms. Lasciare attivi i controlli. Nelle aperture successive il pianeta fa già parte del paesaggio.
 
 ### 3 · Fotografie
 
@@ -68,7 +68,7 @@ Il quaderno porta a una vista dall'alto. La griglia HTML occupa la larghezza uti
 
 ### 6 · Finale
 
-Superare il parapetto e fermare la camera. Sul blu notte dell'intro emerge prima il belvedere, poi la carta. In verticale una fotografia occupa il terzo superiore e sotto si apre la lettera su carta crema. Consentire di scorrere fino all'ultima riga. Su desktop affiancare fotografia e lettera e lasciare cielo ai margini. Una sola stella pulsa sopra il parapetto. Usare `[Fotografia finale]` e `[Dedica finale]`. Il ritorno alla mappa lascia il belvedere visibile e selezionabile.
+Dal suolo roccioso di un altro pianeta si guarda verso la Terra, bassa sopra la linea dei crateri. Oceani azzurri, continenti salvia e nubi chiare distinguono il disco dal cielo notte. Una sola stella pulsa. Sul telefono la stampa occupa la parte superiore e il foglio crema la segue; da 768 px sono affiancati. Il paesaggio entra per primo e la carta emerge in dissolvenza. La zona di lettura scorre fino all’ultima riga mentre Mappa resta disponibile. In movimento ridotto la carta è subito visibile.
 
 ## Movimento e asset
 
@@ -78,10 +78,10 @@ Superare il parapetto e fermare la camera. Sul blu notte dell'intro emerge prima
 | Apertura foto e foglietti | CSS, 200–260 ms, assestamento con `cubic-bezier(.22,.61,.36,1)`. |
 | Camera verso un'isola e ritorno | Motion, 600–700 ms in avvicinamento, 450–550 ms al ritorno. Origine sull'oggetto, scala massima 1.08, scarto di parallasse fino a 8 px, curva `cubic-bezier(.45,0,.25,1)`. |
 | Cielo, nuvole e stampe | Cicli CSS lenti di 18–30 s. Sovrapporre gradienti e animare opacità. |
-| Rivelazione del belvedere | Sequenza Motion di circa 900 ms, descritta nella mappa. |
+| Rivelazione del pianeta finale | Sequenza Motion di circa 900 ms, descritta nella mappa. |
 
 Preferire transform e opacity. Sospendere i cicli fuori scena e liberare le sequenze all'uscita. Con `prefers-reduced-motion` usare posizioni ferme e dissolvenze entro 120 ms. Annunciare la nuova destinazione anche alle tecnologie assistive. La scoperta, i controlli e l'accesso ai messaggi rimangono disponibili.
 
-**Indispensabili.** Tre isole e belvedere; due nuvole e stella a quattro punte; pali e molletta; salice, erba e lucciola; stanza con lampada, tavolino, quaderno, stipite e cartello riutilizzabile. Ricavare le miniature delle destinazioni dagli stessi elementi degli interni. Fili, aloni, carta, gradienti e ombre si ottengono con SVG o CSS. Conservare la dimensione dei placeholder quando manca un'immagine.
+**Indispensabili.** Tre isole e pianeta finale; due nuvole e stella a quattro punte; pali e molletta; salice, erba e lucciola; stanza con lampada, tavolino, quaderno, stipite e cartello riutilizzabile. Ricavare le miniature delle destinazioni dagli stessi elementi degli interni. Fili, aloni, carta, gradienti e ombre si ottengono con SVG o CSS. Conservare la dimensione dei placeholder quando manca un'immagine.
 
 **Opzionali.** Secondo piano di vegetazione, variante di nuvola e secondo fotogramma per la lampada. Realizzarli solo dopo aver verificato tutto il viaggio sul telefono.

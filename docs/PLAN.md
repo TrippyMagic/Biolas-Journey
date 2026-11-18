@@ -1,10 +1,10 @@
 # Biolas-Journey · Piano di sviluppo
 
-Il percorso parte da una stella, attraversa una mappa esplorabile e si conclude al belvedere. L'ordine delle tre visite è libero. La prima versione dovrà essere percorribile da cima a fondo con contenuti provvisori. La [regia delle scene](VISUAL_DESIGN.md) definisce inquadrature e raccordi da conservare anche con asset provvisori.
+Il percorso parte da una stella, attraversa una mappa esplorabile e si conclude sul pianeta finale. L'ordine delle tre visite è libero. La prima versione dovrà essere percorribile da cima a fondo con contenuti provvisori. La [regia delle scene](VISUAL_DESIGN.md) definisce inquadrature e raccordi da conservare anche con asset provvisori.
 
 ## Struttura e navigazione
 
-**Stato al 18 novembre.** Sono attivi album, messaggi e Sudoku con salvataggio. Il belvedere conserva la sua vista di arrivo. La foto e la lettera finali restano da integrare. Avvio locale con Node 24, `npm ci` e `npm run dev`. Per provare il sito compilato usare `npm run build` e `npm run preview` al percorso `/Biolas-Journey/`.
+**Stato al 18 novembre.** Sono attivi album, messaggi e Sudoku con salvataggio. Il finale mostra la Terra dal suolo di un altro pianeta, una foto singola e una dedica scorrevole. Avvio locale con Node 24, `npm ci` e `npm run dev`. Per provare il sito compilato usare `npm run build` e `npm run preview` al percorso `/Biolas-Journey/`.
 
 Una pagina Vite con TypeScript mantiene cielo, contenitore di scena e controlli di navigazione. Sei moduli indipendenti ricevono dal coordinatore il contenitore, i contenuti e le azioni di navigazione. Ciascun modulo monta il proprio HTML e restituisce una funzione di pulizia per eventi e animazioni. Separare CSS condiviso e stili delle scene. Motion serve alle sequenze coordinate tra piani, CSS alle reazioni locali.
 
@@ -22,7 +22,7 @@ Il coordinatore arbitra cronologia e transizione. Ignora un secondo tocco sulla 
 
 Usare chiavi versionate con prefisso `biolas-journey` in localStorage. Conservare ingresso nel mondo, insieme degli ID delle isole visitate, rivelazione già presentata e partita Sudoku. Tenere foto corrente e tratto di filo in memoria per la sessione. Controllare i dati in lettura e usare valori iniziali per quelli illeggibili. Se lo storage è indisponibile, continuare in memoria.
 
-Derivare l'accesso al belvedere dalla presenza di tutti e tre gli ID. Al primo ritorno utile sulla mappa presentare la rivelazione e ricordare che è stata mostrata. La disponibilità del finale sopravvive anche a un'interruzione dell'animazione. Il comando discreto «Ricomincia il viaggio» sulla mappa richiede conferma, azzera solo i dati del progetto, compresa la partita, e riapre l'intro.
+Derivare l'accesso al pianeta finale dalla presenza di tutti e tre gli ID. Al primo ritorno utile sulla mappa presentare la rivelazione e ricordare che è stata mostrata. La disponibilità del finale sopravvive anche a un'interruzione dell'animazione. Il comando discreto «Ricomincia il viaggio» sulla mappa richiede conferma, azzera solo i dati del progetto, compresa la partita, e riapre l'intro.
 
 ## Contratto dei contenuti
 
@@ -35,7 +35,7 @@ Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste or
 | `messages` | Da 5 a 10 voci con ID stabile e testo. |
 | `signs` | ID, etichetta, URL facoltativo. Creare un link solo per URL web validi HTTP(S), con nuova scheda, `noopener` e nome accessibile che annuncia l'apertura. |
 | `ui`, `names` e testi di navigazione | Etichette di album, giardino e Sudoku, nomi delle isole e conferma di riavvio. |
-| Finale (fase successiva) | Foto con testo alternativo e dedica in paragrafi. |
+| `finale` | `photo.src` relativo alla base e `photo.alt`; `photoPlaceholder` per un percorso vuoto o illeggibile; `dedication` con una stringa per paragrafo; `landscapeAlt` descrive il panorama. |
 
 Per aggiungere uno scatto copiare l'immagine in `public/media/photos/` e aggiungere la voce con percorso relativo, per esempio `media/photos/01.webp`. Risolvere questi percorsi sulla base di Vite. Usare la stessa convenzione per la foto finale. Durante la preparazione usare sagome neutre per i media assenti. Lo sblocco fa parte del racconto. I contenuti distribuiti sono pubblicamente raggiungibili.
 
