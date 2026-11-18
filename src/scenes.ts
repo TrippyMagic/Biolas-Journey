@@ -1,5 +1,8 @@
+import { mountAlbum, mountGarden, resetAlbum } from './memories'
+import { mountRoom } from './room'
+export { resetAlbum }
 import { content } from './content'
-import { islands, unlocked, type Destination, type Scene, type Progress } from './journey'
+import { isIsland, islands, unlocked, type Destination, type Scene, type Progress } from './journey'
 import photographs from './art/fotografie.svg'
 import willow from './art/giardino.svg'
 import cottage from './art/giochi.svg'
@@ -31,17 +34,18 @@ function intro(el: HTMLElement) {
   center.className = 'intro-center'
   const phrase = document.createElement('p')
   phrase.textContent = content.intro
-  const enter = button('mappa', content.enter, 'enter')
+  const enter = button('mappa', '', 'enter')
+  enter.setAttribute('aria-label', content.enter)
   enter.insertAdjacentHTML('afterbegin', star)
   center.append(heading(content.title), phrase, enter)
   el.append(center)
 }
 function map(el: HTMLElement, progress: Progress) {
-  const title = heading(content.title)
-  title.className = 'map-title'
+  const title = heading(content.ui.map)
+  title.className = 'sr'
   const chart = document.createElement('nav')
   chart.className = 'chart'
-  chart.setAttribute('aria-label', 'Isole')
+  chart.setAttribute('aria-label', content.ui.islands)
   const ids: Destination[] = [...islands]
   if (unlocked(progress)) ids.push('finale')
   for (const id of ids) {
@@ -50,7 +54,7 @@ function map(el: HTMLElement, progress: Progress) {
     label.textContent = content.names[id]
     if (id !== 'finale' && progress.visits.includes(id)) {
       label.insertAdjacentHTML('beforeend', star)
-      item.setAttribute('aria-label', content.names[id] + ', visitata')
+      item.setAttribute('aria-label', content.names[id] + ', ' + content.ui.visited)
     }
     item.append(motif(id), label)
     chart.append(item)
@@ -62,7 +66,13 @@ export function makeScene(id: Scene, progress: Progress) {
   el.dataset.scene = id
   if (id === 'intro') intro(el)
   else if (id === 'mappa') map(el, progress)
-  else {
+  else if (isIsland(id)) {
+    el.className = 'interior'
+    el.append(button('back', content.back, 'back'), heading(content.names[id]))
+    if (id === 'fotografie') mountAlbum(el)
+    if (id === 'giardino') mountGarden(el)
+    if (id === 'giochi') mountRoom(el)
+  } else {
     el.className = 'arrival'
     el.append(button('back', content.back, 'back'), motif(id), heading(content.names[id]))
   }

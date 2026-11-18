@@ -15,10 +15,11 @@ h1:focus { outline: none }
 .sky::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 54% 50%,#dbc4d512,transparent 55%); animation: breathe 9s ease-in-out infinite alternate }
 .stars i { position: absolute; width: 2px; height: 2px; background: #fff0dd; opacity: .65 }
 .stars i:nth-child(6n) { width: 7px; height: 9px; clip-path: polygon(50% 0,60% 37%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 37%); animation: breathe 4s ease-in-out infinite alternate }
-.horizon { position: absolute; bottom: -1px; width: 100%; height: clamp(100px,21svh,220px); background: url('./art/horizon.svg') center bottom / 100% 100% }
+.horizon { background-repeat: no-repeat !important; position: absolute; bottom: -1px; width: 100%; height: clamp(100px,21svh,220px); background: url('./art/horizon.svg') center bottom / 100% 100% }
 .cloud { position: absolute; width: clamp(180px,30vw,400px); aspect-ratio: 4; background: url('./art/cloud.svg') center / contain no-repeat; opacity: .62; animation: drift 23s ease-in-out infinite alternate }
 .cloud.left { bottom: 20%; left: -8% }
-.cloud.right { right: -8%; bottom: 34%; animation-delay: -12s }
+.cloud.high { left: 8%; top: 22%; width: clamp(85px,14vw,190px); opacity: .34; background-image: url('./art/cloud-wisp.svg') }
+.cloud.right { background-image: url('./art/cloud-tower.svg'); right: -8%; bottom: 34%; animation-delay: -12s }
 [data-location=mappa] .left { translate: 8px 0 }
 .cloud.left { transition: translate .6s ease }
 .crossing-cloud .cloud.left { animation: passage .6s var(--settle), drift 23s .6s ease-in-out infinite alternate }

@@ -1,10 +1,13 @@
 import '@fontsource/spectral/latin-500.css'
 import '@fontsource/dm-sans/latin-400.css'
 import './styles.css'
+import './interiors.css'
+import { syncDetail } from './detail'
+import { clearGame } from './sudoku'
 import { animate } from 'motion/mini'
 import { content } from './content'
 import { isIsland, readProgress, resolveScene, unlocked, type Scene } from './journey'
-import { makeScene } from './scenes'
+import { makeScene, resetAlbum } from './scenes'
 
 const key = 'biolas-journey:v1'
 let raw = null
@@ -14,7 +17,7 @@ function save() {
   try { localStorage.setItem(key, JSON.stringify(progress)) } catch { /* Keep session state. */ }
 }
 const world = document.querySelector<HTMLElement>('#world')!
-world.innerHTML = '<div class="sky" aria-hidden="true"><div class="day"></div><div class="stars"></div><div class="horizon"></div><div class="cloud left"></div><div class="cloud right"></div></div>'
+world.innerHTML = '<div class="sky" aria-hidden="true"><div class="day"></div><div class="stars"></div><div class="cloud high"></div><div class="horizon"></div><div class="cloud left"></div><div class="cloud right"></div></div>'
 const stars = world.querySelector('.stars')!
 for (let i = 1; i <= 95; i++) {
   const point = document.createElement('i')
@@ -32,6 +35,7 @@ async function display(id: Scene) {
   for (const animation of pending) animation.stop()
   pending = []
   world.querySelectorAll('section').forEach(el => { if (el !== scene) el.remove() })
+  scene?.dispatchEvent(new Event('depart'))
   const old = scene
   const from = current
   const next = makeScene(id, progress)
@@ -59,6 +63,7 @@ async function display(id: Scene) {
     old.remove()
   }
   next.inert = false
+  syncDetail(next)
   if (id !== 'intro') progress.entered = true
   if (isIsland(id) && !progress.visits.includes(id)) progress.visits.push(id)
   if (id === 'mappa' && unlocked(progress) && !progress.revealed) {
@@ -77,6 +82,7 @@ function sync() {
     history.pushState({ fromMap: true }, '', '#' + id)
   } else if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id)
   if (current !== id) void display(id)
+  else if (scene) syncDetail(scene)
 }
 world.addEventListener('click', event => {
   const action = (event.target as Element).closest<HTMLButtonElement>('button')?.dataset.action
@@ -84,11 +90,13 @@ world.addEventListener('click', event => {
   if (action === 'reset') {
     if (!confirm(content.confirmReset)) return
     progress = readProgress(null)
+    clearGame()
+    resetAlbum()
     document.querySelector('#announcement')!.textContent = ''
     history.replaceState(null, '', '#intro')
   } else if (action === 'back') {
     scene!.inert = true
-    history.back()
+    history.go(history.state?.detail ? -2 : -1)
     return
   } else if (current === 'intro') history.replaceState(null, '', '#mappa')
   else history.pushState({ fromMap: true }, '', '#' + action)

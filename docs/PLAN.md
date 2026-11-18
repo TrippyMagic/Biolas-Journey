@@ -1,10 +1,10 @@
-# Our Little Universe · Piano di sviluppo
+# Biolas-Journey · Piano di sviluppo
 
 Il percorso parte da una stella, attraversa una mappa esplorabile e si conclude al belvedere. L'ordine delle tre visite è libero. La prima versione dovrà essere percorribile da cima a fondo con contenuti provvisori. La [regia delle scene](VISUAL_DESIGN.md) definisce inquadrature e raccordi da conservare anche con asset provvisori.
 
 ## Struttura e navigazione
 
-**Stato al 18 novembre.** Implementati intro, mappa, coordinatore, cronologia, progressi e rivelazione del belvedere. Le destinazioni condividono una vista di arrivo con il proprio motivo illustrato e il ritorno alla mappa. La configurazione in `src/content.ts` contiene i testi della prima fase. I contratti per album, messaggi, cartelli e Sudoku descritti sotto si applicano alle prossime fasi. Avvio locale con Node 24, `npm ci` e `npm run dev`. La build si verifica con `npm run build` e si serve con `npm run preview` al percorso `/Biolas-Journey/`.
+**Stato al 18 novembre.** Sono attivi album, messaggi e Sudoku con salvataggio. Il belvedere conserva la sua vista di arrivo. La foto e la lettera finali restano da integrare. Avvio locale con Node 24, `npm ci` e `npm run dev`. Per provare il sito compilato usare `npm run build` e `npm run preview` al percorso `/Biolas-Journey/`.
 
 Una pagina Vite con TypeScript mantiene cielo, contenitore di scena e controlli di navigazione. Sei moduli indipendenti ricevono dal coordinatore il contenitore, i contenuti e le azioni di navigazione. Ciascun modulo monta il proprio HTML e restituisce una funzione di pulizia per eventi e animazioni. Separare CSS condiviso e stili delle scene. Motion serve alle sequenze coordinate tra piani, CSS alle reazioni locali.
 
@@ -26,16 +26,16 @@ Derivare l'accesso al belvedere dalla presenza di tutti e tre gli ID. Al primo r
 
 ## Contratto dei contenuti
 
-Prevedere un unico file futuro `src/content.ts`. Gli elenchi ordinati determinano sequenza delle foto, assegnazione dei messaggi alle lucciole e collocazione dei cartelli.
+Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene nove illustrazioni segnaposto, sette messaggi e un cartello inattivo. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Mappa salta direttamente dal dettaglio alla mappa.
 
 | Campo | Dati modificabili |
 |---|---|
-| `intro` | Titolo di lavoro e frase introduttiva. |
+| `title`, `intro` | Saluto e frase iniziale forniti dall’autore. |
 | `photos` | ID stabile, percorso relativo del WebP/AVIF, testo alternativo e miniatura facoltativa. Prevedere 8–12 foto di proporzioni miste. |
 | `messages` | Da 5 a 10 voci con ID stabile e testo. |
 | `signs` | ID, etichetta, URL facoltativo. Creare un link solo per URL web validi HTTP(S), con nuova scheda, `noopener` e nome accessibile che annuncia l'apertura. |
-| `ui` | Nomi delle scene, navigazione, istruzioni, conferme, riscontri di errore e nomi accessibili. |
-| `finale` | Foto facoltativa con testo alternativo e dedica come elenco di paragrafi. |
+| `ui`, `names` e testi di navigazione | Etichette di album, giardino e Sudoku, nomi delle isole e conferma di riavvio. |
+| Finale (fase successiva) | Foto con testo alternativo e dedica in paragrafi. |
 
 Per aggiungere uno scatto copiare l'immagine in `public/media/photos/` e aggiungere la voce con percorso relativo, per esempio `media/photos/01.webp`. Risolvere questi percorsi sulla base di Vite. Usare la stessa convenzione per la foto finale. Durante la preparazione usare sagome neutre per i media assenti. Lo sblocco fa parte del racconto. I contenuti distribuiti sono pubblicamente raggiungibili.
 
@@ -60,6 +60,6 @@ Salvare ID e valori dopo ogni modifica e riprenderli alla riapertura. «Ricominc
 
 Limitare i test automatici a tre gruppi. Verificare lo sblocco in ordini diversi, dopo duplicati e ricarica. Per la navigazione coprire accesso diretto, finale protetto, ritorno dal dettaglio e input rapidi. Per il Sudoku verificare coerenza degli indizi, una sola soluzione per ogni schema, immutabilità delle celle fisse e condizione di completamento. Eseguire inoltre il controllo TypeScript e la build Vite. Verificare manualmente a 320 px, su telefono con barre del browser visibili, su desktop, da tastiera e con movimento ridotto.
 
-Impostare la base Vite a `/Biolas-Journey/`. Nella futura implementazione documentare qui `npm run deploy` come comando manuale che esegue la build e, solo al successo, pubblica `dist` alla radice del ramo `gh-pages` con il pacchetto di sviluppo omonimo. Selezionare una volta ramo e radice come sorgente Pages. Controllare media, font e frammenti sul percorso pubblicato. [Build statica Vite](https://vite.dev/guide/static-deploy.html) · [gh-pages](https://github.com/tschaub/gh-pages) · [Impostazioni Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+La base Vite è `/Biolas-Journey/`. Eseguire `npm run deploy` per compilare e pubblicare `dist` sul ramo `gh-pages`. In Settings → Pages scegliere Deploy from a branch, `gh-pages`, `/(root)`. Per ogni aggiornamento dei sorgenti ripetere il comando di deploy dopo le verifiche locali.
 
-Architettura, interazioni e regia sono fissate. L'autore sceglierà titolo definitivo, frase iniziale, scatti e ordine, messaggi, destinazioni dei cartelli, fotografia e dedica finale.
+Il saluto e il testo introduttivo sono definitivi per questa fase. Restano da scegliere gli scatti, i messaggi, le destinazioni dei cartelli e i contenuti del finale.

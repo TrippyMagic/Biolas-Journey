@@ -15,4 +15,4 @@ Usare Vite, TypeScript, CSS modulare, HTML/SVG e Motion per le sequenze coordina
 
 Seguire [il piano tecnico](docs/PLAN.md) per logica, verifiche mirate e pubblicazione manuale sotto `/Biolas-Journey/`. Seguire [la specifica visiva](docs/VISUAL_DESIGN.md) per composizione, asset e movimento. Dopo ogni modifica aggiornare qui e nei due documenti lo stato effettivo.
 
-La prima fase comprende intro, mappa, transizioni, visite persistenti e inquadrature di arrivo. Le tre attività interne e i contenuti del finale restano da sviluppare. Usare Node 24, `npm ci`, `npm run dev`, `npm test` e `npm run build`. Il deploy è previsto nell'ultima fase.
+Sono implementati intro, mappa, album, giardino, stanza con Sudoku e accesso al belvedere. Per i contenuti modificare `src/data/contenuti.json` e copiare le foto in `public/media/photos/`. Restano la lettera e la fotografia finale. Usare Node 24, `npm ci`, `npm run dev`, `npm test` e `npm run build`. Pubblicazione manuale con `npm run deploy` su `gh-pages`.

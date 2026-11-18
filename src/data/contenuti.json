@@ -1,0 +1,117 @@
+{
+  "title": "Ciao amore...",
+  "intro": "So che non ti piacciano i giochini ma dovrai attraversare questa pixel art scadente",
+  "enter": "Entra nella mappa",
+  "reset": "Ricomincia il viaggio",
+  "confirmReset": "Ricominciare il viaggio e cancellare visite e partita?",
+  "back": "← Mappa",
+  "revealed": "Una nuova isola è apparsa: il belvedere.",
+  "names": {
+    "fotografie": "Fotografie",
+    "giardino": "Giardino delle lucciole",
+    "giochi": "Stanza dei giochi",
+    "finale": "Belvedere"
+  },
+  "messages": [
+    {
+      "id": "luce-1",
+      "text": "[Messaggio 01]"
+    },
+    {
+      "id": "luce-2",
+      "text": "[Messaggio 02]"
+    },
+    {
+      "id": "luce-3",
+      "text": "[Messaggio 03]"
+    },
+    {
+      "id": "luce-4",
+      "text": "[Messaggio 04]"
+    },
+    {
+      "id": "luce-5",
+      "text": "[Messaggio 05]"
+    },
+    {
+      "id": "luce-6",
+      "text": "[Messaggio 06]"
+    },
+    {
+      "id": "luce-7",
+      "text": "[Messaggio 07]"
+    }
+  ],
+  "photos": [
+    {
+      "id": "stampa-1",
+      "src": "media/photos/studio-1.svg",
+      "alt": "Segnaposto illustrato 1"
+    },
+    {
+      "id": "stampa-2",
+      "src": "media/photos/studio-2.svg",
+      "alt": "Segnaposto illustrato 2"
+    },
+    {
+      "id": "stampa-3",
+      "src": "media/photos/studio-3.svg",
+      "alt": "Segnaposto illustrato 3"
+    },
+    {
+      "id": "stampa-4",
+      "src": "media/photos/studio-4.svg",
+      "alt": "Segnaposto illustrato 4"
+    },
+    {
+      "id": "stampa-5",
+      "src": "media/photos/studio-5.svg",
+      "alt": "Segnaposto illustrato 5"
+    },
+    {
+      "id": "stampa-6",
+      "src": "media/photos/studio-6.svg",
+      "alt": "Segnaposto illustrato 6"
+    },
+    {
+      "id": "stampa-7",
+      "src": "media/photos/studio-7.svg",
+      "alt": "Segnaposto illustrato 7"
+    },
+    {
+      "id": "stampa-8",
+      "src": "media/photos/studio-8.svg",
+      "alt": "Segnaposto illustrato 8"
+    },
+    {
+      "id": "stampa-9",
+      "src": "media/photos/studio-9.svg",
+      "alt": "Segnaposto illustrato 9"
+    }
+  ],
+  "signs": [
+    {
+      "label": "[Cartello 01]",
+      "url": ""
+    }
+  ],
+  "ui": {
+    "close": "Chiudi",
+    "map": "Mappa delle isole",
+    "islands": "Isole",
+    "visited": "visitata",
+    "previousLine": "Tratto precedente",
+    "nextLine": "Tratto successivo",
+    "previousPhoto": "← Precedente",
+    "nextPhoto": "Successiva →",
+    "firefly": "Lucciola",
+    "sudoku": "Sudoku",
+    "erase": "Canc.",
+    "completed": "Sudoku completato!",
+    "wrong": "Numero da correggere",
+    "replaceGame": "Sostituire la partita in corso?",
+    "restartGame": "Ricomincia partita",
+    "nextGame": "Altro schema",
+    "newTab": "apre una nuova scheda"
+  }
+}

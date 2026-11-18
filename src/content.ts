@@ -1,15 +1,11 @@
+import data from './data/contenuti.json'
 import type { Destination } from './journey'
 
-export const content = {
-  title: 'Our Little Universe',
-  intro: '[Frase introduttiva per Viola]',
-  enter: 'Tocca la stella',
-  reset: 'Ricomincia il viaggio',
-  confirmReset: 'Ricominciare il viaggio e cancellare le visite salvate?',
-  back: '← Mappa',
-  revealed: 'Una nuova isola è apparsa: il belvedere.',
-  names: {
-    fotografie: 'Fotografie', giardino: 'Giardino delle lucciole',
-    giochi: 'Stanza dei giochi', finale: 'Belvedere',
-  } satisfies Record<Destination, string>,
+export interface Photo { id: string; src: string; alt: string; thumbnail?: string }
+interface Content extends Omit<typeof data, 'photos' | 'names' | 'messages' | 'signs'> {
+  photos: Photo[]
+  messages: { id: string; text: string }[]
+  signs: { label: string; url?: string }[]
+  names: Record<Destination, string>
 }
+export const content: Content = data

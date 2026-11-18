@@ -1,10 +1,10 @@
-# Our Little Universe · Specifica visiva
+# Biolas-Journey · Specifica visiva
 
 La mappa è il soggetto principale. Ogni isola anticipa un oggetto che Viola ritroverà ingrandito nella scena. Il filo, il salice, la finestra e il parapetto guidano l'occhio durante il viaggio. Il cielo lega le sei inquadrature, dal crepuscolo dell'intro al tramonto delle fotografie, alla luce della lampada, fino alla notte del belvedere.
 
 ## Materiali e token condivisi
 
-**Prima fase realizzata.** Intro, mappa, pixel art SVG delle quattro destinazioni, cielo e profilo dei rilievi sono presenti nel progetto. I font sono serviti localmente. Ogni isola apre un primo piano della propria illustrazione. Le composizioni interne descritte nelle scene 3–6 sono il riferimento per le fasi successive. Verificati in Chromium la disposizione a 320 e 360 px, l'adattamento desktop a 1280 px e il percorso con movimento ridotto.
+**Stato realizzato.** Tre sagome di nuvola con profili distinti attraversano il cielo sopra i rilievi. La mappa lascia il cielo libero dal titolo. Album con stampe oscillanti, radura con salice e lucciole, stanza illustrata con quaderno e vista Sudoku sono navigabili. Il belvedere conserva la sola inquadratura di arrivo.
 
 | Token CSS previsto | Valore | Impiego |
 |---|---|---|
@@ -29,7 +29,7 @@ Il gradiente verticale della mappa passa da lavanda ad azzurro al 60% e finisce 
 
 ### 1 · Intro
 
-Cielo prevalentemente vuoto con poche stelle minute e due nuvole basse ai lati. La frase HTML occupa fino a tre righe appena sopra metà schermo. Sotto, al 62% dell'altezza, una stella crema a quattro punte pulsa entro un pulsante di almeno 56 px. Su desktop mantenere vicini testo e stella e ampliare il cielo laterale. Usare `[Frase introduttiva per Viola]` fino alla consegna del testo.
+Tre sagome di nuvola accompagnano il cielo stellato. Al centro appare «Ciao amore...» e subito sotto «So che non ti piacciano i giochini ma dovrai attraversare questa pixel art scadente». La stella crema è l’unico comando, con nome accessibile e area tattile di almeno 56 px. Su desktop il gruppo rimane al centro.
 
 All'ingresso emerge il gradiente notturno. Alternare lentamente l'opacità di due cieli. Il primo tocco rischiara la stella e fa attraversare il primo piano a una nuvola. Dietro si distingue il profilo delle isole.
 

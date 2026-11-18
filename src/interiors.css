@@ -1,0 +1,73 @@
+/* The world keeps a shared sky behind each set. */
+.intro-center p { max-width: 38ch; padding-inline: 12px }
+.enter { min-height: 64px; min-width: 64px }
+.interior { padding: 0; color: var(--night); display: flex; flex-direction: column }
+.interior > h1 { position: relative; z-index: 1; margin-top: max(78px,env(safe-area-inset-top)); pointer-events: none }
+.back { z-index: 2 }
+.clothesline { position: relative; margin: auto 0 0; padding: 0 6%; height: min(39svh,310px) }
+.clothesline::before,.clothesline::after { content: ''; position: absolute; width: 10px; height: 125%; top: -12px; left: 1.5%; background: linear-gradient(90deg,#846872 60%,#c29689 60%) }
+.clothesline::after { left: auto; right: 1.5% }
+.clothesline > svg { position: absolute; inset: 0; width: 100%; height: 28px }
+.prints { display: flex; gap: 5%; justify-content: center; align-items: flex-start; padding-top: 15px }
+.print { position: relative; width: 45%; max-width: 220px; padding: 0 }
+.paper { display: block; position: relative; padding: 6px 6px 13px; background: var(--cream); border-radius: var(--radius-print); box-shadow: var(--shadow-print); transform-origin: 50% 0; animation: sway 18s ease-in-out infinite alternate }
+.print:nth-child(even) .paper { animation-delay: -9s }
+.paper::before { content: ''; position: absolute; top: -8px; left: 49%; width: 6px; height: 15px; background: linear-gradient(90deg,#ad816a 55%,#d9b496 55%) }
+.print img { display: block; width: 100%; height: auto; max-height: 28svh; object-fit: contain }
+@keyframes sway { from { transform: rotate(-1deg) } to { transform: rotate(1deg) } }
+.line-controls { margin: 14px auto max(12svh,48px); display: flex; gap: 24px }
+.line-controls button,.photo-nav button,.game-actions button,dialog header button { min-height: 44px; padding: 0 16px; background: var(--cream); color: var(--night); border-radius: var(--radius-paper) }
+button:disabled { opacity: .45; cursor: default }
+[data-location=giardino] .sky { background: linear-gradient(#333653,#525570 65%,#767589) }
+[data-location=giardino] :is(.horizon,.cloud),[data-location=giochi] :is(.horizon,.cloud) { visibility: hidden }
+.meadow { position: absolute; inset: 0; background: url('./art/garden.svg') center / 100% 100% no-repeat }
+[data-scene=giardino] > h1 { color: var(--cream); text-shadow: 0 2px 5px var(--night) }
+.firefly { position: absolute; translate: -50% -50%; width: 48px; height: 48px }
+.firefly::before { content: ''; display: block; margin: auto; width: 7px; height: 7px; border-radius: 50%; background: #fff4b6; box-shadow: 0 0 7px 4px #efd99b88,0 0 20px 9px #f6db8d30; animation: float 6s var(--delay) ease-in-out infinite alternate }
+.firefly:is(:active,:focus-visible)::before { box-shadow: 0 0 12px 7px var(--gold) }
+@keyframes float { from { transform: translate(-4px,2px) } to { transform: translate(4px,-3px) } }
+.room-set { position: absolute; inset: 0; background: url('./art/room.svg') center / 100% 100%; overflow-y: auto }
+[data-scene=giochi] > h1 { background: var(--cream); align-self: center; padding: 6px 16px; border-radius: 3px; font-size: clamp(23px,5vw,32px) }
+.book { position: absolute; top: 66%; left: 50%; translate: -50% -50%; color: #544653; min-width: 112px; min-height: 48px; padding: 8px 14px; border: 3px solid #94737c; border-radius: 4px 8px; background: linear-gradient(90deg,#f2dec6 47%,#c8ac97 49%,#f8e8ce 52%); box-shadow: 2px 4px #765e66; font: 500 21px 'Spectral',Georgia,serif }
+.signs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); justify-content: space-between; gap: 8px 42%; margin: max(150px,40svh) 3% 32px }
+.signs a { padding: 10px 2px; min-height: 44px; overflow-wrap: anywhere; background: #f0cfab; color: #493948; box-shadow: 2px 3px #795b68; text-align: center }
+.room-set:has(.signs a:nth-child(n+5)) .book { position: relative; display: block; left: auto; top: auto; translate: none; margin: 16px auto 14% }
+dialog { padding: 16px; max-width: 100%; max-height: 100svh; width: min(100%,860px); border: 0; background: transparent; color: var(--cream); overflow-y: auto }
+dialog::backdrop { background: #25243fee }
+dialog header { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 12px }
+dialog[open] .detail-body { animation: unfold .22s var(--settle) }
+@keyframes unfold { from { opacity: 0; transform: translateY(6px) } }
+.focused-photo { display: block; margin: auto; width: 100%; height: min(66svh,620px); object-fit: contain }
+.photo-nav,.game-actions { display: flex; justify-content: center; gap: 8px; margin-top: 12px }
+[data-scene=giardino] dialog { margin: auto auto max(18px,env(safe-area-inset-bottom)); max-width: 470px }
+[data-scene=giardino] dialog::backdrop { background: #25243f77 }
+.note { margin: 0; background: var(--cream); color: var(--night); padding: 28px; border-radius: 3px 10px 3px 3px; font: 500 20px/1.5 'Spectral',Georgia,serif; white-space: pre-line; overflow-wrap: anywhere }
+[data-scene=giochi] dialog { background: var(--cream); color: var(--night); border-radius: 10px; padding: 12px; width: fit-content }
+[data-scene=giochi] dialog::backdrop { background: #493b50c9 }
+[data-scene=giochi] dialog header { margin-bottom: 0 }
+.detail-body h2 { font: 500 26px 'Spectral',Georgia,serif; margin: 0 0 8px }
+.game-layout { display: grid; gap: 10px; justify-items: center }
+.sudoku-grid { width: min(450px,calc(100vw - 28px)); aspect-ratio: 1; display: grid; grid-template: repeat(9,1fr) / repeat(9,1fr); border: 2px solid #705d70 }
+.sudoku-grid button { min-width: 0; padding: 0; font: 400 clamp(16px,4.4vw,24px) 'DM Sans',sans-serif; border-right: 1px solid #c5afa9; border-bottom: 1px solid #c5afa9; color: #644574 }
+.sudoku-grid button:nth-child(3n) { border-right: 2px solid #796977 }
+.sudoku-grid button:nth-child(9n) { border-right: 0 }
+.sudoku-grid button:nth-child(n+19):nth-child(-n+27),.sudoku-grid button:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid #796977 }
+.sudoku-grid button.fixed { color: var(--night); font-weight: bold }
+.sudoku-grid button.related { background: #eadedb }
+.sudoku-grid button.selected { outline: 2px solid #665174; outline-offset: -2px; background: #dfcbdc }
+.sudoku-grid button.wrong { text-decoration: underline wavy; color: #923b43 }
+.number-pad { width: 100%; display: grid; grid-template-columns: repeat(5,1fr); gap: 4px }
+.number-pad button,.game-actions button { min-height: 44px; background: #ead9cf; border-radius: 5px }
+.game-status { min-height: 1.3em; margin: 5px; color: #76414d }
+.game-actions { margin-top: 0 }
+@media (min-width:768px) {
+  .print { width: 21% }
+  [data-scene=giardino] dialog { margin: auto 8% auto auto }
+  .room-set { background-size: max(760px,75%) 100%; background-repeat: no-repeat; background-color: #a57f84 }
+}
+@media (orientation: landscape) and (min-width:640px) and (max-height:680px) {
+  .game-layout { grid-template-columns: 1fr 112px; align-items: center }
+  .sudoku-grid { width: min(62svh,450px) }
+  .number-pad { grid-template-columns: repeat(2,1fr) }
+}
+@media (prefers-reduced-motion:reduce) { .detail-body,.firefly::before,.paper { animation: none !important } }
