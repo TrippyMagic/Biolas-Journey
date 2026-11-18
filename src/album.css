@@ -23,3 +23,5 @@
   .photo-line .print { width: 21%; max-width: 240px }
   .print img { height: clamp(70px,23svh,240px) }
 }
+
+@media (max-width:699px) and (orientation:portrait) { .photo-line:has(.print:nth-child(5)) { grid-template-columns: repeat(6,minmax(0,1fr)); gap: 21px 3% } .photo-line:has(.print:nth-child(5)) .print { grid-column: span 2 } .photo-line:has(.print:nth-child(5)) .print:nth-child(4) { grid-column: 2 / span 2 } }

@@ -44,7 +44,7 @@
 }
 @keyframes planet-paper { from { opacity: 0; transform: translateY(6px) } }
 @media (min-width:768px) {
-  .planet-spread { grid-template-columns: minmax(180px,290px) minmax(260px,54ch); justify-content: center; align-items: center; gap: clamp(28px,5vw,72px) }
+  .planet-spread:has(.planet-print) { grid-template-columns: minmax(180px,290px) minmax(260px,54ch); justify-content: center; align-items: center; gap: clamp(28px,5vw,72px) }
   .planet-print { width: 100%; height: clamp(160px,27svh,270px) }
 }
 @media (prefers-reduced-motion:reduce) {

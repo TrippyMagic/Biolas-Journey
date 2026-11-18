@@ -44,8 +44,9 @@ function intro(el: HTMLElement, progress: Progress) {
   plane.className = 'airplane'
   plane.append(actor('traveler'))
   if (progress.flight === 'retry') {
-    const pickup = button('equip', content.ui.equip, 'pack-cloud')
-    el.append(pickup)
+    const pickup = button('equip', '', 'pack-pickup')
+    pickup.setAttribute('aria-label', content.ui.equip)
+    plane.append(pickup)
   }
   center.append(plane, heading(content.title), phrase, enter)
   el.append(center)

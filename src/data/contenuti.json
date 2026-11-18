@@ -79,7 +79,7 @@
   },
   "finale": {
     "photo": {
-      "src": "media/photos/studio-3.svg",
+      "src": "",
       "alt": "[Fotografia finale]"
     },
     "photoPlaceholder": "[Fotografia finale]",
@@ -90,62 +90,127 @@
   },
   "photoGroups": [
     {
-      "caption": "[Didascalia del gruppo 1]",
+      "caption": "[Didascalia bona]",
       "photos": [
         {
-          "id": "stampa-1",
-          "src": "media/photos/studio-1.svg",
-          "alt": "Segnaposto illustrato 1"
+          "id": "bona-20260801_223649",
+          "src": "media/photos/Biolas/bona/20260801_223649.jpg",
+          "alt": "Foto 1 della sezione bona"
         },
         {
-          "id": "stampa-2",
-          "src": "media/photos/studio-2.svg",
-          "alt": "Segnaposto illustrato 2"
+          "id": "bona-20260808_192718",
+          "src": "media/photos/Biolas/bona/20260808_192718.jpg",
+          "alt": "Foto 2 della sezione bona"
         },
         {
-          "id": "stampa-3",
-          "src": "media/photos/studio-3.svg",
-          "alt": "Segnaposto illustrato 3"
+          "id": "bona-IMG-20260921-WA0025",
+          "src": "media/photos/Biolas/bona/IMG-20260921-WA0025.jpg",
+          "alt": "Foto 3 della sezione bona"
+        },
+        {
+          "id": "bona-IMG-20260921-WA0040",
+          "src": "media/photos/Biolas/bona/IMG-20260921-WA0040.jpg",
+          "alt": "Foto 4 della sezione bona"
         }
       ]
     },
     {
-      "caption": "[Didascalia del gruppo 2]",
+      "caption": "[Didascalia cutie]",
       "photos": [
         {
-          "id": "stampa-4",
-          "src": "media/photos/studio-4.svg",
-          "alt": "Segnaposto illustrato 4"
+          "id": "cutie-20260804_161223",
+          "src": "media/photos/Biolas/cutie/20260804_161223.jpg",
+          "alt": "Foto 1 della sezione cutie"
         },
         {
-          "id": "stampa-5",
-          "src": "media/photos/studio-5.svg",
-          "alt": "Segnaposto illustrato 5"
+          "id": "cutie-20260810_173340",
+          "src": "media/photos/Biolas/cutie/20260810_173340.jpg",
+          "alt": "Foto 2 della sezione cutie"
         },
         {
-          "id": "stampa-6",
-          "src": "media/photos/studio-6.svg",
-          "alt": "Segnaposto illustrato 6"
+          "id": "cutie-20260911_211413",
+          "src": "media/photos/Biolas/cutie/20260911_211413.jpg",
+          "alt": "Foto 3 della sezione cutie"
+        },
+        {
+          "id": "cutie-IMG-20260803-WA0013",
+          "src": "media/photos/Biolas/cutie/IMG-20260803-WA0013.jpeg",
+          "alt": "Foto 4 della sezione cutie"
+        },
+        {
+          "id": "cutie-IMG-20261028-WA0044",
+          "src": "media/photos/Biolas/cutie/IMG-20261028-WA0044.jpg",
+          "alt": "Foto 5 della sezione cutie"
         }
       ]
     },
     {
-      "caption": "[Didascalia del gruppo 3]",
+      "caption": "[Didascalia strana]",
       "photos": [
         {
-          "id": "stampa-7",
-          "src": "media/photos/studio-7.svg",
-          "alt": "Segnaposto illustrato 7"
+          "id": "strana-20260809_131552",
+          "src": "media/photos/Biolas/strana/20260809_131552.jpg",
+          "alt": "Foto 1 della sezione strana"
         },
         {
-          "id": "stampa-8",
-          "src": "media/photos/studio-8.svg",
-          "alt": "Segnaposto illustrato 8"
+          "id": "strana-20260913_133529_resized",
+          "src": "media/photos/Biolas/strana/20260913_133529_resized.jpg",
+          "alt": "Foto 2 della sezione strana"
         },
         {
-          "id": "stampa-9",
-          "src": "media/photos/studio-9.svg",
-          "alt": "Segnaposto illustrato 9"
+          "id": "strana-IMG-20260830-WA0103",
+          "src": "media/photos/Biolas/strana/IMG-20260830-WA0103.jpg",
+          "alt": "Foto 3 della sezione strana"
+        },
+        {
+          "id": "strana-IMG-20260912-WA0123",
+          "src": "media/photos/Biolas/strana/IMG-20260912-WA0123.jpg",
+          "alt": "Foto 4 della sezione strana"
+        }
+      ]
+    },
+    {
+      "caption": "[Didascalia stressata]",
+      "photos": [
+        {
+          "id": "stressata-IMG-20260513-WA0005",
+          "src": "media/photos/Biolas/stressata/IMG-20260513-WA0005.jpg",
+          "alt": "Foto 1 della sezione stressata"
+        },
+        {
+          "id": "stressata-IMG-20260805-WA0077",
+          "src": "media/photos/Biolas/stressata/IMG-20260805-WA0077.jpg",
+          "alt": "Foto 2 della sezione stressata"
+        },
+        {
+          "id": "stressata-IMG-20260829-WA0094",
+          "src": "media/photos/Biolas/stressata/IMG-20260829-WA0094.jpg",
+          "alt": "Foto 3 della sezione stressata"
+        }
+      ]
+    },
+    {
+      "caption": "[Didascalia tesoro]",
+      "photos": [
+        {
+          "id": "tesoro-IMG-20260805-WA0054",
+          "src": "media/photos/Biolas/tesoro/IMG-20260805-WA0054.jpg",
+          "alt": "Foto 1 della sezione tesoro"
+        },
+        {
+          "id": "tesoro-IMG-20260805-WA0057",
+          "src": "media/photos/Biolas/tesoro/IMG-20260805-WA0057.jpg",
+          "alt": "Foto 2 della sezione tesoro"
+        },
+        {
+          "id": "tesoro-IMG-20260805-WA0074",
+          "src": "media/photos/Biolas/tesoro/IMG-20260805-WA0074.jpg",
+          "alt": "Foto 3 della sezione tesoro"
+        },
+        {
+          "id": "tesoro-IMG-20260911-WA0031",
+          "src": "media/photos/Biolas/tesoro/IMG-20260911-WA0031.jpeg",
+          "alt": "Foto 4 della sezione tesoro"
         }
       ]
     }

@@ -75,7 +75,7 @@ async function display(id: Scene) {
       const traveler = next.querySelector<HTMLElement>('.map-traveler')!
       next.classList.add('falling')
       const fatal = progress.flight === 'over'
-      await fall(traveler, '-100vh', fatal ? '80vh' : '0px', fatal ? 950 : 680)
+      await fall(traveler, '-100vh', fatal ? '80vh' : '0px', fatal ? 1220 : 850)
       if (ticket !== revision) return
     }
     if (progress.flight === 'over') {
@@ -124,7 +124,7 @@ world.addEventListener('click', async event => {
   if (action === 'equip') {
     progress.flight = 'equipped'
     world.dataset.flight = progress.flight
-    scene.querySelector('.pack-cloud')?.remove()
+    scene.querySelector('.pack-pickup')?.remove()
     document.querySelector('#announcement')!.textContent = content.ui.equipped
     scene.querySelector<HTMLButtonElement>('.enter')?.focus()
     save()
@@ -140,7 +140,7 @@ world.addEventListener('click', async event => {
   if (current === 'intro') {
     const launch = scene
     launch.inert = true
-    await fall(launch.querySelector('.traveler')!, '0px', '90vh', 620)
+    await fall(launch.querySelector('.traveler')!, '0px', '90vh', 800)
     if (scene !== launch) return
     fromPlane = true
     if (progress.flight !== 'equipped') progress.flight = 'over'

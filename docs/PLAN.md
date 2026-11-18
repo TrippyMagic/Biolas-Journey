@@ -26,12 +26,12 @@ Derivare l'accesso al pianeta finale dalla presenza di tutti e tre gli ID. Al pr
 
 ## Contratto dei contenuti
 
-Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene tre gruppi da tre illustrazioni, sette messaggi, due personaggi provvisori, tre posti per dischi e un cartello inattivo. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Mappa salta direttamente dal dettaglio alla mappa.
+Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene 20 fotografie distribuite nelle cinque sottocartelle di Biolas, sette messaggi, due personaggi provvisori, tre posti per dischi e un cartello inattivo. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Mappa salta direttamente dal dettaglio alla mappa.
 
 | Campo | Dati modificabili |
 |---|---|
 | `title`, `intro` | Saluto e frase iniziale forniti dall’autore. |
-| `photoGroups` | Ogni gruppo ha `caption` e una lista `photos` di 3 o 4 immagini. Ogni foto ha `id` univoco nell’album, `src`, `alt` e `thumbnail` facoltativa. |
+| `photoGroups` | Ogni gruppo ha `caption` e una lista `photos` delle immagini della sottocartella. Ogni foto ha `id` univoco nell’album, `src`, `alt` e `thumbnail` facoltativa. |
 | `tracks` | Due o tre voci in ordine di riproduzione con `title` e `src` relativo alla base. Un percorso vuoto riserva il posto per un brano futuro. |
 | `characters` | Fogli sprite per `traveler.idle`, `traveler.jump` e `host.idle`. |
 | `messages` | Da 5 a 10 voci con ID stabile e testo. |
@@ -72,10 +72,12 @@ La base Vite è `/Biolas-Journey/`. Eseguire `npm run deploy` per compilare e pu
 
 Il saluto e il testo introduttivo sono definitivi per questa fase. Restano da consegnare scatti e didascalie di gruppo, audio, sprite definitive, messaggi, destinazioni dei cartelli e contenuti del finale.
 
-Il prologo salva in `flight` il primo tentativo, il game over, il nuovo tentativo o il jetpack equipaggiato. Ricomincia dal game over abilita la raccolta sulla nuvola. Il riavvio completo del viaggio azzera anche il prologo. I vecchi salvataggi con ingresso già registrato riprendono con il jetpack.
+Il prologo salva in `flight` il primo tentativo, il game over, il nuovo tentativo o il jetpack equipaggiato. Ricomincia dal game over abilita la raccolta dietro Viola sull’aeroplano. Il riavvio completo del viaggio azzera anche il prologo. I vecchi salvataggi con ingresso già registrato riprendono con il jetpack.
 
 ### Sprite di coppia in LibreSprite
 
 Per le pose singole usare 24×32 px e un punto di appoggio comune per i piedi. Per le interazioni preparare una tela trasparente da 64×40 px con entrambi i personaggi su livelli distinti. Tenere identica la linea del terreno. Preparare clip separate per incontro (4 fotogrammi di avvicinamento), abbraccio (4–6, braccia che si chiudono e posa tenuta), bacio (4–6, avvicinamento, contatto e pausa) e intimità giocosa (6–8, abbraccio sotto una coperta, cuoricini e ritorno alla quiete). Esportare una striscia PNG orizzontale per clip, senza spaziatura né ritaglio automatico. Le interazioni di coppia sono indicazioni per la produzione artistica. Il finale attuale usa due sprite indipendenti.
 
 Lo zaino è un accessorio separato. Lo stato spento mostra solo il corpo del jetpack. La fiamma attuale usa quattro celle da 8×12 px in fila in `src/art/exhaust.svg`. Per ridisegnarla tenere fermo l’ugello e alternare scintilla, fiamma corta, piena e in contrazione.
+
+Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra la sola dedica finché il campo della foto è vuoto.

@@ -29,7 +29,7 @@ Il gradiente verticale della mappa passa da lavanda ad azzurro al 60% e finisce 
 
 ### 1 · Intro
 
-Tre sagome di nuvola accompagnano il cielo stellato. Al centro la viaggiatrice sta su una piccola nuvola sopra «Ciao amore...» e subito sotto «So che non ti piacciano i giochini ma dovrai attraversare questa pixel art scadente». La stella crema è il comando da tastiera per il lancio. Al tocco è attiva tutta l’intro, eccetto la nuvola che equipaggia il jetpack al secondo tentativo. Su desktop il gruppo rimane al centro.
+Tre sagome di nuvola accompagnano il cielo stellato. Al centro la viaggiatrice si affaccia dall’aeroplano sopra «Ciao amore...» e subito sotto «So che non ti piacciano i giochini ma dovrai attraversare questa pixel art scadente». La stella crema è il comando da tastiera per il lancio. Al tocco è attiva tutta l’intro, eccetto lo zaino che si può equipaggiare al secondo tentativo. Su desktop il gruppo rimane al centro.
 
 All'ingresso emerge il gradiente notturno. Alternare lentamente l'opacità di due cieli. Il primo tocco rischiara la stella e fa attraversare il primo piano a una nuvola. Dietro si distingue il profilo delle isole.
 
@@ -50,7 +50,7 @@ Prima delle tre visite, il settore del pianeta finale contiene solo cielo. Alla 
 
 ### 3 · Fotografie
 
-Sopra il filo compare la didascalia comune del gruppo. Su telefono le tre o quattro stampe si distribuiscono su due fili, su desktop su un filo solo. Scorrimento orizzontale a scatto, swipe e frecce percorrono gli stessi gruppi.
+Sopra il filo compare la didascalia comune del gruppo. Su telefono le stampe di ciascuna sottocartella si distribuiscono su due fili, su desktop su un filo solo. Scorrimento orizzontale a scatto, swipe e frecce percorrono gli stessi gruppi.
 
 Le stampe entrano in sequenza con dissolvenza e un lieve avvicinamento. Ogni stampa ruota attorno alla propria molletta e si assesta. In ingrandimento le frecce percorrono l’intero album. Alla chiusura si ritrovano gruppo e focus dell’ultima foto. Con movimento ridotto le stampe sono subito ferme e leggibili.
 
@@ -86,4 +86,6 @@ Preferire transform e opacity. Sospendere i cicli fuori scena e liberare le sequ
 
 **Opzionali.** Le sprite definitive di LibreSprite possono estendere le pose ferme con cicli a fotogrammi e una posa di salto dedicata.
 
-L’aeroplanino ospita Viola sopra il saluto. Il tocco in qualsiasi punto avvia la caduta. La mappa prolunga il movimento fino al game over. Dopo Ricomincia appare il jetpack sulla nuvola dell’intro. Lo zaino resta sulla schiena anche quando il motore è spento. In volo la fiamma alterna quattro fotogrammi. Il primo ingresso equipaggiato termina in sospensione fra le isole.
+L’aeroplanino ospita Viola sopra il saluto. Il tocco in qualsiasi punto avvia la caduta. La mappa prolunga il movimento fino al game over. Dopo Ricomincia appare il jetpack dietro Viola sull’aeroplano. Lo zaino resta sulla schiena anche quando il motore è spento. In volo la fiamma alterna quattro fotogrammi. Il primo ingresso equipaggiato termina in sospensione fra le isole.
+
+Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra la sola dedica finché il campo della foto è vuoto.

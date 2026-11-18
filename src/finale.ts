@@ -26,7 +26,8 @@ export function mountFinale(scene: HTMLElement) {
     paragraph.textContent = text
     letter.append(paragraph)
   }
-  spread.append(print, letter)
+  if (photo.src) spread.append(print)
+  spread.append(letter)
   const landscape = document.createElement('div')
   landscape.className = 'planet-landscape'
   landscape.setAttribute('role', 'img')
