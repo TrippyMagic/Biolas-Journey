@@ -1,0 +1,76 @@
+@import './tokens.css';
+* { box-sizing: border-box }
+body { margin: 0; background: var(--night); color: var(--cream); font-family: 'DM Sans', sans-serif }
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; touch-action: manipulation }
+button:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; border-radius: 6px }
+h1 { font: 500 clamp(28px,6vw,44px)/1.12 'Spectral',Georgia,serif; margin: 0 }
+h1:focus { outline: none }
+#world { position: relative; isolation: isolate; min-height: max(480px,100svh); overflow: hidden }
+.sky, .day, .stars { position: absolute; inset: 0; pointer-events: none }
+.sky { z-index: -1; background: radial-gradient(ellipse at 50% 90%,#c69fb4 0%,transparent 47%),linear-gradient(#25243f,#434264 45%,#887c9d 75%,#e3bbc3) }
+.day { opacity: 0; background: linear-gradient(var(--lavender),var(--sky) 60%,var(--peach)); transition: opacity .65s }
+[data-location=mappa] .day { opacity: 1 }
+[data-location=fotografie] .day, [data-location=giochi] .day { opacity: .85; background: linear-gradient(#a091ab,var(--rose),var(--peach)) }
+.sky::before { content: ''; position: absolute; left: 18%; top: 18%; width: 36px; height: 36px; border-radius: 50%; box-shadow: -7px 4px 0 0 #f5ddcf; transform: rotate(-25deg) }
+.sky::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 54% 50%,#dbc4d512,transparent 55%); animation: breathe 9s ease-in-out infinite alternate }
+.stars i { position: absolute; width: 2px; height: 2px; background: #fff0dd; opacity: .65 }
+.stars i:nth-child(6n) { width: 7px; height: 9px; clip-path: polygon(50% 0,60% 37%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 37%); animation: breathe 4s ease-in-out infinite alternate }
+.horizon { position: absolute; bottom: -1px; width: 100%; height: clamp(100px,21svh,220px); background: url('./art/horizon.svg') center bottom / 100% 100% }
+.cloud { position: absolute; width: clamp(180px,30vw,400px); aspect-ratio: 4; background: url('./art/cloud.svg') center / contain no-repeat; opacity: .62; animation: drift 23s ease-in-out infinite alternate }
+.cloud.left { bottom: 20%; left: -8% }
+.cloud.right { right: -8%; bottom: 34%; animation-delay: -12s }
+[data-location=mappa] .left { translate: 8px 0 }
+.cloud.left { transition: translate .6s ease }
+.crossing-cloud .cloud.left { animation: passage .6s var(--settle), drift 23s .6s ease-in-out infinite alternate }
+@keyframes passage {
+  0% { transform: translate(-12vw,0); opacity: .62 }
+  55% { transform: translate(30vw,-4vh) scale(1.08); opacity: .8 }
+  100% { transform: translate(78vw,-6vh); opacity: 0 }
+}
+section { position: absolute; inset: 0; padding: var(--gutter); text-align: center }
+.intro-center { position: absolute; top: 46%; left: 50%; transform: translate(-50%,-32%); width: calc(100% - 32px) }
+.intro-center h1 { text-shadow: 0 2px 15px #25243f55 }
+.intro-center p { font: 500 clamp(17px,3vw,20px)/1.5 'Spectral',Georgia,serif; margin: 12px auto 20px }
+.enter { display: inline-flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px 20px; font-size: 15px }
+.enter svg { height: 44px; color: #ffebc5; filter: drop-shadow(0 0 10px #ffe2b899); animation: breathe 3s ease-in-out infinite alternate }
+.enter:active svg { color: white }
+.chart { position: absolute; inset: max(56px,env(safe-area-inset-top)) env(safe-area-inset-right) max(64px,env(safe-area-inset-bottom)) env(safe-area-inset-left) }
+.map-title { padding-top: max(8px,env(safe-area-inset-top)); font-size: clamp(24px,4vw,32px); color: var(--night) }
+.island { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%,-50%); display: grid; justify-items: center; width: clamp(104px,34vw,208px); padding: 0; color: var(--night) }
+.island img { width: 100%; image-rendering: pixelated; filter: drop-shadow(0 8px 6px #51456426); transition: translate .16s var(--settle) }
+.island:is(:hover,:active,:focus-visible) img { translate: 0 -2px }
+.island span { font-size: clamp(14px,3vw,17px); line-height: 1.2; max-width: 100%; text-shadow: 0 1px 4px var(--cream) }
+.island span svg { vertical-align: middle; width: 10px; margin-left: 4px }
+.fotografie { --x:29%; --y:29% }
+.giardino { --x:69%; --y:51% }
+.giochi { --x:32%; --y:74% }
+.finale { --x:73%; --y:17% }
+.reset,.back { min-height: 44px; padding: 8px 16px; font-size: 15px }
+.reset { position: absolute; bottom: max(4px,env(safe-area-inset-bottom)); left: 50%; translate: -50%; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; color: var(--cream); background: #39374ecc; border-radius: var(--radius-paper) }
+.back { position: absolute; left: max(16px,env(safe-area-inset-left)); top: max(16px,env(safe-area-inset-top)); background: var(--cream); color: var(--night); border-radius: var(--radius-paper) }
+.arrival { display: flex; flex-direction: column; justify-content: center; align-items: center }
+.arrival img { width: min(73vw,360px); image-rendering: pixelated }
+.arrival:is([data-scene=giochi],[data-scene=fotografie]) { color: var(--night) }
+.reveal .finale { animation: appear .9s both }
+.reveal .finale::before { content: ''; pointer-events: none; position: absolute; inset: 15% -5% 25%; background: url('./art/cloud.svg') center / contain no-repeat; animation: uncover .9s both }
+@keyframes uncover { 0%,35% { opacity: .85 } to { transform: translateX(36%); opacity: 0 } }
+.reveal .island span svg { animation: glint .35s alternate 2 }
+.reveal .giardino span svg { animation-delay: .1s }
+.reveal .giochi span svg { animation-delay: .2s }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
+@keyframes appear { from { opacity: 0; translate: 0 8px } 40% { opacity: 0 } to { opacity: 1; translate: 0 } }
+@keyframes drift { to { transform: translate(8px,-3px) } }
+@keyframes breathe { to { opacity: .65 } }
+@keyframes glint { to { color: #fff1bc; scale: 1.25 } }
+@media (min-width:768px) {
+  .fotografie { --x:21%; --y:44% }
+  .giardino { --x:51%; --y:61% }
+  .giochi { --x:79%; --y:43% }
+  .finale { --x:54%; --y:22% }
+  .island { width: min(18vw,220px,31svh) }
+}
+@media (max-width:767px) { .horizon { background-size: 190% 100% } }
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation: none !important; transition-duration: .1s !important }
+  .reveal .finale::before { display: none }
+}

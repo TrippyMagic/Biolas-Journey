@@ -1,0 +1,15 @@
+:root {
+  --night: #25243f;
+  --lavender: #7779a7;
+  --sky: #bcc7ef;
+  --rose: #eac3da;
+  --peach: #f5d6be;
+  --cream: #fff2e6;
+  --sage: #84988d;
+  --gold: #f6dfa0;
+  --gutter: 16px;
+  --radius-paper: 10px;
+  --radius-print: 3px;
+  --shadow-print: 0 3px 8px #25243f26;
+  --settle: cubic-bezier(.22,.61,.36,1);
+}
