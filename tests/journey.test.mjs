@@ -14,13 +14,16 @@ test('entry, resume, direct islands and invalid fragments', () => {
   assert.equal(resolveScene('', fresh), 'intro')
   assert.equal(resolveScene('#giardino', fresh), 'giardino')
   assert.equal(resolveScene('#missing', fresh), 'mappa')
-  assert.equal(resolveScene('', { ...fresh, entered: true }), 'mappa')
+  assert.equal(resolveScene('', { ...fresh, entered: true }), 'intro')
 })
 
 test('game over survives reload and retry leads back to the airplane', () => {
   const lost = readProgress('{"flight":"over"}')
   assert.equal(resolveScene('#giardino', lost), 'mappa')
   assert.equal(resolveScene('#mappa', readProgress('{"flight":"retry"}')), 'intro')
-  assert.equal(readProgress('{"entered":true}').flight, 'equipped')
+  assert.equal(readProgress('{"entered":true}').flight, 'first')
+  assert.equal(readProgress('{"entered":true,"flight":"equipped"}').flight, 'first')
+  assert.equal(readProgress('{"jetpackCollected":true,"flight":"equipped"}').flight, 'equipped')
+  assert.equal(resolveScene('#mappa', readProgress('{"entered":true}')), 'intro')
   assert.equal(readProgress(null).flight, 'first')
 })

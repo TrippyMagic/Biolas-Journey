@@ -91,3 +91,5 @@ L’aeroplanino ospita Viola sopra il saluto. Il tocco in qualsiasi punto avvia 
 Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra la sola dedica finché il campo della foto è vuoto.
 
 Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
+
+Solo il tocco sullo zaino dopo il game over registra la raccolta. Prima della raccolta la schiena di Viola è libera.

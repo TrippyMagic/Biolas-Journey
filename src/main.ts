@@ -16,7 +16,7 @@ let raw = null
 try { raw = localStorage.getItem(key) } catch { /* Private browsing can deny storage. */ }
 let progress = readProgress(raw)
 function save() {
-  try { localStorage.setItem(key, JSON.stringify(progress)) } catch { /* Keep session state. */ }
+  try { localStorage.setItem(key, JSON.stringify({ ...progress, jetpackCollected: progress.flight === 'equipped' })) } catch { /* Keep session state. */ }
 }
 const world = document.querySelector<HTMLElement>('#world')!
 world.innerHTML = '<div class="sky" aria-hidden="true"><div class="day"></div><div class="stars"></div><div class="cloud high"></div><div class="horizon"></div><div class="cloud left"></div><div class="cloud right"></div></div>'
@@ -122,6 +122,7 @@ world.addEventListener('click', async event => {
   const action = (event.target as Element).closest<HTMLButtonElement>('button')?.dataset.action ?? (current === 'intro' ? 'mappa' : undefined)
   if (!action || !scene || scene.inert || scene.dataset.jumping) return
   if (action === 'equip') {
+    if (current !== 'intro' || progress.flight !== 'retry') return
     progress.flight = 'equipped'
     world.dataset.flight = progress.flight
     scene.querySelector('.pack-pickup')?.remove()

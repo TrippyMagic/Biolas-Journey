@@ -72,7 +72,7 @@ La base Vite è `/Biolas-Journey/`. Eseguire `npm run deploy` per compilare e pu
 
 Il saluto e il testo introduttivo sono definitivi per questa fase. Restano da consegnare scatti e didascalie di gruppo, audio, sprite definitive, messaggi, destinazioni dei cartelli e contenuti del finale.
 
-Il prologo salva in `flight` il primo tentativo, il game over, il nuovo tentativo o il jetpack equipaggiato. Ricomincia dal game over abilita la raccolta dietro Viola sull’aeroplano. Il riavvio completo del viaggio azzera anche il prologo. I vecchi salvataggi con ingresso già registrato riprendono con il jetpack.
+Il prologo salva in `flight` il primo tentativo, il game over, il nuovo tentativo o il jetpack equipaggiato. Ricomincia dal game over abilita la raccolta dietro Viola sull’aeroplano. Il riavvio completo del viaggio azzera anche il prologo. I vecchi salvataggi privi della conferma di raccolta ripartono dal primo volo quando si apre la mappa, conservando visite e partita.
 
 ### Sprite di coppia in LibreSprite
 
@@ -83,3 +83,5 @@ Lo zaino è un accessorio separato. Lo stato spento mostra solo il corpo del jet
 Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra la sola dedica finché il campo della foto è vuoto.
 
 Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
+
+Solo il tocco sullo zaino dopo il game over registra la raccolta. Prima della raccolta la schiena di Viola è libera.

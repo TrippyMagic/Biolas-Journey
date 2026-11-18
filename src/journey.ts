@@ -11,7 +11,8 @@ export function readProgress(raw: string | null): Progress {
   try {
     const value = JSON.parse(raw ?? '{}')
     return {
-      flight: ['first','over','retry','equipped'].includes(value.flight) ? value.flight : value.entered ? 'equipped' : 'first',
+      flight: value.flight === 'equipped' && value.jetpackCollected === true ? 'equipped'
+        : value.flight === 'retry' || value.flight === 'over' ? value.flight : 'first',
       entered: value.entered === true,
       visits: islands.filter(id => Array.isArray(value.visits) && value.visits.includes(id)),
       revealed: value.revealed === true,
@@ -27,6 +28,7 @@ export function resolveScene(hash: string, progress: Progress): Scene {
   const id = hash.slice(1)
   if (progress.flight === 'over') return 'mappa'
   if (progress.flight === 'retry') return 'intro'
+  if (progress.flight === 'first' && (!id || id === 'mappa')) return 'intro'
   if (!id) return progress.entered ? 'mappa' : 'intro'
   if (isIsland(id) || id === 'intro' || (id === 'finale' && unlocked(progress))) return id
   return 'mappa'
