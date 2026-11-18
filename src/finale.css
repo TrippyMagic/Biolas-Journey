@@ -5,9 +5,9 @@
 [data-location=finale] :is(.horizon,.cloud) { visibility: hidden }
 [data-location=finale] .sky::before { visibility: hidden }
 [data-location=finale] .stars i { animation: none }
-.planet-scene { padding: 0 }
+.planet-scene { padding: 0; display: flex; flex-direction: column }
 .planet-reading {
-  height: 100%; overflow: auto; display: flex; flex-direction: column;
+  flex: 1; min-height: 0; overflow: auto; display: flex; flex-direction: column;
   padding-top: max(76px, calc(env(safe-area-inset-top) + 68px));
 }
 .planet-spread {

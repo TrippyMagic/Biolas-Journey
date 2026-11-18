@@ -2,6 +2,8 @@ import '@fontsource/spectral/latin-500.css'
 import '@fontsource/dm-sans/latin-400.css'
 import './styles.css'
 import './interiors.css'
+import './map.css'
+import { jumpTo } from './actors'
 import { syncDetail } from './detail'
 import { clearGame } from './sudoku'
 import { animate } from 'motion/mini'
@@ -27,6 +29,7 @@ for (let i = 1; i <= 95; i++) {
 }
 let scene: HTMLElement | undefined
 let current: Scene
+let fromPlane = false
 let revision = 0
 let pending: ReturnType<typeof animate>[] = []
 const reduced = matchMedia('(prefers-reduced-motion: reduce)')
@@ -38,9 +41,13 @@ async function display(id: Scene) {
   scene?.dispatchEvent(new Event('depart'))
   const old = scene
   const from = current
-  const next = makeScene(id, progress)
+  const next = makeScene(id, progress, from === 'finale' || isIsland(from) ? from : undefined)
   scene = next
   current = id
+  world.dataset.flight = progress.flight
+  const enteringFromPlane = fromPlane && id === 'mappa'
+  fromPlane = false
+  if (id === 'mappa' && (enteringFromPlane || progress.flight === 'over')) next.classList.add('flight-entry')
   world.dataset.location = id
   world.classList.toggle('crossing-cloud', from === 'intro' && id === 'mappa')
   world.append(next)
@@ -62,9 +69,30 @@ async function display(id: Scene) {
     if (ticket !== revision) return
     old.remove()
   }
+  if (id === 'mappa' && (enteringFromPlane || progress.flight === 'over')) {
+    next.inert = true
+    if (enteringFromPlane) {
+      const traveler = next.querySelector<HTMLElement>('.map-traveler')!
+      next.classList.add('falling')
+      const fatal = progress.flight === 'over'
+      await fall(traveler, '-100vh', fatal ? '80vh' : '0px', fatal ? 950 : 680)
+      if (ticket !== revision) return
+    }
+    if (progress.flight === 'over') {
+      const title = document.createElement('h1')
+      title.tabIndex = -1
+      title.textContent = content.ui.gameOver
+      const retry = document.createElement('button')
+      retry.dataset.action = 'retry'
+      retry.textContent = content.ui.retry
+      next.className = 'game-over'
+      next.replaceChildren(title, retry)
+    } else next.classList.remove('flight-entry','falling')
+  }
   next.inert = false
+  next.dispatchEvent(new Event('active'))
   syncDetail(next)
-  if (id !== 'intro') progress.entered = true
+  if (id !== 'intro' && progress.flight !== 'over') progress.entered = true
   if (isIsland(id) && !progress.visits.includes(id)) progress.visits.push(id)
   if (id === 'mappa' && unlocked(progress) && !progress.revealed) {
     next.classList.add('reveal')
@@ -75,6 +103,12 @@ async function display(id: Scene) {
   const focus = next.querySelector<HTMLElement>('[data-action="' + from + '"]') ?? next.querySelector('h1')
   focus?.focus({ preventScroll: true })
 }
+async function fall(figure: HTMLElement, start: string, end: string, duration: number) {
+  if (reduced.matches) return
+  const animation = figure.animate([{ transform: 'translateY(' + start + ')' }, { transform: 'translateY(' + end + ')' }], { duration, easing: 'ease-in', fill: 'forwards' })
+  await animation.finished
+  animation.cancel()
+}
 function sync() {
   const id = resolveScene(location.hash, progress)
   if (id !== 'intro' && id !== 'mappa' && !history.state?.fromMap) {
@@ -84,9 +118,41 @@ function sync() {
   if (current !== id) void display(id)
   else if (scene) syncDetail(scene)
 }
-world.addEventListener('click', event => {
-  const action = (event.target as Element).closest<HTMLButtonElement>('button')?.dataset.action
-  if (!action || scene?.inert) return
+world.addEventListener('click', async event => {
+  const action = (event.target as Element).closest<HTMLButtonElement>('button')?.dataset.action ?? (current === 'intro' ? 'mappa' : undefined)
+  if (!action || !scene || scene.inert || scene.dataset.jumping) return
+  if (action === 'equip') {
+    progress.flight = 'equipped'
+    world.dataset.flight = progress.flight
+    scene.querySelector('.pack-cloud')?.remove()
+    document.querySelector('#announcement')!.textContent = content.ui.equipped
+    scene.querySelector<HTMLButtonElement>('.enter')?.focus()
+    save()
+    return
+  }
+  if (action === 'retry') {
+    progress.flight = 'retry'
+    save()
+    history.replaceState(null, '', '#intro')
+    sync()
+    return
+  }
+  if (current === 'intro') {
+    const launch = scene
+    launch.inert = true
+    await fall(launch.querySelector('.traveler')!, '0px', '90vh', 620)
+    if (scene !== launch) return
+    fromPlane = true
+    if (progress.flight !== 'equipped') progress.flight = 'over'
+    save()
+  }
+  if (current === 'mappa' && (isIsland(action) || action === 'finale')) {
+    const departing = scene
+    departing.dataset.jumping = 'true'
+    await jumpTo(departing, action)
+    delete departing.dataset.jumping
+    if (scene !== departing || location.hash !== '#mappa') return
+  }
   if (action === 'reset') {
     if (!confirm(content.confirmReset)) return
     progress = readProgress(null)

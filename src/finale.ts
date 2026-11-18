@@ -1,5 +1,6 @@
 import { content } from './content'
 import './finale.css'
+import { actor, arrive } from './actors'
 
 export function mountFinale(scene: HTMLElement) {
   const { photo, dedication, photoPlaceholder } = content.finale
@@ -30,6 +31,10 @@ export function mountFinale(scene: HTMLElement) {
   landscape.className = 'planet-landscape'
   landscape.setAttribute('role', 'img')
   landscape.setAttribute('aria-label', content.finale.landscapeAlt)
-  reading.append(spread, landscape)
-  scene.append(reading)
+  const traveler = actor('traveler')
+  traveler.hidden = true
+  landscape.append(actor('host'), traveler)
+  reading.append(spread)
+  scene.append(reading, landscape)
+  scene.addEventListener('active', () => { traveler.hidden = false; arrive(traveler) }, { once: true })
 }

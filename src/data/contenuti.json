@@ -9,7 +9,7 @@
   "names": {
     "fotografie": "Fotografie",
     "giardino": "Giardino delle lucciole",
-    "giochi": "Stanza dei giochi",
+    "giochi": "Stanza delle varie cosine",
     "finale": "Un altro pianeta"
   },
   "messages": [
@@ -42,53 +42,6 @@
       "text": "[Messaggio 07]"
     }
   ],
-  "photos": [
-    {
-      "id": "stampa-1",
-      "src": "media/photos/studio-1.svg",
-      "alt": "Segnaposto illustrato 1"
-    },
-    {
-      "id": "stampa-2",
-      "src": "media/photos/studio-2.svg",
-      "alt": "Segnaposto illustrato 2"
-    },
-    {
-      "id": "stampa-3",
-      "src": "media/photos/studio-3.svg",
-      "alt": "Segnaposto illustrato 3"
-    },
-    {
-      "id": "stampa-4",
-      "src": "media/photos/studio-4.svg",
-      "alt": "Segnaposto illustrato 4"
-    },
-    {
-      "id": "stampa-5",
-      "src": "media/photos/studio-5.svg",
-      "alt": "Segnaposto illustrato 5"
-    },
-    {
-      "id": "stampa-6",
-      "src": "media/photos/studio-6.svg",
-      "alt": "Segnaposto illustrato 6"
-    },
-    {
-      "id": "stampa-7",
-      "src": "media/photos/studio-7.svg",
-      "alt": "Segnaposto illustrato 7"
-    },
-    {
-      "id": "stampa-8",
-      "src": "media/photos/studio-8.svg",
-      "alt": "Segnaposto illustrato 8"
-    },
-    {
-      "id": "stampa-9",
-      "src": "media/photos/studio-9.svg",
-      "alt": "Segnaposto illustrato 9"
-    }
-  ],
   "signs": [
     {
       "label": "[Cartello 01]",
@@ -100,8 +53,8 @@
     "map": "Mappa delle isole",
     "islands": "Isole",
     "visited": "visitata",
-    "previousLine": "Tratto precedente",
-    "nextLine": "Tratto successivo",
+    "previousLine": "Gruppo precedente",
+    "nextLine": "Gruppo successivo",
     "previousPhoto": "← Precedente",
     "nextPhoto": "Successiva →",
     "firefly": "Lucciola",
@@ -112,7 +65,17 @@
     "replaceGame": "Sostituire la partita in corso?",
     "restartGame": "Ricomincia partita",
     "nextGame": "Altro schema",
-    "newTab": "apre una nuova scheda"
+    "newTab": "apre una nuova scheda",
+    "turntable": "Giradischi",
+    "play": "Avvia",
+    "pause": "Pausa",
+    "resume": "Riprendi",
+    "emptyTracks": "I dischi arriveranno presto.",
+    "audioError": "Il disco non parte. Riprova o scegli un’altra traccia.",
+    "equip": "Indossa il jetpack",
+    "gameOver": "Game over",
+    "retry": "Ricomincia",
+    "equipped": "Jetpack equipaggiato"
   },
   "finale": {
     "photo": {
@@ -123,6 +86,109 @@
     "dedication": [
       "[Dedica finale]"
     ],
-    "landscapeAlt": "La Terra azzurra è bassa nel cielo stellato, oltre i crateri del pianeta."
+    "landscapeAlt": "La Terra azzurra è bassa nel cielo stellato, oltre i crateri del pianeta. Viola raggiunge il suo compagno che la aspetta sul pianeta."
+  },
+  "photoGroups": [
+    {
+      "caption": "[Didascalia del gruppo 1]",
+      "photos": [
+        {
+          "id": "stampa-1",
+          "src": "media/photos/studio-1.svg",
+          "alt": "Segnaposto illustrato 1"
+        },
+        {
+          "id": "stampa-2",
+          "src": "media/photos/studio-2.svg",
+          "alt": "Segnaposto illustrato 2"
+        },
+        {
+          "id": "stampa-3",
+          "src": "media/photos/studio-3.svg",
+          "alt": "Segnaposto illustrato 3"
+        }
+      ]
+    },
+    {
+      "caption": "[Didascalia del gruppo 2]",
+      "photos": [
+        {
+          "id": "stampa-4",
+          "src": "media/photos/studio-4.svg",
+          "alt": "Segnaposto illustrato 4"
+        },
+        {
+          "id": "stampa-5",
+          "src": "media/photos/studio-5.svg",
+          "alt": "Segnaposto illustrato 5"
+        },
+        {
+          "id": "stampa-6",
+          "src": "media/photos/studio-6.svg",
+          "alt": "Segnaposto illustrato 6"
+        }
+      ]
+    },
+    {
+      "caption": "[Didascalia del gruppo 3]",
+      "photos": [
+        {
+          "id": "stampa-7",
+          "src": "media/photos/studio-7.svg",
+          "alt": "Segnaposto illustrato 7"
+        },
+        {
+          "id": "stampa-8",
+          "src": "media/photos/studio-8.svg",
+          "alt": "Segnaposto illustrato 8"
+        },
+        {
+          "id": "stampa-9",
+          "src": "media/photos/studio-9.svg",
+          "alt": "Segnaposto illustrato 9"
+        }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "title": "[Traccia 1]",
+      "src": ""
+    },
+    {
+      "title": "[Traccia 2]",
+      "src": ""
+    },
+    {
+      "title": "[Traccia 3]",
+      "src": ""
+    }
+  ],
+  "characters": {
+    "traveler": {
+      "idle": {
+        "src": "media/characters/viola.svg",
+        "frameWidth": 24,
+        "frameHeight": 32,
+        "frames": 1,
+        "fps": 6
+      },
+      "jump": {
+        "src": "",
+        "frameWidth": 24,
+        "frameHeight": 32,
+        "frames": 1,
+        "fps": 6
+      }
+    },
+    "host": {
+      "idle": {
+        "src": "media/characters/compagno.svg",
+        "frameWidth": 24,
+        "frameHeight": 32,
+        "frames": 1,
+        "fps": 6
+      }
+    }
   }
 }

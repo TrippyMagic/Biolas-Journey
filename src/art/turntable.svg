@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 77" shape-rendering="crispEdges" aria-hidden="true">
+  <path fill="#443942" d="M4 6h100v4h4v59h-4v4H8v-3H3V10h1z"/>
+  <path fill="#82635b" d="M6 10h98v54H6z"/><path fill="#cf9773" d="M7 7h96v51H7z"/><path fill="#ecd0a2" d="M9 9h92v2H9z"/>
+  <path fill="#654c4c" d="M12 14h64v40H12zm69 1h15v20H81z"/>
+  <g transform="translate(44 34) scale(1 .67)">
+    <circle r="29" fill="#aa9892"/><circle r="26" fill="#493e49"/>
+    <g class="disc-loader"><g class="vinyl"><circle r="29" fill="#252735"/><circle r="25" fill="none" stroke="#414451" stroke-width="2"/><circle r="19" fill="none" stroke="#363a48"/>
+    <path fill="#74717a" d="M-23-12l3-4 10 9-2 3zm39 23 6 4-3 5-6-7z"/><circle r="10" fill="var(--label,#cf8581)"/><path fill="#e6c7ab" d="M-7-4H5v2H-7z"/><rect x="-2" y="-2" width="4" height="4" fill="#d9d9d1"/></g></g>
+  </g>
+  <g class="tonearm"><path fill="none" stroke="#483d46" stroke-width="5" d="M88 20v17L75 48"/><path fill="none" stroke="#dad1b6" stroke-width="3" d="M88 17v18L74 46"/><path fill="#4b4853" d="M71 43h7v5h-7z"/></g>
+  <rect x="84" y="14" width="8" height="7" fill="#a7aaa1"/><path fill="#efcd9c" d="M82 46h6v4h-6zm9 0h5v4h-5z"/>
+  <path fill="#ae7964" d="M8 60h94v2H8z"/><path fill="#503f43" d="M12 65h8v3h-8zm79 0h8v3h-8z"/>
+</svg>

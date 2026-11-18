@@ -1,4 +1,6 @@
-import { mountAlbum, mountGarden, resetAlbum } from './memories'
+import { mountAlbum, resetAlbum } from './album'
+import { mountGarden } from './memories'
+import { actor, placeTraveler } from './actors'
 import { mountRoom } from './room'
 export { resetAlbum }
 import { content } from './content'
@@ -30,7 +32,7 @@ function motif(id: Destination) {
   img.alt = ''
   return img
 }
-function intro(el: HTMLElement) {
+function intro(el: HTMLElement, progress: Progress) {
   const center = document.createElement('div')
   center.className = 'intro-center'
   const phrase = document.createElement('p')
@@ -38,10 +40,17 @@ function intro(el: HTMLElement) {
   const enter = button('mappa', '', 'enter')
   enter.setAttribute('aria-label', content.enter)
   enter.insertAdjacentHTML('afterbegin', star)
-  center.append(heading(content.title), phrase, enter)
+  const plane = document.createElement('div')
+  plane.className = 'airplane'
+  plane.append(actor('traveler'))
+  if (progress.flight === 'retry') {
+    const pickup = button('equip', content.ui.equip, 'pack-cloud')
+    el.append(pickup)
+  }
+  center.append(plane, heading(content.title), phrase, enter)
   el.append(center)
 }
-function map(el: HTMLElement, progress: Progress) {
+function map(el: HTMLElement, progress: Progress, origin?: Destination) {
   const title = heading(content.ui.map)
   title.className = 'sr'
   const chart = document.createElement('nav')
@@ -57,16 +66,28 @@ function map(el: HTMLElement, progress: Progress) {
       label.insertAdjacentHTML('beforeend', star)
       item.setAttribute('aria-label', content.names[id] + ', ' + content.ui.visited)
     }
-    item.append(motif(id), label)
+    const surface = document.createElement('div')
+    surface.className = 'island-art'
+    surface.append(motif(id))
+    item.append(surface, label)
     chart.append(item)
   }
-  el.append(title, chart, button('reset', content.reset, 'reset'))
+  placeTraveler(chart, origin)
+  const clouds = document.createElement('div')
+  clouds.className = 'map-clouds'
+  clouds.setAttribute('aria-hidden','true')
+  for (let layer = 0; layer < 4; layer++) {
+    const band = document.createElement('div')
+    band.className = 'cloud-band'
+    clouds.append(band)
+  }
+  el.append(clouds, title, chart, button('reset', content.reset, 'reset'))
 }
-export function makeScene(id: Scene, progress: Progress) {
+export function makeScene(id: Scene, progress: Progress, origin?: Destination) {
   const el = document.createElement('section')
   el.dataset.scene = id
-  if (id === 'intro') intro(el)
-  else if (id === 'mappa') map(el, progress)
+  if (id === 'intro') intro(el, progress)
+  else if (id === 'mappa') map(el, progress, origin)
   else if (isIsland(id)) {
     el.className = 'interior'
     el.append(button('back', content.back, 'back'), heading(content.names[id]))

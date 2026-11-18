@@ -1,0 +1,13 @@
+[data-location=mappa] .sky .cloud { visibility: hidden }
+[data-location=mappa].crossing-cloud .sky .cloud.left { visibility: visible; animation: passage .6s var(--settle) forwards }
+.map-clouds { position: absolute; inset: 0; pointer-events: none; overflow: hidden }
+.cloud-band { --a: url('./art/cloud-wisp.svg'); --b: url('./art/cloud.svg'); --c: url('./art/cloud-tower.svg'); position: absolute; height: clamp(28px,7svh,72px); width: 200%; left: 0; top: 11%; opacity: .48; animation: cloud-current 78s linear -17s infinite }
+.cloud-band::before,.cloud-band::after { content: ''; position: absolute; inset: 0 50% 0 0; background: var(--a) 2% 18% / 20% auto no-repeat,var(--b) 56% 80% / 17% auto no-repeat,var(--c) 95% 52% / 11% auto no-repeat }
+.cloud-band::after { inset: 0 0 0 50% }
+.cloud-band:nth-child(2) { --a: url('./art/cloud-tower.svg'); --c: url('./art/cloud-wisp.svg'); top: 30%; opacity: .58; animation-duration: 65s; animation-direction: reverse }
+.cloud-band:nth-child(3) { --a: url('./art/cloud.svg'); --b: url('./art/cloud-wisp.svg'); top: 53%; opacity: .65; animation-duration: 54s; animation-delay: -32s }
+.cloud-band:nth-child(4) { --b: url('./art/cloud-tower.svg'); --c: url('./art/cloud.svg'); top: 75%; opacity: .82; animation-duration: 43s; animation-direction: reverse }
+@keyframes cloud-current { to { transform: translateX(-50%) } }
+.island-art { width: 100%; position: relative }
+.island-art img { display: block }
+.island:has(.map-traveler) { z-index: 1 }

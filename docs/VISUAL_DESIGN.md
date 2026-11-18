@@ -1,10 +1,10 @@
 # Biolas-Journey · Specifica visiva
 
-La mappa è il soggetto principale. Ogni isola anticipa un oggetto che Viola ritroverà ingrandito nella scena. Il filo, il salice, la finestra e la Terra bassa sul suolo craterizzato guidano l'occhio durante il viaggio. Il cielo lega le sei inquadrature, dal crepuscolo dell'intro al tramonto delle fotografie, alla luce della lampada, fino al cielo profondo del pianeta finale.
+La mappa è il soggetto principale. Ogni isola anticipa un oggetto che Viola ritroverà ingrandito nella scena. Il filo, il salice, la finestra e la Terra bassa sul suolo craterizzato guidano l'occhio durante il viaggio. Il cielo lega le sei inquadrature, dal crepuscolo dell'intro al tramonto delle fotografie, alla finestra della stanza, fino al cielo profondo del pianeta finale.
 
 ## Materiali e token condivisi
 
-**Stato realizzato.** Tre sagome di nuvola con profili distinti attraversano il cielo sopra i rilievi. La mappa lascia il cielo libero dal titolo. Album con stampe oscillanti, radura con salice e lucciole, stanza illustrata con quaderno e vista Sudoku sono navigabili. La quarta destinazione apre il panorama spaziale con fotografia e dedica.
+**Stato realizzato.** La mappa dispone quattro fasce di nuvole dietro le isole. La viaggiatrice accompagna il percorso fino all’incontro finale. L’album appende le foto in gruppi, la radura ospita lucciole e salice al vento e la stanza raccoglie giradischi e quaderno sul tavolo.
 
 | Token CSS previsto | Valore | Impiego |
 |---|---|---|
@@ -15,9 +15,9 @@ La mappa è il soggetto principale. Ogni isola anticipa un oggetto che Viola rit
 | `--peach` | `#F5D6BE` | Orizzonte della mappa e luce della stanza |
 | `--cream` | `#FFF2E6` | Carta, stelle e testo sul cielo scuro |
 | `--sage` | `#84988D` | Fogliame |
-| `--gold` | `#F6DFA0` | Lucciole e lampada |
+| `--gold` | `#F6DFA0` | Lucciole e dettagli caldi |
 
-Il gradiente verticale della mappa passa da lavanda ad azzurro al 60% e finisce in pesca. Il cielo notturno passa da blu notte a lavanda. Usare carta crema quasi opaca per il testo su sfondo variabile. Mantenere almeno 4,5:1 di contrasto per i testi normali.
+Il gradiente verticale della mappa passa da lavanda ad azzurro al 60% e finisce in pesca. Nel giardino il cielo va dal blu inchiostro all’ardesia. La luna e le stelle fredde emergono sopra le lucciole dorate. Usare carta crema quasi opaca per il testo su sfondo variabile. Mantenere almeno 4,5:1 di contrasto per i testi normali.
 
 - **Caratteri.** Spectral Medium locale per frase iniziale e dedica, Georgia di riserva. DM Sans locale per messaggi, navigazione e cifre, con sans-serif di sistema. Titoli 28–44 px, lettura 17–20 px con interlinea 1,5, comandi 15–16 px. Lunghezza massima della riga della lettera circa 54 caratteri.
 - **Spazio.** Scala di 4, 8, 12, 16, 24, 32 e 48 px. Margine telefono 16 px oltre le safe area. Stampe con raggio di 3 px e ombra `0 3px 8px #25243F26`. Carta e comandi con raggio di 10 px e bordo sottile.
@@ -29,13 +29,13 @@ Il gradiente verticale della mappa passa da lavanda ad azzurro al 60% e finisce 
 
 ### 1 · Intro
 
-Tre sagome di nuvola accompagnano il cielo stellato. Al centro appare «Ciao amore...» e subito sotto «So che non ti piacciano i giochini ma dovrai attraversare questa pixel art scadente». La stella crema è l’unico comando, con nome accessibile e area tattile di almeno 56 px. Su desktop il gruppo rimane al centro.
+Tre sagome di nuvola accompagnano il cielo stellato. Al centro la viaggiatrice sta su una piccola nuvola sopra «Ciao amore...» e subito sotto «So che non ti piacciano i giochini ma dovrai attraversare questa pixel art scadente». La stella crema è il comando da tastiera per il lancio. Al tocco è attiva tutta l’intro, eccetto la nuvola che equipaggia il jetpack al secondo tentativo. Su desktop il gruppo rimane al centro.
 
 All'ingresso emerge il gradiente notturno. Alternare lentamente l'opacità di due cieli. Il primo tocco rischiara la stella e fa attraversare il primo piano a una nuvola. Dietro si distingue il profilo delle isole.
 
 ### 2 · Mappa
 
-Organizzare la scena in tre piani. Stelle e foschia delineano il fondo, le isole occupano il piano nitido, pochi lembi di nuvola incorniciano il primo piano. I centri seguenti sono percentuali x/y dell'area illustrata utile, esclusi comandi e safe area.
+Organizzare la scena in tre piani. Stelle e foschia delineano il fondo, le isole occupano il piano nitido, quattro fasce di nuvole attraversano la mappa su correnti orizzontali. Le direzioni si alternano, ogni fascia combina sagome SVG diverse e le fasce più vicine scorrono più velocemente. I centri seguenti sono percentuali x/y dell'area illustrata utile, esclusi comandi e safe area.
 
 | Isola | Telefono | Desktop | Sagoma principale |
 |---|---|---|---|
@@ -44,31 +44,31 @@ Organizzare la scena in tre piani. Stelle e foschia delineano il fondo, le isole
 | Giochi | 32%, 74% | 79%, 43% | Tetto spiovente, finestra ambrata e tavolino visibile |
 | Un altro pianeta | 73%, 17% | 54%, 22% | Disco azzurro sopra una falce di roccia rosata |
 
-Le tre isole iniziali disegnano una S sul telefono e misurano circa un terzo della larghezza ciascuna. Nome breve e sagoma appartengono allo stesso pulsante. Alla pressione l'isola sale di 2 px, quindi la camera converge sul suo oggetto. Al ritorno una stella piena segna la visita anche con il nome accessibile «visitata».
+Le tre isole iniziali disegnano una S sul telefono e misurano circa un terzo della larghezza ciascuna. Nome breve e sagoma appartengono allo stesso pulsante. Alla selezione Viola salta in arco dall’isola su cui si trova. Il primo volo parte dal centro della mappa. Dopo l’atterraggio la camera converge sulla meta. Al ritorno Viola resta su quell’isola. Con movimento ridotto il posizionamento è immediato. Al ritorno una stella piena segna la visita anche con il nome accessibile «visitata».
 
 Prima delle tre visite, il settore del pianeta finale contiene solo cielo. Alla prima apertura utile della mappa, le tre stelle brillano in sequenza e una nuvola si apre sul pianeta. Durata complessiva circa 900 ms. Lasciare attivi i controlli. Nelle aperture successive il pianeta fa già parte del paesaggio.
 
 ### 3 · Fotografie
 
-Avvicinare la camera al filo finché i due pali escono dai bordi. Sul cielo pesca e rosa stendere una corda SVG con una leggera curva. Appendere immagini HTML con bordo crema e mollette pixel art. Mostrare due stampe grandi per tratto su telefono, quattro su desktop. Le frecce ai lati fanno avanzare di un tratto, incluso l'ultimo parzialmente occupato.
+Sopra il filo compare la didascalia comune del gruppo. Su telefono le tre o quattro stampe si distribuiscono su due fili, su desktop su un filo solo. Scorrimento orizzontale a scatto, swipe e frecce percorrono gli stessi gruppi.
 
-Le stampe oscillano di circa un grado attorno alla molletta. Toccandone una, fermarla e portarla in primo piano su fondo notte. Usare l'intera foto in proporzione naturale, anche panoramica o verticale. In ingrandimento le frecce percorrono tutto l'album. Alla chiusura mostrare il tratto contenente l'ultima foto selezionata e restituirle il focus. Alla partenza verso la mappa riprendere il filo. Per le prove alternare sagome di carta orizzontali, verticali e quadrate. Lasciare il bordo privo di didascalie.
+Le stampe entrano in sequenza con dissolvenza e un lieve avvicinamento. Ogni stampa ruota attorno alla propria molletta e si assesta. In ingrandimento le frecce percorrono l’intero album. Alla chiusura si ritrovano gruppo e focus dell’ultima foto. Con movimento ridotto le stampe sono subito ferme e leggibili.
 
 ### 4 · Giardino delle lucciole
 
 Entrare seguendo la chioma del salice da sinistra. L'erba occupa il quarto inferiore. Il centro è una radura scura con luci fra il 20% e il 75% dell'altezza. Distribuire dieci ancoraggi fissi su file sfalsate, assegnando i primi cinque a zone distanti. Verificare che a 320 px i bersagli siano separati. Su desktop allargare la radura lasciando le luci vicine alle fronde e al prato.
 
-Disegnare la lucciola dentro un pulsante HTML fermo di almeno 48×48 px. Muovere solo la luce in un'orbita di 3–5 px ogni 5–8 s. Al tocco intensificare l'alone, attenuare le altre luci e aprire il foglietto crema dal basso. Su desktop il foglio compare a destra del salice. Usare segnaposto progressivi come `[Messaggio 01]`. Alla chiusura restituire focus e luminosità. All'uscita la camera ritrova il profilo del salice.
+Disegnare la lucciola dentro un pulsante HTML fermo di almeno 48×48 px. La luce gialla percorre orbite sfalsate fino a 15 px dal centro del bersaglio. Nel cielo blu profondo, una falce di luna a gradini e stelle bianche e azzurre restano distinte dagli insetti. Una foschia sottile attraversa il prato sopra i rilievi lontani. Le fronde oscillano dai rami e i ciuffi d’erba si piegano alla base. Al tocco intensificare l'alone, attenuare le altre luci e aprire il foglietto crema dal basso. Su desktop il foglio compare a destra del salice. Usare segnaposto progressivi come `[Messaggio 01]`. Alla chiusura restituire focus e luminosità. All'uscita la camera ritrova il profilo del salice.
 
-### 5 · Stanza dei giochi
+### 5 · Stanza delle varie cosine
 
-La finestra si allarga e rivela una lampada a sinistra che illumina il quaderno sul tavolino centrale. Lasciare una lieve variazione di luce sulla parete. Fissare i cartelli agli stipiti delle uscite dietro il tavolo. Su telefono collocarli sopra il piano, su desktop ai due lati. Per ulteriori cartelli usare assi successive e spazio verticale. Con elenco vuoto rimangono gli stipiti. Le assi configurate combinano grafica pixel art e link HTML con etichetta leggibile.
+La finestra illumina un tavolo di legno. Il giradischi occupa il lato sinistro, il quaderno il destro. Il dettaglio del giradischi ingrandisce lo stesso oggetto. La scelta di una traccia posa il vinile sul piatto e il braccio entra mentre il disco gira. La pausa ferma il disco e ritira il braccio. Fissare i cartelli agli stipiti delle uscite dietro il tavolo. Su telefono collocarli sopra il piano, su desktop ai due lati. Per ulteriori cartelli usare assi successive e spazio verticale. Con elenco vuoto rimangono gli stipiti. Le assi configurate combinano grafica pixel art e link HTML con etichetta leggibile.
 
-Il quaderno porta a una vista dall'alto. La griglia HTML occupa la larghezza utile, fino a 450 px, con confini dei riquadri 3×3 distinguibili. A 320 px riservare circa 32 px per cella e almeno 44 px per ogni tasto numerico. Due file ospitano cifre 1–9 e cancellazione. In orizzontale, se c'è spazio, spostarle a lato. Rendere riconoscibili indizi, selezione ed errori anche attraverso peso, contorno o segno. Tenere visibili il ritorno e i comandi di partita. Chiudendo il quaderno si ritrova il tavolo, tornando alla mappa si ritrova la finestra.
+Il quaderno porta a una vista dall’alto del tavolo. La griglia è stampata su un foglio a righe con angolo ripiegato e bordo di carta in ombra sul legno. La griglia HTML occupa la larghezza utile, fino a 450 px, con confini dei riquadri 3×3 distinguibili. A 320 px riservare circa 32 px per cella e almeno 44 px per ogni tasto numerico. Due file ospitano cifre 1–9 e cancellazione. In orizzontale, se c'è spazio, spostarle a lato. Rendere riconoscibili indizi, selezione ed errori anche attraverso peso, contorno o segno. Tenere visibili il ritorno e i comandi di partita. Chiudendo il quaderno si ritrova il tavolo, tornando alla mappa si ritrova la finestra.
 
 ### 6 · Finale
 
-Dal suolo roccioso di un altro pianeta si guarda verso la Terra, bassa sopra la linea dei crateri. Oceani azzurri, continenti salvia e nubi chiare distinguono il disco dal cielo notte. Una sola stella pulsa. Sul telefono la stampa occupa la parte superiore e il foglio crema la segue; da 768 px sono affiancati. Il paesaggio entra per primo e la carta emerge in dissolvenza. La zona di lettura scorre fino all’ultima riga mentre Mappa resta disponibile. In movimento ridotto la carta è subito visibile.
+Dal suolo roccioso di un altro pianeta si guarda verso la Terra, bassa sopra la linea dei crateri. Oceani azzurri, continenti salvia e nubi chiare distinguono il disco dal cielo notte. Una sola stella pulsa. Il compagno aspetta sul terreno, rivolto verso la viaggiatrice che atterra al suo fianco. Il panorama rimane visibile mentre scorre la dedica. Sul telefono la stampa occupa la parte superiore e il foglio crema la segue; da 768 px sono affiancati. Il paesaggio entra per primo e la carta emerge in dissolvenza. La zona di lettura scorre fino all’ultima riga mentre Mappa resta disponibile. In movimento ridotto la carta è subito visibile.
 
 ## Movimento e asset
 
@@ -82,6 +82,8 @@ Dal suolo roccioso di un altro pianeta si guarda verso la Terra, bassa sopra la 
 
 Preferire transform e opacity. Sospendere i cicli fuori scena e liberare le sequenze all'uscita. Con `prefers-reduced-motion` usare posizioni ferme e dissolvenze entro 120 ms. Annunciare la nuova destinazione anche alle tecnologie assistive. La scoperta, i controlli e l'accesso ai messaggi rimangono disponibili.
 
-**Indispensabili.** Tre isole e pianeta finale; due nuvole e stella a quattro punte; pali e molletta; salice, erba e lucciola; stanza con lampada, tavolino, quaderno, stipite e cartello riutilizzabile. Ricavare le miniature delle destinazioni dagli stessi elementi degli interni. Fili, aloni, carta, gradienti e ombre si ottengono con SVG o CSS. Conservare la dimensione dei placeholder quando manca un'immagine.
+**Indispensabili.** Tre isole e pianeta finale; due nuvole e stella a quattro punte; pali e molletta; salice, erba e lucciola; stanza con giradischi, tavolino, quaderno, stipite e cartello riutilizzabile. Ricavare le miniature delle destinazioni dagli stessi elementi degli interni. Fili, aloni, carta, gradienti e ombre si ottengono con SVG o CSS. Conservare la dimensione dei placeholder quando manca un'immagine.
 
-**Opzionali.** Secondo piano di vegetazione, variante di nuvola e secondo fotogramma per la lampada. Realizzarli solo dopo aver verificato tutto il viaggio sul telefono.
+**Opzionali.** Le sprite definitive di LibreSprite possono estendere le pose ferme con cicli a fotogrammi e una posa di salto dedicata.
+
+L’aeroplanino ospita Viola sopra il saluto. Il tocco in qualsiasi punto avvia la caduta. La mappa prolunga il movimento fino al game over. Dopo Ricomincia appare il jetpack sulla nuvola dell’intro. Lo zaino resta sulla schiena anche quando il motore è spento. In volo la fiamma alterna quattro fotogrammi. Il primo ingresso equipaggiato termina in sospensione fra le isole.

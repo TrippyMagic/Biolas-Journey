@@ -1,0 +1,17 @@
+[data-location=giardino] .sky { background: linear-gradient(#090f23 0%,#151e38 48%,#353e59 77%,#4a5366) }
+[data-location=giardino] :is(.horizon,.cloud),[data-location=giochi] :is(.horizon,.cloud) { visibility: hidden }
+[data-location=giardino] .sky::before { width: clamp(28px,5vw,50px); height: auto; aspect-ratio: 1; left: auto; right: 16%; top: 17%; background: #dce5f4; box-shadow: none; transform: none; border-radius: 0; clip-path: polygon(38% 0,65% 0,65% 7%,46% 7%,46% 15%,34% 15%,34% 30%,28% 30%,28% 49%,34% 49%,34% 63%,46% 63%,46% 71%,65% 71%,65% 77%,83% 77%,83% 71%,96% 71%,96% 79%,86% 79%,86% 89%,70% 89%,70% 96%,38% 96%,38% 91%,22% 91%,22% 81%,13% 81%,13% 67%,6% 67%,6% 27%,14% 27%,14% 14%,26% 14%,26% 6%,38% 6%) }
+[data-location=giardino] .stars i { background: #c3d7fa; opacity: .8 }
+.meadow { position: absolute; inset: 0; isolation: isolate; background: url('./art/garden.svg') center bottom / 100% 32% no-repeat }
+.meadow::before,.meadow::after,.meadow-mist { content: ''; pointer-events: none; position: absolute; z-index: -1 }
+.meadow::before { left: -1%; bottom: 14%; width: clamp(140px,38%,490px); height: 78%; background: url('./art/willow.svg') bottom left / 100% 100% no-repeat }
+.meadow::after { inset: auto -4% 0; height: clamp(27px,6svh,65px); background: url('./art/grass.svg') left bottom / auto 100% repeat-x; transform-origin: bottom; animation: grass-wind 4.5s ease-in-out infinite alternate }
+.meadow-mist { inset: 65% -8% 16%; background: radial-gradient(ellipse at 74% 48%,#becfdf22,transparent 38%),radial-gradient(ellipse at 26% 70%,#a4bfd21f,transparent 34%); animation: mist-drift 17s ease-in-out infinite alternate }
+[data-scene=giardino] > h1 { color: var(--cream); text-shadow: 0 2px 5px var(--night) }
+.firefly { position: absolute; translate: -50% -50%; width: 48px; height: 48px }
+.firefly::before { content: ''; display: block; margin: auto; width: 6px; height: 6px; border-radius: 50%; background: #fff3a1; box-shadow: 0 0 7px 4px #ffd25799,0 0 20px 9px #ebbe4738; animation: firefly-flight 6.8s var(--delay) ease-in-out infinite }
+.firefly:nth-of-type(even)::before { animation-direction: reverse; animation-duration: 8s }
+.firefly:is(:active,:focus-visible)::before { box-shadow: 0 0 12px 7px var(--gold) }
+@keyframes firefly-flight { 0%,100% { transform: translate(-13px,4px); opacity: .75 } 28% { transform: translate(-4px,-14px) } 57% { transform: translate(15px,-4px); opacity: 1 } 80% { transform: translate(6px,11px) } }
+@keyframes grass-wind { from { transform: skewX(-5deg) } to { transform: skewX(12deg) } }
+@keyframes mist-drift { to { transform: translateX(8%) } }

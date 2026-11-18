@@ -1,0 +1,22 @@
+.record-deck { width: 100%; pointer-events: none }
+.record-deck svg { width: 100%; display: block; overflow: visible }
+.vinyl { animation: groove 2.4s linear infinite; animation-play-state: paused }
+.spinning .vinyl { animation-play-state: running }
+.tonearm { transform-origin: 88px 18px; transform: rotate(-16deg); transition: transform .42s ease }
+.spinning .tonearm { transform: rotate(15deg) }
+@keyframes groove { to { transform: rotate(360deg) } }
+.table-item { position: absolute; bottom: 29%; width: 24%; height: 17%; padding: 0; display: grid; align-items: end; justify-items: center }
+.table-item .record-deck { width: min(100%,17svh) }
+.table-item > span { position: absolute; top: 104%; padding: 3px 6px; line-height: 1.1; color: #392f3a; background: #eed6b2; border: 2px solid #8b645b; box-shadow: 1px 2px #6b5155; font-size: clamp(13px,2vw,16px) }
+.turntable-item { left: 24% }
+.book-item { right: 24% }
+.book-cover { position: relative; width: min(78%,13svh); height: 54%; min-height: 26px; border: 3px solid #604952; border-bottom: 5px solid #e7ccb0; background: repeating-linear-gradient(0deg,transparent 0 6px,#cfa9a0 6px 7px),#edd9b7; transform: skewX(-9deg) rotate(4deg); box-shadow: 2px 3px #77585b }
+.book-cover::before { content: ''; position: absolute; inset: -2px auto -2px 8%; width: 5px; background: #a67171 }
+[data-detail=giradischi] .detail-body { padding: 20px; background: #f2dec2; border: 3px solid #735654 }
+[data-detail=giradischi] .record-deck { width: min(62vw,270px); margin: auto }
+.record-sleeves { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-block: 12px }
+.record-sleeves button,.play-toggle { min-height: 44px; padding: 6px 12px; border: 2px solid #826567; background: #fff1db; color: #423543; box-shadow: 2px 2px #a07c75 }
+.record-sleeves button[aria-pressed=true] { background: #5c545f; color: white }
+.play-toggle { min-width: 108px }
+.player-status { margin: 8px 0 0 }
+.player-status:empty { display: none }

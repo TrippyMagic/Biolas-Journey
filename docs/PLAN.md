@@ -4,7 +4,7 @@ Il percorso parte da una stella, attraversa una mappa esplorabile e si conclude 
 
 ## Struttura e navigazione
 
-**Stato al 18 novembre.** Sono attivi album, messaggi e Sudoku con salvataggio. Il finale mostra la Terra dal suolo di un altro pianeta, una foto singola e una dedica scorrevole. Avvio locale con Node 24, `npm ci` e `npm run dev`. Per provare il sito compilato usare `npm run build` e `npm run preview` al percorso `/Biolas-Journey/`.
+**Stato al 18 novembre.** Sono attivi l’album a gruppi, il giardino notturno, il giradischi e il Sudoku con salvataggio. La viaggiatrice accompagna il percorso dall’intro all’incontro sul pianeta. Il finale mostra la Terra dal suolo di un altro pianeta, una foto singola e una dedica scorrevole. Avvio locale con Node 24, `npm ci` e `npm run dev`. Per provare il sito compilato usare `npm run build` e `npm run preview` al percorso `/Biolas-Journey/`.
 
 Una pagina Vite con TypeScript mantiene cielo, contenitore di scena e controlli di navigazione. Sei moduli indipendenti ricevono dal coordinatore il contenitore, i contenuti e le azioni di navigazione. Ciascun modulo monta il proprio HTML e restituisce una funzione di pulizia per eventi e animazioni. Separare CSS condiviso e stili delle scene. Motion serve alle sequenze coordinate tra piani, CSS alle reazioni locali.
 
@@ -12,8 +12,8 @@ Una pagina Vite con TypeScript mantiene cielo, contenitore di scena e controlli 
 |---|---|
 | Apertura senza frammento | Intro al primo accesso. La stella registra l'ingresso e apre la mappa. Agli accessi successivi si parte dalla mappa. |
 | Frammento di scena | Accettare `#intro`, `#mappa`, `#fotografie`, `#giardino`, `#giochi` e `#finale`. Un'isola raggiunta direttamente conta come visita quando diventa attiva. Un frammento sconosciuto o un finale ancora bloccato viene sostituito con la mappa. |
-| Isola selezionata | Preparare il fondale, raccordare la camera all'oggetto scelto, attivare la destinazione e registrare la visita una sola volta. Smontare il piano uscente. |
-| Indietro | Dal dettaglio chiudere foto, foglietto o quaderno e restituire il focus all'oggetto. Dall'isola tornare alla mappa. Preparare una voce mappa anche all'ingresso diretto in un'isola. |
+| Isola selezionata | Sulla mappa completare il salto della viaggiatrice dalla posizione attuale alla meta. Preparare il fondale, raccordare la camera all'oggetto scelto, attivare la destinazione e registrare la visita una sola volta. Smontare il piano uscente. |
+| Indietro | Dal dettaglio chiudere foto, foglietto, giradischi o quaderno e restituire il focus all'oggetto. Dall'isola tornare alla mappa. Preparare una voce mappa anche all'ingresso diretto in un'isola. |
 | Comando Mappa | Da qualunque dettaglio o isola tornare direttamente alla mappa, con focus sulla destinazione appena lasciata. Evitare voci di cronologia duplicate. |
 
 Il coordinatore arbitra cronologia e transizione. Ignora un secondo tocco sulla stessa destinazione. Se interviene Indietro, interrompe la sequenza pendente e allinea scena e focus alla voce di cronologia raggiunta. Solo la scena attiva riceve input. Nei dettagli modali includere il ritorno alla mappa fra i comandi raggiungibili. Gestire chiusura anche con Escape.
@@ -26,20 +26,28 @@ Derivare l'accesso al pianeta finale dalla presenza di tutti e tre gli ID. Al pr
 
 ## Contratto dei contenuti
 
-Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene nove illustrazioni segnaposto, sette messaggi e un cartello inattivo. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Mappa salta direttamente dal dettaglio alla mappa.
+Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene tre gruppi da tre illustrazioni, sette messaggi, due personaggi provvisori, tre posti per dischi e un cartello inattivo. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Mappa salta direttamente dal dettaglio alla mappa.
 
 | Campo | Dati modificabili |
 |---|---|
 | `title`, `intro` | Saluto e frase iniziale forniti dall’autore. |
-| `photos` | ID stabile, percorso relativo del WebP/AVIF, testo alternativo e miniatura facoltativa. Prevedere 8–12 foto di proporzioni miste. |
+| `photoGroups` | Ogni gruppo ha `caption` e una lista `photos` di 3 o 4 immagini. Ogni foto ha `id` univoco nell’album, `src`, `alt` e `thumbnail` facoltativa. |
+| `tracks` | Due o tre voci in ordine di riproduzione con `title` e `src` relativo alla base. Un percorso vuoto riserva il posto per un brano futuro. |
+| `characters` | Fogli sprite per `traveler.idle`, `traveler.jump` e `host.idle`. |
 | `messages` | Da 5 a 10 voci con ID stabile e testo. |
 | `signs` | ID, etichetta, URL facoltativo. Creare un link solo per URL web validi HTTP(S), con nuova scheda, `noopener` e nome accessibile che annuncia l'apertura. |
 | `ui`, `names` e testi di navigazione | Etichette di album, giardino e Sudoku, nomi delle isole e conferma di riavvio. |
 | `finale` | `photo.src` relativo alla base e `photo.alt`; `photoPlaceholder` per un percorso vuoto o illeggibile; `dedication` con una stringa per paragrafo; `landscapeAlt` descrive il panorama. |
 
-Per aggiungere uno scatto copiare l'immagine in `public/media/photos/` e aggiungere la voce con percorso relativo, per esempio `media/photos/01.webp`. Risolvere questi percorsi sulla base di Vite. Usare la stessa convenzione per la foto finale. Durante la preparazione usare sagome neutre per i media assenti. Lo sblocco fa parte del racconto. I contenuti distribuiti sono pubblicamente raggiungibili.
+Per aggiungere uno scatto copiare l'immagine in `public/media/photos/` e aggiungere la voce al gruppo con percorso relativo, per esempio `media/photos/01.webp`. Risolvere questi percorsi sulla base di Vite. Usare la stessa convenzione per la foto finale. Durante la preparazione usare sagome neutre per i media assenti. Lo sblocco fa parte del racconto. I contenuti distribuiti sono pubblicamente raggiungibili.
 
 Caricare all'inizio cielo e sagome della mappa. Preparare il fondale della destinazione selezionata durante il raccordo. Nell'album dare priorità al tratto visibile, poi alla foto adiacente in ingrandimento. Se manca un'immagine mantenerne lo spazio e lasciare disponibili navigazione e ritorno.
+
+## Giradischi e personaggi
+
+Copiare i file audio destinati al regalo in `public/media/audio/`. Per esempio, una voce può avere `"title": "Il nostro disco"` e `"src": "media/audio/disco-1.mp3"`. Il primo gesto avvia il disco scelto. Pausa e ripresa conservano il punto di ascolto. Si può cambiare disco durante la riproduzione. Al termine passa al brano successivo e dall’ultimo torna al primo. La musica prosegue chiudendo il dettaglio e giocando a Sudoku. Uscendo dalla stanza si ferma.
+
+In LibreSprite esportare ciascuna posa come PNG trasparente con i fotogrammi in **una riga orizzontale**, tutti della stessa misura, senza margini fra i riquadri. Tenere i piedi alla stessa altezza e orientare i personaggi verso destra. Copiare i PNG in `public/media/characters/`. Per ogni posa impostare `src`, `frameWidth`, `frameHeight`, `frames` e `fps`. Per esempio, quattro fotogrammi da 24×32 richiedono un PNG da 96×32, `frames: 4` e, per sei fotogrammi al secondo, `fps: 6`. Una posa singola usa `frames: 1`. Con il percorso di salto vuoto viene usata la posa ferma lungo tutta la traiettoria.
 
 ## Sudoku
 
@@ -62,4 +70,12 @@ Limitare i test automatici a tre gruppi. Verificare lo sblocco in ordini diversi
 
 La base Vite è `/Biolas-Journey/`. Eseguire `npm run deploy` per compilare e pubblicare `dist` sul ramo `gh-pages`. In Settings → Pages scegliere Deploy from a branch, `gh-pages`, `/(root)`. Per ogni aggiornamento dei sorgenti ripetere il comando di deploy dopo le verifiche locali.
 
-Il saluto e il testo introduttivo sono definitivi per questa fase. Restano da scegliere gli scatti, i messaggi, le destinazioni dei cartelli e i contenuti del finale.
+Il saluto e il testo introduttivo sono definitivi per questa fase. Restano da consegnare scatti e didascalie di gruppo, audio, sprite definitive, messaggi, destinazioni dei cartelli e contenuti del finale.
+
+Il prologo salva in `flight` il primo tentativo, il game over, il nuovo tentativo o il jetpack equipaggiato. Ricomincia dal game over abilita la raccolta sulla nuvola. Il riavvio completo del viaggio azzera anche il prologo. I vecchi salvataggi con ingresso già registrato riprendono con il jetpack.
+
+### Sprite di coppia in LibreSprite
+
+Per le pose singole usare 24×32 px e un punto di appoggio comune per i piedi. Per le interazioni preparare una tela trasparente da 64×40 px con entrambi i personaggi su livelli distinti. Tenere identica la linea del terreno. Preparare clip separate per incontro (4 fotogrammi di avvicinamento), abbraccio (4–6, braccia che si chiudono e posa tenuta), bacio (4–6, avvicinamento, contatto e pausa) e intimità giocosa (6–8, abbraccio sotto una coperta, cuoricini e ritorno alla quiete). Esportare una striscia PNG orizzontale per clip, senza spaziatura né ritaglio automatico. Le interazioni di coppia sono indicazioni per la produzione artistica. Il finale attuale usa due sprite indipendenti.
+
+Lo zaino è un accessorio separato. Lo stato spento mostra solo il corpo del jetpack. La fiamma attuale usa quattro celle da 8×12 px in fila in `src/art/exhaust.svg`. Per ridisegnarla tenere fermo l’ugello e alternare scintilla, fiamma corta, piena e in contrazione.

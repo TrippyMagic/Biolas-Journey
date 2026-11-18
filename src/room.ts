@@ -1,5 +1,6 @@
 import { control, openDetail, registerDetail } from './detail'
 import { content } from './content'
+import { roomPlayer } from './player'
 import { loadGame, saveGame, initialGame, complete, puzzleFor, puzzles, enterDigit } from './sudoku'
 
 function notebook(body: HTMLElement) {
@@ -65,10 +66,14 @@ function notebook(body: HTMLElement) {
   actions.append(control(content.ui.restartGame, () => restart(false)), control(content.ui.nextGame, () => restart(true)))
   const layout = document.createElement('div')
   layout.className = 'game-layout'
-  layout.append(grid,pad)
+
   const title = document.createElement('h2')
   title.textContent = content.ui.sudoku
-  body.append(title,layout,status,actions)
+  const sheet = document.createElement('div')
+  sheet.className = 'puzzle-sheet'
+  sheet.append(title, grid)
+  layout.append(sheet, pad)
+  body.append(layout,status,actions)
   refresh()
 }
 export function mountRoom(scene: HTMLElement) {
@@ -76,7 +81,16 @@ export function mountRoom(scene: HTMLElement) {
   room.className = 'room-set'
   const book = control(content.ui.sudoku, () => openDetail(scene,'sudoku'))
   book.dataset.open = 'sudoku'
-  book.className = 'book'
+  book.className = 'table-item book-item'
+  book.innerHTML = '<i class="book-cover" aria-hidden="true"></i><span></span>'
+  book.lastElementChild!.textContent = content.ui.sudoku
+  const player = roomPlayer(scene)
+  const record = control('', () => openDetail(scene,'giradischi'))
+  record.dataset.open = 'giradischi'
+  record.className = 'table-item turntable-item'
+  const label = document.createElement('span')
+  label.textContent = content.ui.turntable
+  record.append(player.miniature, label)
   const signs = document.createElement('div')
   signs.className = 'signs'
   for (const sign of content.signs) {
@@ -92,7 +106,7 @@ export function mountRoom(scene: HTMLElement) {
     link.setAttribute('aria-label', sign.label + ', ' + content.ui.newTab)
     signs.append(link)
   }
-  room.append(signs, book)
+  room.append(signs, record, book)
   scene.append(room)
-  registerDetail(scene, (_,body) => notebook(body))
+  registerDetail(scene, (id,body) => id === 'giradischi' ? player.panel(body) : notebook(body))
 }
