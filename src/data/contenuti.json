@@ -47,7 +47,11 @@
     },
     {
       "id": "luce-9",
-      "text": "Sei la più leggera delle gioie e la più pesante delle responsabilità"
+      "text": "Prima di incontrarti non credevo che la mia migliore amica, la mia prima sostenitrice, la mia fidata consigliera, la mia dolce compagna e la mia splendida amante potessero essere la solita persona"
+    },
+    {
+      "id": "luce-10",
+      "text": "C'è dell'affascinante ironia nel fatto due personalità come le nostre si innamorino e diventino così legate"
     }
   ],
   "signs": [],
@@ -171,6 +175,11 @@
           "id": "strana-IMG-20260912-WA0123",
           "src": "media/photos/Biolas/strana/IMG-20260912-WA0123.jpg",
           "alt": "Foto 4 della sezione strana"
+        },
+        {
+          "id": "strana-wa-2026-11-18-181516",
+          "src": "media/photos/Biolas/strana/WhatsApp Image 2026-11-18 at 18.15.16.jpeg",
+          "alt": "Viola si affaccia dall’oblò di una tuta da astronauta"
         }
       ]
     },
@@ -191,6 +200,11 @@
           "id": "stressata-IMG-20260829-WA0094",
           "src": "media/photos/Biolas/stressata/IMG-20260829-WA0094.jpg",
           "alt": "Foto 3 della sezione stressata"
+        },
+        {
+          "id": "stressata-wa-2026-11-22-232640",
+          "src": "media/photos/Biolas/stressata/WhatsApp Image 2026-11-22 at 23.26.40.jpeg",
+          "alt": "Viola e Nicco abbracciati in un selfie allo specchio"
         }
       ]
     },
