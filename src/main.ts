@@ -1,4 +1,5 @@
 import '@fontsource/spectral/latin-500.css'
+import '@fontsource/spectral/latin-500-italic.css'
 import '@fontsource/dm-sans/latin-400.css'
 import './styles.css'
 import './interiors.css'

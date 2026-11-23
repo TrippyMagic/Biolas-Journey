@@ -1,5 +1,4 @@
 import { content } from './content'
-import '@fontsource/spectral/latin-500-italic.css'
 import './finale.css'
 import { actor, arrive } from './actors'
 
