@@ -2,7 +2,7 @@
   "title": "Ciao amore...",
   "intro": "So che non ti piacciano i giochini ma dovrai attraversare questa pixel art scadente!",
   "enter": "Entra nella mappa",
-  "reset": "Ricomincia il viaggio",
+  "reset": "Ricomincia",
   "confirmReset": "Ricominciare il viaggio e cancellare visite e partita?",
   "back": "← Mappa",
   "revealed": "È apparsa una nuova destinazione: Un'altra prospettiva",
@@ -15,7 +15,7 @@
   "messages": [
     {
       "id": "luce-1",
-      "text": "Amarti e sapere che tu mi ami è mi potrebbe far superare qualsiasi cosa"
+      "text": "Amarti e sapere che mi ami mi potrebbe far superare qualsiasi cosa"
     },
     {
       "id": "luce-2",
@@ -40,6 +40,14 @@
     {
       "id": "luce-7",
       "text": "Giuro non ne ho copiata neanche una!"
+    },
+    {
+      "id": "luce-8",
+      "text": "Non so se ti rendi conto di quanto sei speciale, mi hai cambiato la vita e te ne sarò sempre grato"
+    },
+    {
+      "id": "luce-9",
+      "text": "Sei la più leggera delle gioie e la più pesante delle responsabilità"
     }
   ],
   "signs": [],
@@ -50,8 +58,8 @@
     "visited": "visitata",
     "previousLine": "Gruppo precedente",
     "nextLine": "Gruppo successivo",
-    "previousPhoto": "← Precedente",
-    "nextPhoto": "Successiva →",
+    "previousPhoto": "Foto precedente",
+    "nextPhoto": "Foto successiva",
     "firefly": "Lucciola",
     "sudoku": "Sudoku",
     "erase": "Canc.",
@@ -68,7 +76,7 @@
     "emptyTracks": "I dischi arriveranno presto.",
     "audioError": "Il disco non parte. Riprova o scegli un’altra traccia.",
     "equip": "Indossa il jetpack",
-    "gameOver": "Game over - Ti sembra il caso di buttarti da un aereo senza niente?",
+    "gameOver": "Ti sembra il caso di buttarti da un aereo senza niente?",
     "retry": "Ricomincia ciuca",
     "equipped": "Jetpack equipaggiato"
   },
@@ -79,8 +87,10 @@
     },
     "photoPlaceholder": "Io e te",
     "dedication": [
-      "Volevo portarti quassù alla fine. Non ho mai capito chi si sente sopraffatto dagli spazi celesti e dall'immensità del cosmo, per me non c'è attività più nobile al mondo che cercare la risposte a tutte le domande e cercare di intravedere il destino di tutte le cose. Eppure, da quando sei arrivata tu nella mia vita, mi sento soffocare, la vastità dello spazio e di quella ricerca sembra insignificante, perchè ho scoperto che un altro universo si trova dentro di noi. E ne voglio esplorare ogni galassia, stella, pianeta, fino all'ultimo granello di polvere che ci sia. Se solo potessi farti intendere almeno la centesima parte di quello che provo per te, non ho dubbi sul fatto che il nostro viaggio potrebbe durare per sempre (a very long time). Non capirai mai questa citazione. ;)"
+      "Volevo portarti quassù alla fine. Non ho mai capito chi si sente sopraffatto dagli spazi celesti e dall'immensità del cosmo, per me non c'è attività più nobile al mondo che cercare la risposte a tutte le domande e cercare di intravedere il destino di tutte le cose. Eppure, da quando sei arrivata tu nella mia vita, mi sento soffocare, la vastità dello spazio e di quella ricerca sembra insignificante, perchè ho scoperto che un altro universo si trova dentro di noi. E ne voglio esplorare ogni galassia, sistema, pianeta, luce ed ombra, fino all'ultimo granello di polvere al suo interno. Prendo in prestito le parole di qualcuno meno analfabeta, per me sei tu l'amor che move il sole e l'altre stelle. Se solo potessi farti intendere almeno la centesima parte di quello che provo per te, non ho dubbi sul fatto che il nostro viaggio potrebbe durare per sempre (a very long time)."
     ],
+    "dedicationSignature": "Tuo, Nicco",
+    "postScriptum": "Non capirai mai questa citazione. ;)",
     "landscapeAlt": "La Terra azzurra è bassa nel cielo stellato, oltre i crateri del pianeta. Viola raggiunge il suo compagno che la aspetta sul pianeta."
   },
   "photoGroups": [

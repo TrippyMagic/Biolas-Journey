@@ -1,9 +1,10 @@
 import { content } from './content'
+import '@fontsource/spectral/latin-500-italic.css'
 import './finale.css'
 import { actor, arrive } from './actors'
 
 export function mountFinale(scene: HTMLElement) {
-  const { photo, dedication, photoPlaceholder } = content.finale
+  const { photo, dedication, dedicationSignature, postScriptum, photoPlaceholder } = content.finale
   const reading = document.createElement('div')
   reading.className = 'planet-reading'
   const spread = document.createElement('div')
@@ -21,10 +22,30 @@ export function mountFinale(scene: HTMLElement) {
 
   const letter = document.createElement('article')
   letter.className = 'planet-letter'
+  const date = document.createElement('time')
+  date.dateTime = '2026-11-24'
+  date.textContent = '24 Novembre 2026'
+  letter.append(date)
   for (const text of dedication) {
     const paragraph = document.createElement('p')
     paragraph.textContent = text
     letter.append(paragraph)
+  }
+  if (dedicationSignature || postScriptum) {
+    const ending = document.createElement('footer')
+    if (dedicationSignature) {
+      const signature = document.createElement('p')
+      signature.className = 'letter-signature'
+      signature.textContent = dedicationSignature
+      ending.append(signature)
+    }
+    if (postScriptum) {
+      const postscript = document.createElement('p')
+      postscript.className = 'letter-postscript'
+      postscript.textContent = 'P.S. ' + postScriptum
+      ending.append(postscript)
+    }
+    letter.append(ending)
   }
   if (photo.src) spread.append(print)
   spread.append(letter)

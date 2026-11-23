@@ -43,7 +43,6 @@ export function syncDetail(scene: HTMLElement) {
     dialog.setAttribute('aria-label', content.names[scene.dataset.scene as keyof typeof content.names])
     const garden = scene.dataset.scene === 'giardino'
     const bar = document.createElement('header')
-    if (scene.dataset.scene === 'fotografie') bar.append(control(content.back, () => history.go(-2)))
     const close = control(garden ? 'X' : content.ui.close, () => history.back())
     if (garden) close.setAttribute('aria-label', content.ui.close)
     bar.append(close)

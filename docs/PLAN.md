@@ -14,7 +14,7 @@ Una pagina Vite con TypeScript mantiene cielo, contenitore di scena e controlli 
 | Frammento di scena | Accettare `#intro`, `#mappa`, `#fotografie`, `#giardino`, `#giochi` e `#finale`. Un'isola raggiunta direttamente conta come visita quando diventa attiva. Un frammento sconosciuto o un finale ancora bloccato viene sostituito con la mappa. |
 | Isola selezionata | Sulla mappa completare il salto della viaggiatrice dalla posizione attuale alla meta. Preparare il fondale, raccordare la camera all'oggetto scelto, attivare la destinazione e registrare la visita una sola volta. Smontare il piano uscente. |
 | Indietro | Dal dettaglio chiudere foto, foglietto, giradischi, quaderno o computer e restituire il focus all'oggetto. Dall'isola tornare alla mappa. Preparare una voce mappa anche all'ingresso diretto in un'isola. |
-| Comando Mappa | Da qualunque dettaglio o isola tornare direttamente alla mappa, con focus sulla destinazione appena lasciata. Evitare voci di cronologia duplicate. |
+| Comando Mappa | Dalla vista principale di ogni isola o del finale tornare alla mappa, con focus sulla destinazione appena lasciata. Evitare voci di cronologia duplicate. |
 
 Il coordinatore arbitra cronologia e transizione. Ignora un secondo tocco sulla stessa destinazione. Se interviene Indietro, interrompe la sequenza pendente e allinea scena e focus alla voce di cronologia raggiunta. Solo la scena attiva riceve input. Nei dettagli modali includere il ritorno alla mappa fra i comandi raggiungibili. Gestire chiusura anche con Escape.
 
@@ -26,7 +26,7 @@ Derivare l'accesso al pianeta finale dalla presenza di tutti e tre gli ID. Al pr
 
 ## Contratto dei contenuti
 
-Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene 20 fotografie distribuite nelle cinque sottocartelle di Biolas, sette messaggi, due personaggi provvisori, quattro tracce sul giradischi e nessun cartello configurato. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Dalla stanza si torna alla mappa dopo aver chiuso o minimizzato il dettaglio dell’oggetto.
+Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene 20 fotografie distribuite nelle cinque sottocartelle di Biolas, nove messaggi, due personaggi provvisori, quattro tracce sul giradischi e nessun cartello configurato. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Dalla stanza si torna alla mappa dopo aver chiuso o minimizzato il dettaglio dell’oggetto.
 
 | Campo | Dati modificabili |
 |---|---|
@@ -37,7 +37,7 @@ Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste or
 | `messages` | Da 5 a 10 voci con ID stabile e testo. |
 | `signs` | ID, etichetta, URL facoltativo. Creare un link solo per URL web validi HTTP(S), con nuova scheda, `noopener` e nome accessibile che annuncia l'apertura. |
 | `ui`, `names` e testi di navigazione | Etichette di album, giardino e Sudoku, nomi delle isole e conferma di riavvio. |
-| `finale` | `photo.src` relativo alla base e `photo.alt`; `photoPlaceholder` per un percorso vuoto o illeggibile; `dedication` con una stringa per paragrafo; `landscapeAlt` descrive il panorama. |
+| `finale` | `photo.src` relativo alla base e `photo.alt`; `photoPlaceholder` per un percorso vuoto o illeggibile; `dedication` con una stringa per paragrafo; `dedicationSignature` e `postScriptum` per la chiusura; `landscapeAlt` descrive il panorama. |
 
 Per aggiungere uno scatto copiare l'immagine in `public/media/photos/` e aggiungere la voce al gruppo con percorso relativo, per esempio `media/photos/01.webp`. Risolvere questi percorsi sulla base di Vite. Usare la stessa convenzione per la foto finale. Durante la preparazione usare sagome neutre per i media assenti. Lo sblocco fa parte del racconto. I contenuti distribuiti sono pubblicamente raggiungibili.
 
@@ -80,7 +80,7 @@ Per le pose singole usare 24×32 px e un punto di appoggio comune per i piedi. P
 
 Lo zaino è un accessorio separato. Lo stato spento mostra solo il corpo del jetpack. La fiamma attuale usa quattro celle da 8×12 px in fila in `src/art/exhaust.svg`. Per ridisegnarla tenere fermo l’ugello e alternare scintilla, fiamma corta, piena e in contrazione.
 
-Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. I paletti laterali arrivano al fondo della scena e sostengono i fili, che proseguono tra i gruppi. Uno swipe orizzontale nella scena o le frecce selezionano il gruppo adiacente. La build copia i media configurati. La cornice del finale segue le proporzioni della foto e si adatta alla larghezza e all’altezza disponibili. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
+Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. I paletti laterali arrivano al fondo della scena e sostengono i fili, che proseguono tra i gruppi. Uno swipe orizzontale nella scena o le frecce selezionano il gruppo adiacente. La build copia i media configurati. La cornice del finale segue le proporzioni della foto e si adatta alla larghezza e all’altezza disponibili. Le foto aperte hanno frecce senza testo visibile. Si torna alla mappa dopo aver chiuso la foto. La lettera in corsivo mostra la data del 24 Novembre 2026 in alto a destra, con firma e post scriptum separati dal corpo. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
 
 Il giradischi mostra i soli titoli. Da «I miei sogni d’anarchia» passa a «Flower In A Hurricane», «Time Is Running Out» e «Alors on danse», poi torna al primo brano.
 

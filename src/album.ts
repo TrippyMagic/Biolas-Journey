@@ -123,7 +123,7 @@ export function mountAlbum(scene: HTMLElement) {
     arrows.className = 'photo-nav'
     for (const step of [-1, 1]) {
       const neighbor = photos[index + step]
-      const arrow = control(step < 0 ? content.ui.previousPhoto : content.ui.nextPhoto, () => {
+      const arrow = control(step < 0 ? '←' : '→', () => {
         if (!neighbor) return
         openDetail(scene, neighbor.id, true)
         const buttons = body.querySelectorAll<HTMLButtonElement>('nav button')
@@ -131,6 +131,7 @@ export function mountAlbum(scene: HTMLElement) {
         const target = same.disabled ? buttons[step < 0 ? 1 : 0] : same
         target.focus()
       })
+      arrow.setAttribute('aria-label', step < 0 ? content.ui.previousPhoto : content.ui.nextPhoto)
       arrow.disabled = !neighbor
       arrows.append(arrow)
     }

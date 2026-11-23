@@ -19,7 +19,7 @@ La mappa è il soggetto principale. Ogni isola anticipa un oggetto che Viola rit
 
 Il gradiente verticale della mappa passa da lavanda ad azzurro al 60% e finisce in pesca. Nel giardino il cielo va dal blu inchiostro all’ardesia. La luna e le stelle fredde emergono sopra le lucciole dorate. Usare carta crema quasi opaca per il testo su sfondo variabile. Mantenere almeno 4,5:1 di contrasto per i testi normali.
 
-- **Caratteri.** Spectral Medium locale per frase iniziale e dedica, Georgia di riserva. Pixelify Sans per comandi e messaggi delle lucciole. DM Sans locale per le cifre del Sudoku, con sans-serif di sistema. Titoli 28–44 px, lettura 17–20 px con interlinea 1,5, comandi 15–16 px. Lunghezza massima della riga della lettera circa 54 caratteri.
+- **Caratteri.** Spectral Medium locale per la frase iniziale e Spectral Medium Italic per la dedica, con Georgia di riserva. Pixelify Sans per comandi e messaggi delle lucciole. DM Sans locale per le cifre del Sudoku, con sans-serif di sistema. Titoli 28–44 px, lettura 17–20 px con interlinea 1,5, comandi 15–16 px. Lunghezza massima della riga della lettera circa 54 caratteri.
 - **Spazio.** Scala di 4, 8, 12, 16, 24, 32 e 48 px. Margine telefono 16 px oltre le safe area. Stampe con raggio di 3 px e ombra `0 3px 8px #25243F26`. Carta e comandi con raggio di 10 px e bordo sottile.
 - **Disegno.** Pixel art frontale con scorcio del piano superiore, luce dall'alto a sinistra, contorno in tinta locale e tre valori per materiale. Disegnare le isole su circa 96×64 pixel e renderle a bordi netti. Usare HTML nitido per testi, controlli e fotografie, SVG per i fili, CSS per gradienti e aloni.
 - **Viewport.** Impostare la composizione a 360×740, verificare a 320 px e ridisporre i piani da 768 px. Altezza minima in `svh`, safe area anche in basso. Nei viewport bassi ridurre la scenografia e consentire scroll verticale. Mantenere lo zoom del browser. Confinare le decorazioni ai bordi evitando overflow orizzontale.
@@ -52,7 +52,7 @@ Prima delle tre visite, il settore del pianeta finale contiene solo cielo. Alla 
 
 Sopra il filo compare la didascalia comune del gruppo. Su telefono le stampe di ciascuna sottocartella si distribuiscono su due fili, su desktop su un filo solo. I fili si allineano al passaggio tra i gruppi e si tendono tra due paletti di legno per tratto, dal filo fino al bordo inferiore della scena. Il reel occupa la scena, così lo swipe orizzontale funziona anche lontano dalle stampe. Le frecce percorrono gli stessi gruppi.
 
-Le stampe entrano in sequenza con dissolvenza e un lieve avvicinamento. Ogni stampa ruota attorno alla propria molletta e si assesta. In ingrandimento le frecce percorrono l’intero album. Alla chiusura si ritrovano gruppo e focus dell’ultima foto. Con movimento ridotto le stampe sono subito ferme e leggibili.
+Le stampe entrano in sequenza con dissolvenza e un lieve avvicinamento. Ogni stampa ruota attorno alla propria molletta e si assesta. In ingrandimento le frecce percorrono l’intero album e hanno etichette per i lettori di schermo. Il comando Mappa ricompare dopo la chiusura della foto. Alla chiusura si ritrovano gruppo e focus dell’ultima foto. Con movimento ridotto le stampe sono subito ferme e leggibili.
 
 ### 4 · Giardino delle lucciole
 
@@ -88,7 +88,7 @@ Preferire transform e opacity. Sospendere i cicli fuori scena e liberare le sequ
 
 L’aeroplanino ospita Viola sopra il saluto. Il tocco in qualsiasi punto avvia la caduta. La mappa prolunga il movimento fino al game over. Dopo Ricomincia appare il jetpack dietro Viola sull’aeroplano. Lo zaino resta sulla schiena anche quando il motore è spento. In volo la fiamma alterna quattro fotogrammi. Il primo ingresso equipaggiato termina in sospensione fra le isole.
 
-Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. I paletti laterali arrivano al fondo della scena e sostengono i fili, che proseguono tra i gruppi. Uno swipe orizzontale nella scena o le frecce selezionano il gruppo adiacente. La build copia i media configurati. La cornice del finale segue le proporzioni della foto e si adatta alla larghezza e all’altezza disponibili. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
+Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. I paletti laterali arrivano al fondo della scena e sostengono i fili, che proseguono tra i gruppi. Uno swipe orizzontale nella scena o le frecce selezionano il gruppo adiacente. La build copia i media configurati. La cornice del finale segue le proporzioni della foto e si adatta alla larghezza e all’altezza disponibili. Le foto aperte hanno frecce senza testo visibile. Si torna alla mappa dopo aver chiuso la foto. La lettera in corsivo mostra la data del 24 Novembre 2026 in alto a destra, con firma e post scriptum separati dal corpo. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
 
 Il giradischi mostra i soli titoli. Da «I miei sogni d’anarchia» passa a «Flower In A Hurricane», «Time Is Running Out» e «Alors on danse», poi torna al primo brano.
 

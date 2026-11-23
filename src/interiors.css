@@ -4,7 +4,7 @@
 .interior { padding: 0; color: var(--night); display: flex; flex-direction: column }
 .interior > h1 { position: relative; z-index: 1; margin-top: max(78px,env(safe-area-inset-top)); pointer-events: none }
 .back { z-index: 2 }
-.interior:is([data-scene=giardino],[data-scene=giochi]):has(dialog[open]) > .back { visibility: hidden }
+.interior:has(dialog[open]) > .back { visibility: hidden }
 .line-controls button,.photo-nav button,.game-actions button,dialog header button { min-height: 44px; padding: 0 16px; background: var(--cream); color: var(--night); border-radius: var(--radius-paper) }
 button:disabled { opacity: .45; cursor: default }
 .room-set { position: absolute; inset: 0; background: url('./art/room.svg') center / 100% 100%; overflow-y: auto }
@@ -14,6 +14,7 @@ button:disabled { opacity: .45; cursor: default }
 dialog { padding: 16px; max-width: 100%; max-height: 100svh; width: min(100%,860px); border: 0; background: transparent; color: var(--cream); overflow-y: auto }
 dialog::backdrop { background: #25243fee }
 dialog header { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 12px }
+[data-scene=fotografie] dialog header { justify-content: flex-end }
 dialog[open] .detail-body { animation: unfold .22s var(--settle) }
 @keyframes unfold { from { opacity: 0; transform: translateY(6px) } }
 .focused-photo { display: block; margin: auto; width: 100%; height: min(66svh,620px); object-fit: contain }

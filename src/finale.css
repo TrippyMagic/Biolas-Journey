@@ -8,7 +8,7 @@
 .planet-scene { padding: 0; display: flex; flex-direction: column }
 .planet-reading {
   flex: 1; min-height: 0; overflow: auto; display: flex; flex-direction: column;
-  padding-top: max(76px, calc(env(safe-area-inset-top) + 68px));
+  margin-top: max(76px, calc(env(safe-area-inset-top) + 68px));
 }
 .planet-spread {
   flex: 1 0 auto; display: grid; align-content: center; justify-items: center; gap: 18px;
@@ -25,11 +25,15 @@
 .planet-letter {
   position: relative; width: min(100%,54ch); padding: clamp(22px,4vw,46px);
   text-align: left; color: var(--night); background: var(--cream); border-radius: 3px 10px 3px 3px;
-  box-shadow: var(--shadow-print); font: 500 clamp(17px,2vw,20px)/1.5 'Spectral', Georgia, serif;
+  box-shadow: var(--shadow-print); font: italic 500 clamp(18px,2vw,21px)/1.58 'Spectral', Georgia, serif;
   overflow-wrap: anywhere;
 }
 .planet-letter p { white-space: pre-line; margin: 0 }
 .planet-letter p + p { margin-top: 1em }
+.planet-letter time { display: block; margin-bottom: 1.2em; text-align: right; font-size: .9em }
+.planet-letter footer { margin-top: 1.4em }
+.letter-signature { text-align: right; font-size: 1.1em }
+.letter-postscript { border-top: 1px solid #c5acaa; padding-top: .75em; font-size: .94em }
 .planet-landscape {
   position: relative; flex: 0 0 clamp(155px,33svh,320px);
   background: url('./art/earth.svg') 68% 5% / auto 67% no-repeat;
