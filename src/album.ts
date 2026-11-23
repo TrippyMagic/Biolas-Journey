@@ -1,18 +1,10 @@
-import { content, type Photo } from './content'
+import { content } from './content'
+import { preparedPhoto } from './photos'
 import { control, openDetail, registerDetail } from './detail'
 import './album.css'
 
 let lastGroup = 0
 export function resetAlbum() { lastGroup = 0 }
-
-function photoImage(photo: Photo, thumbnail = false) {
-  const image = new Image()
-  image.alt = photo.alt
-  if (thumbnail) image.loading = 'lazy'
-  image.src = import.meta.env.BASE_URL + (thumbnail && photo.thumbnail || photo.src)
-  image.onerror = () => { image.style.visibility = 'hidden' }
-  return image
-}
 
 export function mountAlbum(scene: HTMLElement) {
   const groups = content.photoGroups.filter(group => group.photos.length)
@@ -40,13 +32,12 @@ export function mountAlbum(scene: HTMLElement) {
       print.style.setProperty('--order', String(order))
       const paper = document.createElement('span')
       paper.className = 'paper'
-      const image = photoImage(photo, true)
-      const size = () => {
-        if (image.naturalHeight) paper.style.setProperty('--ratio', String(image.naturalWidth / image.naturalHeight))
+      print.setAttribute('aria-label', photo.alt)
+      const prepared = preparedPhoto(photo.thumbnail || photo.src, photo.alt) ?? preparedPhoto(photo.src, photo.alt)
+      if (prepared) {
+        paper.style.setProperty('--ratio', String(prepared.ratio))
+        paper.append(prepared.image)
       }
-      image.addEventListener('load', size, { once: true })
-      size()
-      paper.append(image)
       print.append(paper)
       line.append(print)
       observer.observe(print)
@@ -117,7 +108,9 @@ export function mountAlbum(scene: HTMLElement) {
     const group = groups.findIndex(group => group.photos.some(photo => photo.id === id))
     go(group)
     mark(group)
-    const image = photoImage(photos[index])
+    const photo = photos[index]
+    const image = preparedPhoto(photo.src, photo.alt)?.image ?? document.createElement('p')
+    if (!image.hasAttribute('src')) image.textContent = photo.alt
     image.className = 'focused-photo'
     const arrows = document.createElement('nav')
     arrows.className = 'photo-nav'
@@ -136,6 +129,5 @@ export function mountAlbum(scene: HTMLElement) {
       arrows.append(arrow)
     }
     body.append(image, arrows)
-    if (photos[index + 1]) photoImage(photos[index + 1])
   })
 }

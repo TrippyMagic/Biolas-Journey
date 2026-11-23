@@ -43,9 +43,7 @@
 .print:last-child:nth-child(3) { grid-column: 1/-1; width: 47% }
 .paper { position: relative; display: block; padding: 5px 5px 12px; background: #fff2df; box-shadow: 2px 4px 1px #68516644; transform-origin: 50% 0; transform: rotate(var(--tilt)) }
 .paper::before { content: ''; position: absolute; width: 7px; height: 14px; left: 49%; top: -8px; background: linear-gradient(90deg,#976a56 42%,#dfb48e 42% 78%,#ad8064 78%); box-shadow: 1px 1px #65525c }
-.on-film { animation: print-enter .72s calc(var(--order)*65ms) var(--settle) backwards }
 .on-film .paper { animation: print-swing 1.15s calc(var(--order)*65ms) ease-out backwards }
-@keyframes print-enter { from { opacity: 0; translate: 0 16px; scale: .94 } }
 @keyframes print-swing { 0% { transform: rotate(calc(var(--tilt)*-3)) } 43% { transform: rotate(calc(var(--tilt)*1.9)) } 70% { transform: rotate(0deg) } }
 .line-controls {
   position: absolute; z-index: 1; left: 50%; bottom: max(18px,env(safe-area-inset-bottom)); translate: -50% 0;

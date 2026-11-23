@@ -41,7 +41,7 @@ Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste or
 
 Per aggiungere uno scatto copiare l'immagine in `public/media/photos/` e aggiungere la voce al gruppo con percorso relativo, per esempio `media/photos/01.webp`. Risolvere questi percorsi sulla base di Vite. Usare la stessa convenzione per la foto finale. Durante la preparazione usare sagome neutre per i media assenti. Lo sblocco fa parte del racconto. I contenuti distribuiti sono pubblicamente raggiungibili.
 
-Caricare all'inizio cielo e sagome della mappa. Preparare il fondale della destinazione selezionata durante il raccordo. Nell'album dare priorità al tratto visibile, poi alla foto adiacente in ingrandimento. Se manca un'immagine mantenerne lo spazio e lasciare disponibili navigazione e ritorno.
+Caricare all'inizio cielo e sagome della mappa. Preparare il fondale della destinazione selezionata durante il raccordo. All’avvio scaricare e decodificare tutte le foto configurate, incluse le miniature e la foto finale. Album e finale si aprono quando le immagini sono pronte. Se manca un'immagine mantenerne lo spazio e lasciare disponibili navigazione e ritorno.
 
 ## Giradischi e personaggi
 
@@ -80,7 +80,7 @@ Per le pose singole usare 24×32 px e un punto di appoggio comune per i piedi. P
 
 Lo zaino è un accessorio separato. Lo stato spento mostra solo il corpo del jetpack. La fiamma attuale usa quattro celle da 8×12 px in fila in `src/art/exhaust.svg`. Per ridisegnarla tenere fermo l’ugello e alternare scintilla, fiamma corta, piena e in contrazione.
 
-Le 22 foto sono divise in cinque sezioni che seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. I paletti laterali arrivano al fondo della scena e sostengono i fili, che proseguono tra i gruppi. Uno swipe orizzontale nella scena o le frecce selezionano il gruppo adiacente. La build copia i media configurati. La cornice del finale segue le proporzioni della foto e si adatta alla larghezza e all’altezza disponibili. Le foto aperte hanno frecce senza testo visibile. Si torna alla mappa dopo aver chiuso la foto. La lettera in corsivo mostra la data del 24 Novembre 2026 in alto a destra, con firma e post scriptum separati dal corpo. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
+Le 22 foto sono divise in cinque sezioni che seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. I paletti laterali arrivano al fondo della scena e sostengono i fili, che proseguono tra i gruppi. Uno swipe orizzontale nella scena o le frecce selezionano il gruppo adiacente. La build copia i media configurati. Il sito precarica tutte le fotografie all’avvio e mostra album e finale dopo la decodifica. La cornice del finale segue le proporzioni della foto e si adatta alla larghezza e all’altezza disponibili. Le foto aperte hanno frecce senza testo visibile. Si torna alla mappa dopo aver chiuso la foto. La lettera in corsivo mostra la data del 24 Novembre 2026 in alto a destra, con firma e post scriptum separati dal corpo. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
 
 Il giradischi mostra i soli titoli. Da «I miei sogni d’anarchia» passa a «Flower In A Hurricane», «Time Is Running Out» e «Alors on danse», poi torna al primo brano.
 

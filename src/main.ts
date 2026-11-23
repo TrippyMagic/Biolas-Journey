@@ -14,6 +14,7 @@ import { animate } from 'motion/mini'
 import { content } from './content'
 import { canVisit, isIsland, readProgress, resolveScene, type Scene } from './journey'
 import { makeScene, resetAlbum } from './scenes'
+import { photosReady } from './photos'
 
 const key = 'biolas-journey:v1'
 let raw = null
@@ -36,6 +37,7 @@ let current: Scene
 let fromPlane = false
 let revision = 0
 let pending: ReturnType<typeof animate>[] = []
+let photosPrepared = false
 const reduced = matchMedia('(prefers-reduced-motion: reduce)')
 async function display(id: Scene) {
   const ticket = ++revision
@@ -119,6 +121,10 @@ async function fall(figure: HTMLElement, start: string, end: string, duration: n
 }
 function sync() {
   const id = resolveScene(location.hash, progress)
+  if (!photosPrepared && (id === 'fotografie' || id === 'finale')) {
+    if (!scene) void display('mappa')
+    return
+  }
   if (id !== 'intro' && id !== 'mappa' && !history.state?.fromMap) {
     history.replaceState(null, '', '#mappa')
     history.pushState({ fromMap: true }, '', '#' + id)
@@ -181,4 +187,5 @@ world.addEventListener('click', async event => {
 })
 window.addEventListener('popstate', sync)
 window.addEventListener('hashchange', sync)
+void photosReady.then(() => { photosPrepared = true; sync() })
 sync()

@@ -1,4 +1,5 @@
 import { content } from './content'
+import { preparedPhoto } from './photos'
 import './finale.css'
 import { actor, arrive } from './actors'
 
@@ -11,13 +12,8 @@ export function mountFinale(scene: HTMLElement) {
   const print = document.createElement('div')
   print.className = 'planet-print'
   print.textContent = photoPlaceholder
-  if (photo.src) {
-    const image = new Image()
-    image.alt = photo.alt
-    image.onerror = () => { print.textContent = photoPlaceholder }
-    print.replaceChildren(image)
-    image.src = import.meta.env.BASE_URL + photo.src
-  }
+  const prepared = preparedPhoto(photo.src, photo.alt)
+  if (prepared) print.replaceChildren(prepared.image)
 
   const letter = document.createElement('article')
   letter.className = 'planet-letter'
