@@ -44,7 +44,7 @@ Organizzare la scena in tre piani. Stelle e foschia delineano il fondo, le isole
 | Giochi | 32%, 74% | 79%, 43% | Tetto spiovente, finestra ambrata e tavolino visibile |
 | Un altro pianeta | 73%, 17% | 54%, 22% | Disco azzurro sopra una falce di roccia rosata |
 
-Le tre isole iniziali disegnano una S sul telefono e misurano circa un terzo della larghezza ciascuna. Nome breve e sagoma appartengono allo stesso pulsante. Alla selezione Viola salta in arco dall’isola su cui si trova. Il primo volo parte dal centro della mappa. Dopo l’atterraggio la camera converge sulla meta. Al ritorno Viola resta su quell’isola. Con movimento ridotto il posizionamento è immediato. Al ritorno una stella piena segna la visita anche con il nome accessibile «visitata».
+Le tre isole iniziali disegnano una S sul telefono e misurano circa un terzo della larghezza ciascuna. Nome e sagoma appartengono allo stesso pulsante. All’arrivo è attiva solo la Stanza delle cosine. Il Giardino e le Fotografie restano in foschia con il nome attenuato e il pulsante disabilitato fino alla visita precedente, senza didascalie aggiuntive. Alla selezione Viola salta in arco dall’isola su cui si trova. Il primo volo parte dal centro della mappa. Dopo l’atterraggio la camera converge sulla meta. Al ritorno Viola resta su quell’isola. Con movimento ridotto il posizionamento è immediato. Al ritorno una stella piena segna la visita anche con il nome accessibile «visitata».
 
 Prima delle tre visite, il settore del pianeta finale contiene solo cielo. Alla prima apertura utile della mappa, le tre stelle brillano in sequenza e una nuvola si apre sul pianeta. Durata complessiva circa 900 ms. Lasciare attivi i controlli. Nelle aperture successive il pianeta fa già parte del paesaggio.
 

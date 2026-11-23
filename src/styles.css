@@ -39,7 +39,7 @@ section { position: absolute; inset: 0; padding: var(--gutter); text-align: cent
 .map-title { padding-top: max(8px,env(safe-area-inset-top)); font-size: clamp(24px,4vw,32px); color: var(--night) }
 .island { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%,-50%); display: grid; justify-items: center; width: clamp(104px,34vw,208px); padding: 0; color: var(--night) }
 .island img { width: 100%; image-rendering: pixelated; filter: drop-shadow(0 8px 6px #51456426); transition: translate .16s var(--settle) }
-.island:is(:hover,:active,:focus-visible) img { translate: 0 -2px }
+.island:enabled:is(:hover,:active,:focus-visible) img { translate: 0 -2px }
 .island span { font-size: clamp(14px,3vw,17px); line-height: 1.2; max-width: 100%; text-shadow: 0 1px 4px var(--cream) }
 .island span svg { vertical-align: middle; width: 10px; margin-left: 4px }
 .fotografie { --x:29%; --y:29% }

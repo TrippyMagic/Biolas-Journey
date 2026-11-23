@@ -4,7 +4,7 @@ import { actor, placeTraveler } from './actors'
 import { mountRoom } from './room'
 export { resetAlbum }
 import { content } from './content'
-import { isIsland, islands, unlocked, type Destination, type Scene, type Progress } from './journey'
+import { canVisit, isIsland, islands, type Destination, type Scene, type Progress } from './journey'
 import photographs from './art/fotografie.svg'
 import willow from './art/giardino.svg'
 import cottage from './art/giochi.svg'
@@ -58,9 +58,10 @@ function map(el: HTMLElement, progress: Progress, origin?: Destination) {
   chart.className = 'chart'
   chart.setAttribute('aria-label', content.ui.islands)
   const ids: Destination[] = [...islands]
-  if (unlocked(progress)) ids.push('finale')
+  if (canVisit('finale', progress)) ids.push('finale')
   for (const id of ids) {
     const item = button(id, '', 'island ' + id)
+    item.disabled = !canVisit(id, progress)
     const label = document.createElement('span')
     label.textContent = content.names[id]
     if (id !== 'finale' && progress.visits.includes(id)) {

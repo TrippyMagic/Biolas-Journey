@@ -4,7 +4,7 @@ Esperienza web da regalare a Viola il 24 novembre 2026. La mappa collega tre pic
 
 ## Invarianti
 
-- Registrare la prima visita quando una delle tre scene diventa attiva. Il finale appare sulla mappa solo dopo l'apertura di fotografie, giardino e giochi, in qualunque ordine. Foto viste, messaggi letti e partita Sudoku sono indipendenti dallo sblocco.
+- Registrare la prima visita quando una delle tre scene diventa attiva. La Stanza delle cosine è la prima isola accessibile e sblocca il Giardino, che a sua volta sblocca le Fotografie. Il finale resta invisibile fino al ritorno sulla mappa dopo le tre visite. Foto viste, messaggi letti e partita Sudoku sono indipendenti dallo sblocco.
 - Ogni scena esplorabile offre il ritorno immediato alla mappa. Conservare visite e partita localmente. Il finale resta accessibile fino al riavvio esplicito del viaggio.
 - Tenere testi e riferimenti ai media in una configurazione tipizzata. Usare placeholder espliciti finché l'autore consegna i contenuti. Raggruppare le foto di ciascuna sottocartella sotto una didascalia comune. Ogni stampa ha il proprio testo alternativo. Pubblicare solo materiali scelti per un sito statico pubblico.
 - Preservare e verificare EXIF, IPTC e XMP nelle conversioni delle fotografie. Tenere gli originali fuori dalla cartella pubblicata.

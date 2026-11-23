@@ -10,4 +10,12 @@
 @keyframes cloud-current { to { transform: translateX(-50%) } }
 .island-art { width: 100%; position: relative }
 .island-art img { display: block }
+.island:disabled { opacity: 1 }
+.island:disabled .island-art img { opacity: .32; filter: blur(1.5px) saturate(.5) }
+.island:disabled .island-art::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 50% 20% at 55% 48%,#ede5efcc,transparent),
+    radial-gradient(ellipse 44% 18% at 38% 63%,#f0e9efba,transparent);
+}
+.island:disabled span { opacity: .65 }
 .island:has(.map-traveler) { z-index: 1 }

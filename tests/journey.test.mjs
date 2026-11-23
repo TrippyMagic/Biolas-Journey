@@ -1,19 +1,34 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { readProgress, resolveScene, unlocked } from '../src/journey.ts'
+import { readProgress, resolveScene } from '../src/journey.ts'
 
-test('duplicate visits and the presentation flag cannot unlock the lookout', () => {
-  const partial = readProgress('{"visits":["giochi","giochi","fotografie"],"revealed":true}')
-  assert.equal(unlocked(partial), false)
+const equipped = { flight: 'equipped', jetpackCollected: true, entered: true }
+
+test('each island opens the next, while completed destinations remain available', () => {
+  const progress = readProgress(JSON.stringify(equipped))
+  const route = ['giochi', 'giardino', 'fotografie', 'finale']
+  for (const [index, destination] of route.entries()) {
+    for (const id of route) assert.equal(
+      resolveScene('#' + id, progress),
+      route.indexOf(id) <= index ? id : 'mappa',
+    )
+    if (destination !== 'finale') progress.visits.push(destination)
+  }
+})
+
+test('older saves retain their visits without skipping a missing prerequisite', () => {
+  const partial = readProgress(JSON.stringify({ ...equipped, visits: ['giochi','giochi','fotografie'], revealed: true }))
+  assert.equal(resolveScene('#fotografie', partial), 'mappa')
   assert.equal(resolveScene('#finale', partial), 'mappa')
   partial.visits.push('giardino')
-  assert.equal(resolveScene('#finale', readProgress(JSON.stringify(partial))), 'finale')
+  assert.equal(resolveScene('#finale', readProgress(JSON.stringify({ ...equipped, ...partial }))), 'finale')
 })
 test('entry, resume, direct islands and invalid fragments', () => {
   const fresh = readProgress('invalid')
   assert.equal(resolveScene('', fresh), 'intro')
-  assert.equal(resolveScene('#giardino', fresh), 'giardino')
-  assert.equal(resolveScene('#missing', fresh), 'mappa')
+  assert.equal(resolveScene('#giochi', fresh), 'intro')
+  assert.equal(resolveScene('#missing', fresh), 'intro')
+  assert.equal(resolveScene('#missing', readProgress(JSON.stringify(equipped))), 'mappa')
   assert.equal(resolveScene('', { ...fresh, entered: true }), 'intro')
 })
 

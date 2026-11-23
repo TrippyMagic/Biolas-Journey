@@ -11,7 +11,7 @@ import { syncDetail } from './detail'
 import { clearGame } from './sudoku'
 import { animate } from 'motion/mini'
 import { content } from './content'
-import { isIsland, readProgress, resolveScene, unlocked, type Scene } from './journey'
+import { canVisit, isIsland, readProgress, resolveScene, type Scene } from './journey'
 import { makeScene, resetAlbum } from './scenes'
 
 const key = 'biolas-journey:v1'
@@ -101,7 +101,7 @@ async function display(id: Scene) {
   syncDetail(next)
   if (id !== 'intro' && progress.flight !== 'over') progress.entered = true
   if (isIsland(id) && !progress.visits.includes(id)) progress.visits.push(id)
-  if (id === 'mappa' && unlocked(progress) && !progress.revealed) {
+  if (id === 'mappa' && canVisit('finale', progress) && !progress.revealed) {
     next.classList.add('reveal')
     document.querySelector('#announcement')!.textContent = content.revealed
     progress.revealed = true
@@ -155,6 +155,7 @@ world.addEventListener('click', async event => {
     save()
   }
   if (current === 'mappa' && (isIsland(action) || action === 'finale')) {
+    if (!canVisit(action, progress)) return
     const departing = scene
     departing.dataset.jumping = 'true'
     await jumpTo(departing, action)

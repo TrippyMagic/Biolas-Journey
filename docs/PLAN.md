@@ -1,6 +1,6 @@
 # Biolas-Journey · Piano di sviluppo
 
-Il percorso parte da una stella, attraversa una mappa esplorabile e si conclude sul pianeta finale. L'ordine delle tre visite è libero. La prima versione dovrà essere percorribile da cima a fondo con contenuti provvisori. La [regia delle scene](VISUAL_DESIGN.md) definisce inquadrature e raccordi da conservare anche con asset provvisori.
+Il percorso parte da una stella, attraversa una mappa esplorabile e si conclude sul pianeta finale. L’ordine delle visite è Stanza delle cosine, Giardino, Fotografie e pianeta finale. La prima versione dovrà essere percorribile da cima a fondo con contenuti provvisori. La [regia delle scene](VISUAL_DESIGN.md) definisce inquadrature e raccordi da conservare anche con asset provvisori.
 
 ## Struttura e navigazione
 
@@ -11,18 +11,18 @@ Una pagina Vite con TypeScript mantiene cielo, contenitore di scena e controlli 
 | Ingresso o azione | Comportamento |
 |---|---|
 | Apertura senza frammento | Intro al primo accesso. La stella registra l'ingresso e apre la mappa. Agli accessi successivi si parte dalla mappa. |
-| Frammento di scena | Accettare `#intro`, `#mappa`, `#fotografie`, `#giardino`, `#giochi` e `#finale`. Un'isola raggiunta direttamente conta come visita quando diventa attiva. Un frammento sconosciuto o un finale ancora bloccato viene sostituito con la mappa. |
+| Frammento di scena | Accettare `#intro`, `#mappa`, `#fotografie`, `#giardino`, `#giochi` e `#finale`. Prima del volo con il jetpack, i collegamenti di scena riportano all’intro. Dopo il volo, una destinazione già accessibile può essere aperta anche direttamente e conta come visita quando diventa attiva. I frammenti sconosciuti o bloccati riportano alla mappa. |
 | Isola selezionata | Sulla mappa completare il salto della viaggiatrice dalla posizione attuale alla meta. Preparare il fondale, raccordare la camera all'oggetto scelto, attivare la destinazione e registrare la visita una sola volta. Smontare il piano uscente. |
 | Indietro | Dal dettaglio chiudere foto, foglietto, giradischi, quaderno o computer e restituire il focus all'oggetto. Dall'isola tornare alla mappa. Preparare una voce mappa anche all'ingresso diretto in un'isola. |
 | Comando Mappa | Dalla vista principale di ogni isola o del finale tornare alla mappa, con focus sulla destinazione appena lasciata. Evitare voci di cronologia duplicate. |
 
-Il coordinatore arbitra cronologia e transizione. Ignora un secondo tocco sulla stessa destinazione. Se interviene Indietro, interrompe la sequenza pendente e allinea scena e focus alla voce di cronologia raggiunta. Solo la scena attiva riceve input. Nei dettagli modali includere il ritorno alla mappa fra i comandi raggiungibili. Gestire chiusura anche con Escape.
+Il coordinatore arbitra cronologia e transizione. Ignora un secondo tocco sulla stessa destinazione. Se interviene Indietro, interrompe la sequenza pendente e allinea scena e focus alla voce di cronologia raggiunta. Solo la scena attiva riceve input. I dettagli modali si chiudono anche con Escape. Il comando Mappa si usa dalla vista principale della scena.
 
 ## Stato del viaggio
 
 Usare chiavi versionate con prefisso `biolas-journey` in localStorage. Conservare ingresso nel mondo, insieme degli ID delle isole visitate, rivelazione già presentata e partita Sudoku. Tenere foto corrente e tratto di filo in memoria per la sessione. Controllare i dati in lettura e usare valori iniziali per quelli illeggibili. Se lo storage è indisponibile, continuare in memoria.
 
-Derivare l'accesso al pianeta finale dalla presenza di tutti e tre gli ID. Al primo ritorno utile sulla mappa presentare la rivelazione e ricordare che è stata mostrata. La disponibilità del finale sopravvive anche a un'interruzione dell'animazione. Il comando discreto «Ricomincia il viaggio» sulla mappa richiede conferma, azzera solo i dati del progetto, compresa la partita, e riapre l'intro.
+Richiedere tutte le visite precedenti nell’ordine del percorso per accedere a una destinazione. Le visite dei salvataggi esistenti continuano a contare. Il pianeta resta fuori dalla mappa fino alle tre visite. Al primo ritorno utile sulla mappa presentare la rivelazione e ricordare che è stata mostrata. La disponibilità del finale sopravvive anche a un'interruzione dell'animazione. Il comando discreto «Ricomincia il viaggio» sulla mappa richiede conferma, azzera solo i dati del progetto, compresa la partita, e riapre l'intro.
 
 ## Contratto dei contenuti
 
@@ -66,7 +66,7 @@ Salvare ID e valori dopo ogni modifica e riprenderli alla riapertura. «Ricominc
 | 22–23 | Rivelazione, finale e contenuti disponibili | Aprire e riaprire il finale dopo tre visite anche lasciando intatti album, messaggi e Sudoku. |
 | 23 | Rifinitura, build e pubblicazione da `main` | Percorso completo su telefono e desktop, verifica del sito pubblicato e ricarica diretta di una scena. Tenere il 24 come margine. |
 
-Limitare i test automatici a tre gruppi. Verificare lo sblocco in ordini diversi, dopo duplicati e ricarica. Per la navigazione coprire accesso diretto, finale protetto, ritorno dal dettaglio e input rapidi. Per il Sudoku verificare coerenza degli indizi, una sola soluzione per ogni schema, immutabilità delle celle fisse e condizione di completamento. Eseguire inoltre il controllo TypeScript e la build Vite. Verificare manualmente a 320 px, su telefono con barre del browser visibili, su desktop, da tastiera e con movimento ridotto.
+Limitare i test automatici a tre gruppi. Verificare l’ordine obbligatorio, i link verso destinazioni bloccate e la ripresa da salvataggi precedenti o con duplicati. Per la navigazione coprire accesso diretto, finale protetto, ritorno dal dettaglio e input rapidi. Per il Sudoku verificare coerenza degli indizi, una sola soluzione per ogni schema, immutabilità delle celle fisse e condizione di completamento. Eseguire inoltre il controllo TypeScript e la build Vite. Verificare manualmente a 320 px, su telefono con barre del browser visibili, su desktop, da tastiera e con movimento ridotto.
 
 La base Vite è `/Biolas-Journey/`. Ogni push su `main` esegue il workflow Pages con Node 24 e pubblica la build `dist` come artefatto. In Settings → Pages la sorgente è GitHub Actions.
 

@@ -1,4 +1,5 @@
-export const islands = ['fotografie', 'giardino', 'giochi'] as const
+export const islands = ['giochi', 'giardino', 'fotografie'] as const
+const route = [...islands, 'finale'] as const
 export type Island = typeof islands[number]
 export type Destination = Island | 'finale'
 export type Scene = Destination | 'intro' | 'mappa'
@@ -21,15 +22,14 @@ export function readProgress(raw: string | null): Progress {
     return { flight: 'first', entered: false, visits: [], revealed: false }
   }
 }
-export function unlocked(progress: Progress) {
-  return islands.every(id => progress.visits.includes(id))
+export function canVisit(id: Destination, progress: Progress) {
+  return islands.slice(0, route.indexOf(id)).every(island => progress.visits.includes(island))
 }
 export function resolveScene(hash: string, progress: Progress): Scene {
   const id = hash.slice(1)
   if (progress.flight === 'over') return 'mappa'
-  if (progress.flight === 'retry') return 'intro'
-  if (progress.flight === 'first' && (!id || id === 'mappa')) return 'intro'
+  if (progress.flight !== 'equipped') return 'intro'
   if (!id) return progress.entered ? 'mappa' : 'intro'
-  if (isIsland(id) || id === 'intro' || (id === 'finale' && unlocked(progress))) return id
+  if (id === 'intro' || ((isIsland(id) || id === 'finale') && canVisit(id, progress))) return id
   return 'mappa'
 }
