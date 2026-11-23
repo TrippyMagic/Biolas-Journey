@@ -3,6 +3,8 @@ import { control } from './detail'
 import turntable from './art/turntable.svg?raw'
 import './player.css'
 
+const labelColors = ['#d48681','#8caba1','#b59cc7','#d9ac72']
+
 function deck() {
   const el = document.createElement('div')
   el.className = 'record-deck'
@@ -12,7 +14,7 @@ function deck() {
 
 function createPlayer() {
   const audio = new Audio()
-  const tracks = content.tracks.filter(track => track.src.trim()).slice(0, 3)
+  const tracks = content.tracks.filter(track => track.src.trim())
   const miniature = deck()
   let selection = 0
   let loaded = false
@@ -24,7 +26,7 @@ function createPlayer() {
 
   function refresh() {
     miniature.classList.toggle('spinning', !audio.paused)
-    miniature.style.setProperty('--label', ['#d48681','#8caba1','#b59cc7'][selection])
+    miniature.style.setProperty('--label', labelColors[selection % labelColors.length])
     updatePanel()
   }
   function start(index: number) {

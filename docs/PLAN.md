@@ -13,7 +13,7 @@ Una pagina Vite con TypeScript mantiene cielo, contenitore di scena e controlli 
 | Apertura senza frammento | Intro al primo accesso. La stella registra l'ingresso e apre la mappa. Agli accessi successivi si parte dalla mappa. |
 | Frammento di scena | Accettare `#intro`, `#mappa`, `#fotografie`, `#giardino`, `#giochi` e `#finale`. Un'isola raggiunta direttamente conta come visita quando diventa attiva. Un frammento sconosciuto o un finale ancora bloccato viene sostituito con la mappa. |
 | Isola selezionata | Sulla mappa completare il salto della viaggiatrice dalla posizione attuale alla meta. Preparare il fondale, raccordare la camera all'oggetto scelto, attivare la destinazione e registrare la visita una sola volta. Smontare il piano uscente. |
-| Indietro | Dal dettaglio chiudere foto, foglietto, giradischi o quaderno e restituire il focus all'oggetto. Dall'isola tornare alla mappa. Preparare una voce mappa anche all'ingresso diretto in un'isola. |
+| Indietro | Dal dettaglio chiudere foto, foglietto, giradischi, quaderno o computer e restituire il focus all'oggetto. Dall'isola tornare alla mappa. Preparare una voce mappa anche all'ingresso diretto in un'isola. |
 | Comando Mappa | Da qualunque dettaglio o isola tornare direttamente alla mappa, con focus sulla destinazione appena lasciata. Evitare voci di cronologia duplicate. |
 
 Il coordinatore arbitra cronologia e transizione. Ignora un secondo tocco sulla stessa destinazione. Se interviene Indietro, interrompe la sequenza pendente e allinea scena e focus alla voce di cronologia raggiunta. Solo la scena attiva riceve input. Nei dettagli modali includere il ritorno alla mappa fra i comandi raggiungibili. Gestire chiusura anche con Escape.
@@ -26,13 +26,13 @@ Derivare l'accesso al pianeta finale dalla presenza di tutti e tre gli ID. Al pr
 
 ## Contratto dei contenuti
 
-Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene 20 fotografie distribuite nelle cinque sottocartelle di Biolas, sette messaggi, due personaggi provvisori, tre posti per dischi e un cartello inattivo. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Mappa salta direttamente dal dettaglio alla mappa.
+Modificare `src/data/contenuti.json`, importato da `src/content.ts`. Le liste ordinate controllano stampe, messaggi e cartelli. La consegna contiene 20 fotografie distribuite nelle cinque sottocartelle di Biolas, sette messaggi, due personaggi provvisori, quattro tracce sul giradischi e nessun cartello configurato. Usare ID univoci e stabili. I dettagli hanno una voce nella cronologia e si chiudono con Indietro, Escape o Chiudi. Dalla stanza si torna alla mappa dopo aver chiuso o minimizzato il dettaglio dell’oggetto.
 
 | Campo | Dati modificabili |
 |---|---|
 | `title`, `intro` | Saluto e frase iniziale forniti dall’autore. |
 | `photoGroups` | Ogni gruppo ha `caption` e una lista `photos` delle immagini della sottocartella. Ogni foto ha `id` univoco nell’album, `src`, `alt` e `thumbnail` facoltativa. |
-| `tracks` | Due o tre voci in ordine di riproduzione con `title` e `src` relativo alla base. Un percorso vuoto riserva il posto per un brano futuro. |
+| `tracks` | Voci in ordine di riproduzione con `title` e `src` relativo alla base. Il giradischi ignora i percorsi vuoti e avanza alla traccia successiva quando termina quella in riproduzione. |
 | `characters` | Fogli sprite per `traveler.idle`, `traveler.jump` e `host.idle`. |
 | `messages` | Da 5 a 10 voci con ID stabile e testo. |
 | `signs` | ID, etichetta, URL facoltativo. Creare un link solo per URL web validi HTTP(S), con nuova scheda, `noopener` e nome accessibile che annuncia l'apertura. |
@@ -80,10 +80,10 @@ Per le pose singole usare 24×32 px e un punto di appoggio comune per i piedi. P
 
 Lo zaino è un accessorio separato. Lo stato spento mostra solo il corpo del jetpack. La fiamma attuale usa quattro celle da 8×12 px in fila in `src/art/exhaust.svg`. Per ridisegnarla tenere fermo l’ugello e alternare scintilla, fiamma corta, piena e in contrazione.
 
-Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra una stampa più grande su telefono e desktop, con la foto intera. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
+Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. I paletti laterali arrivano al fondo della scena e sostengono i fili, che proseguono tra i gruppi. Uno swipe orizzontale nella scena o le frecce selezionano il gruppo adiacente. La build copia i media configurati. La cornice del finale segue le proporzioni della foto e si adatta alla larghezza e all’altezza disponibili. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
 
-Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
+Il giradischi mostra i soli titoli. Da «I miei sogni d’anarchia» passa a «Flower In A Hurricane», «Time Is Running Out» e «Alors on danse», poi torna al primo brano.
 
 Solo il tocco sullo zaino dopo il game over registra la raccolta. Prima della raccolta la schiena di Viola è libera.
 
-Le polaroid adottano le proporzioni della fotografia orientata. Viola compare in basso a sinistra nell’album, in basso a destra in giardino e al fianco del tavolo nella stanza. Il computer grigio apre Vinted in una finestra pixel art. Minimizza conserva la pagina per la riapertura dal computer, Chiudi la scarica. Il disco continua a suonare fra le scene. I comandi usano Pixelify Sans e il game over ha un gradiente pastello con teschi saltellanti.
+Le polaroid adottano le proporzioni della fotografia orientata. Viola compare in basso a sinistra nell’album, in basso a destra in giardino e al fianco del tavolo nella stanza. Il computer grigio apre Vinted in una finestra pixel art. Minimizza conserva la pagina per la riapertura dal computer, Chiudi la scarica. Il disco continua a suonare fra le scene. I comandi usano Pixelify Sans e il game over ha un gradiente pastello con teschi saltellanti. I messaggi delle lucciole usano Pixelify Sans su carta con bordi a gradini e una X in alto a destra. Mappa resta nella vista del giardino. Le cifre della griglia e del tastierino del Sudoku usano DM Sans. Ogni voce in `messages` genera una lucciola, fino a dieci.

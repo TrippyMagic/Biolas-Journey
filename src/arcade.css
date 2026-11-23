@@ -1,4 +1,4 @@
-button, .sudoku-grid button, .signs a, [data-detail=computer] a { font-family: 'Pixelify Sans',ui-monospace,monospace; font-weight: 500 }
+button, .signs a, [data-detail=computer] a { font-family: 'Pixelify Sans',ui-monospace,monospace; font-weight: 500 }
 .scene-traveler { --actor-size: clamp(30px,6.5svh,62px); position: absolute; z-index: 1; bottom: max(15px,4svh) }
 [data-scene=giardino] .scene-traveler { right: 7% }
 [data-scene=fotografie] .scene-traveler { left: 5% }

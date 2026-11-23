@@ -42,12 +42,7 @@
       "text": "Giuro non ne ho copiata neanche una!"
     }
   ],
-  "signs": [
-    {
-      "label": "[Cartello 01]",
-      "url": ""
-    }
-  ],
+  "signs": [],
   "ui": {
     "close": "Chiudi",
     "map": "Mappa delle isole",
@@ -221,12 +216,16 @@
       "src": "media/audio/i-miei-sogni-danarchia.mp3"
     },
     {
-      "title": "[Traccia 2]",
-      "src": ""
+      "title": "Flower In A Hurricane",
+      "src": "media/audio/Justice - Flower In A Hurricane (ft Tame Impala, SZA, King Gizzard & the Lizard Wizard) [from GTAVI].mp3"
     },
     {
-      "title": "[Traccia 3]",
-      "src": ""
+      "title": "Time Is Running Out",
+      "src": "media/audio/Muse - Time is Running Out HD.mp3"
+    },
+    {
+      "title": "Alors on danse",
+      "src": "media/audio/Stromae - Alors on Danse (Lyrics) [TikTok Song].mp3"
     }
   ],
   "characters": {

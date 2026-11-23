@@ -56,8 +56,31 @@ export function mountAlbum(scene: HTMLElement) {
     return page
   })
   function go(index: number, smooth = false) {
+    if (!pages[index]) return
     reel.scrollTo({ left: index * reel.clientWidth, behavior: smooth && !reduced.matches ? 'smooth' : 'instant' })
   }
+  let swipeStart: PointerEvent | undefined
+  function swipeDirection(event: PointerEvent) {
+    if (event.pointerId !== swipeStart?.pointerId) return 0
+    const x = event.clientX - swipeStart.clientX
+    const y = event.clientY - swipeStart.clientY
+    return Math.abs(x) >= 42 && Math.abs(x) > Math.abs(y) ? -Math.sign(x) : 0
+  }
+  reel.addEventListener('pointerdown', event => {
+    if (event.isPrimary && event.pointerType !== 'mouse') swipeStart = event
+  })
+  reel.addEventListener('pointermove', event => {
+    if (swipeDirection(event) && !reel.hasPointerCapture(event.pointerId)) reel.setPointerCapture(event.pointerId)
+  })
+  reel.addEventListener('pointerup', event => {
+    if (event.pointerId !== swipeStart?.pointerId) return
+    const direction = swipeDirection(event)
+    swipeStart = undefined
+    if (direction) go(lastGroup + direction, true)
+  })
+  reel.addEventListener('pointercancel', event => {
+    if (event.pointerId === swipeStart?.pointerId) swipeStart = undefined
+  })
   const previous = control('←', () => go(lastGroup - 1, true))
   const next = control('→', () => go(lastGroup + 1, true))
   previous.setAttribute('aria-label', content.ui.previousLine)
@@ -78,9 +101,10 @@ export function mountAlbum(scene: HTMLElement) {
   // The coordinator attaches the scene after mounting its contents.
   const frame = requestAnimationFrame(() => go(lastGroup))
   reel.addEventListener('scroll', () => {
-    if (!reel.clientWidth) return
-    const index = Math.round(reel.scrollLeft / reel.clientWidth)
-    if (pages[index] && index !== lastGroup) mark(index)
+    const width = reel.clientWidth
+    if (!width) return
+    const index = Math.round(reel.scrollLeft / width)
+    if (pages[index] && index !== lastGroup && Math.abs(reel.scrollLeft - index * width) <= 1) mark(index)
   })
   scene.addEventListener('depart', () => {
     cancelAnimationFrame(frame)

@@ -41,10 +41,12 @@ export function syncDetail(scene: HTMLElement) {
   if (!dialog) {
     dialog = document.createElement('dialog')
     dialog.setAttribute('aria-label', content.names[scene.dataset.scene as keyof typeof content.names])
-    const back = control(content.back, () => history.go(-2))
-    const close = control(content.ui.close, () => history.back())
+    const garden = scene.dataset.scene === 'giardino'
     const bar = document.createElement('header')
-    bar.append(back, close)
+    if (scene.dataset.scene === 'fotografie') bar.append(control(content.back, () => history.go(-2)))
+    const close = control(garden ? 'X' : content.ui.close, () => history.back())
+    if (garden) close.setAttribute('aria-label', content.ui.close)
+    bar.append(close)
     const body = document.createElement('div')
     body.className = 'detail-body'
     dialog.append(bar, body)

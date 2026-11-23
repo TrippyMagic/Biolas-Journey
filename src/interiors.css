@@ -4,6 +4,7 @@
 .interior { padding: 0; color: var(--night); display: flex; flex-direction: column }
 .interior > h1 { position: relative; z-index: 1; margin-top: max(78px,env(safe-area-inset-top)); pointer-events: none }
 .back { z-index: 2 }
+.interior:is([data-scene=giardino],[data-scene=giochi]):has(dialog[open]) > .back { visibility: hidden }
 .line-controls button,.photo-nav button,.game-actions button,dialog header button { min-height: 44px; padding: 0 16px; background: var(--cream); color: var(--night); border-radius: var(--radius-paper) }
 button:disabled { opacity: .45; cursor: default }
 .room-set { position: absolute; inset: 0; background: url('./art/room.svg') center / 100% 100%; overflow-y: auto }
@@ -19,15 +20,18 @@ dialog[open] .detail-body { animation: unfold .22s var(--settle) }
 .photo-nav,.game-actions { display: flex; justify-content: center; gap: 8px; margin-top: 12px }
 [data-scene=giardino] dialog { margin: auto auto max(18px,env(safe-area-inset-bottom)); max-width: 470px }
 [data-scene=giardino] dialog::backdrop { background: #25243f77 }
-.note { margin: 0; background: var(--cream); color: var(--night); padding: 28px; border-radius: 3px 10px 3px 3px; font: 500 20px/1.5 'Spectral',Georgia,serif; white-space: pre-line; overflow-wrap: anywhere }
 [data-scene=giochi] dialog { background: #a46e61 url('./art/desktop.svg') center / 240px auto; color: var(--night); border: 4px solid #68494e; border-bottom-width: 9px; padding: clamp(6px,2vw,18px); width: fit-content; box-shadow: 5px 8px #362c4280 }
 [data-scene=giochi] dialog::backdrop { background: #493b50c9 }
-[data-scene=giochi] dialog header { position: sticky; top: 0; z-index: 2; margin-bottom: 10px }
+[data-scene=giochi] dialog header { position: sticky; top: 0; z-index: 2; margin-bottom: 10px; justify-content: flex-end }
 [data-scene=giochi] dialog header button,.game-actions button { border-radius: 0; box-shadow: 2px 2px #674d53 }
 .detail-body h2 { font: 500 26px 'Spectral',Georgia,serif; margin: 0 0 8px }
 .game-layout { display: grid; gap: 10px; justify-items: center }
 .sudoku-grid { width: min(410px,calc(100vw - 54px),48svh); aspect-ratio: 1; display: grid; grid-template: repeat(9,1fr) / repeat(9,1fr); border: 2px solid #705d70 }
-.sudoku-grid button { min-width: 0; padding: 0; font: 500 clamp(16px,4.4vw,24px) ui-monospace, monospace; border-right: 1px solid #c5afa9; border-bottom: 1px solid #c5afa9; color: #644574 }
+.sudoku-grid button,.number-pad button:not(:last-child) {
+  font: 400 clamp(18px,4.4vw,24px)/1 'DM Sans',sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.sudoku-grid button { min-width: 0; padding: 0; border-right: 1px solid #c5afa9; border-bottom: 1px solid #c5afa9; color: #644574 }
 .sudoku-grid button:nth-child(3n) { border-right: 2px solid #796977 }
 .sudoku-grid button:nth-child(9n) { border-right: 0 }
 .sudoku-grid button:nth-child(n+19):nth-child(-n+27),.sudoku-grid button:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid #796977 }
