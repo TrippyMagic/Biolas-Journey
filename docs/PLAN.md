@@ -82,7 +82,7 @@ Lo zaino è un accessorio separato. Lo stato spento mostra solo il corpo del jet
 
 Le 22 foto sono divise in cinque sezioni che seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. I paletti laterali arrivano al fondo della scena e sostengono i fili, che proseguono tra i gruppi. Uno swipe orizzontale nella scena o le frecce selezionano il gruppo adiacente. La build copia i media configurati. Il sito precarica tutte le fotografie all’avvio e mostra album e finale dopo la decodifica. La cornice del finale segue le proporzioni della foto e si adatta alla larghezza e all’altezza disponibili. Le foto aperte hanno frecce senza testo visibile. Si torna alla mappa dopo aver chiuso la foto. La lettera in corsivo mostra la data del 24 Novembre 2026 in alto a destra, con firma e post scriptum separati dal corpo. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
 
-Il giradischi mostra i soli titoli. Da «I miei sogni d’anarchia» passa a «Flower In A Hurricane», «Time Is Running Out» e «Alors on danse», poi torna al primo brano.
+Il giradischi mostra i soli titoli. Da «I miei sogni d’anarchia» passa a «Flower In A Hurricane», «Time Is Running Out», «Alors on danse» e «MY LOVE SONG», poi torna al primo brano.
 
 Solo il tocco sullo zaino dopo il game over registra la raccolta. Prima della raccolta la schiena di Viola è libera.
 
