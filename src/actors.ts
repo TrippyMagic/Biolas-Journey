@@ -32,8 +32,8 @@ function surface(chart: HTMLElement, id?: Destination) {
   return chart.querySelector<HTMLElement>(`[data-action="${id}"] .island-art`)
 }
 
-export function placeTraveler(chart: HTMLElement, origin?: Destination) {
-  const figure = actor('traveler')
+export function placeTraveler(chart: HTMLElement, equipped: boolean, origin?: Destination) {
+  const figure = actor('traveler', equipped && !origin ? 'jump' : 'idle')
   figure.classList.add('map-traveler')
   const island = surface(chart, origin) ?? chart
   island.append(figure)
@@ -66,13 +66,14 @@ export async function jumpTo(scene: HTMLElement, id: Destination) {
   pose(figure, 'traveler', 'idle')
 }
 
-export function arrive(figure: HTMLElement) {
+export async function arrive(figure: HTMLElement) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
   pose(figure, 'traveler', 'jump')
   const landing = figure.animate([
-    { transform: 'translate(-70%, -110%)', opacity: 0 },
-    { opacity: 1, offset: .35 },
-    { transform: 'translate(0,0)', opacity: 1 }
-  ], { duration: 760, easing: 'ease-out', fill: 'backwards' })
-  void landing.finished.then(() => pose(figure, 'traveler', 'idle'), () => {})
+    { transform: 'translate(-30vw,-90%) rotate(-6deg)' },
+    { transform: 'translate(-7vw,0)', offset: .65 },
+    { transform: 'translate(-3vw,-3%)', offset: .82 },
+    { transform: 'translate(0,0)' },
+  ], { duration: 2100, easing: 'ease-in-out' })
+  await landing.finished
 }

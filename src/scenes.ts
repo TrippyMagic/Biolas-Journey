@@ -42,7 +42,7 @@ function intro(el: HTMLElement, progress: Progress) {
   enter.insertAdjacentHTML('afterbegin', star)
   const plane = document.createElement('div')
   plane.className = 'airplane'
-  plane.append(actor('traveler'))
+  plane.append(actor('traveler', progress.flight === 'equipped' ? 'idle' : 'front'))
   if (progress.flight === 'retry') {
     const pickup = button('equip', '', 'pack-pickup')
     pickup.setAttribute('aria-label', content.ui.equip)
@@ -74,7 +74,7 @@ function map(el: HTMLElement, progress: Progress, origin?: Destination) {
     item.append(surface, label)
     chart.append(item)
   }
-  placeTraveler(chart, origin)
+  placeTraveler(chart, progress.flight === 'equipped', origin)
   const clouds = document.createElement('div')
   clouds.className = 'map-clouds'
   clouds.setAttribute('aria-hidden','true')
@@ -96,7 +96,7 @@ export function makeScene(id: Scene, progress: Progress, origin?: Destination) {
     if (id === 'fotografie') mountAlbum(el)
     if (id === 'giardino') mountGarden(el)
     if (id === 'giochi') mountRoom(el)
-    const figure = actor('traveler', id === 'fotografie' ? 'idle' : 'front')
+    const figure = actor('traveler', id === 'fotografie' ? 'jump' : 'front')
     figure.classList.add('scene-traveler')
     const set = el.querySelector('.room-set') ?? el
     set.append(figure)

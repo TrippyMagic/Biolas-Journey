@@ -1,7 +1,7 @@
 button, .signs a, [data-detail=computer] a { font-family: 'Pixelify Sans',ui-monospace,monospace; font-weight: 500 }
-.actor.scene-traveler { height: clamp(90px,22svh,200px); width: auto; position: absolute; z-index: 1; bottom: calc(max(15px,4svh) + max(0px,480px - 100svh)) }
+.actor.scene-traveler { height: 34%; width: auto; position: absolute; z-index: 1; bottom: calc(max(15px,4svh) + max(0px,480px - 100svh)) }
 [data-scene=giardino] .scene-traveler { right: 7% }
-[data-scene=fotografie] .scene-traveler { right: 5%; top: max(12px,env(safe-area-inset-top)); bottom: auto; height: clamp(68px,15svh,138px); animation: hover-pack 2.2s ease-in-out infinite alternate }
+[data-scene=fotografie] .scene-traveler { left: 5%; top: max(12px,env(safe-area-inset-top)); bottom: auto; height: clamp(68px,15svh,138px); animation: hover-pack 2.2s ease-in-out infinite alternate }
 .room-set .scene-traveler { left: 2%; bottom: calc(12% + max(0px,480px - 100svh)) }
 .room-set .table-item { width: 22% }
 .room-set .turntable-item { left: 15% }
@@ -22,3 +22,10 @@ section.game-over button { color: #51394e; border: 2px solid #976f85; box-shadow
 .skulls i:nth-child(4) { top: 65%; left: 80%; animation-delay: -.9s }
 .skulls i:nth-child(5) { top: 82%; left: 58%; animation-delay: -.3s }
 @keyframes skull-hop { to { transform: translateY(-22px) rotate(9deg) } }
+
+[data-scene=fotografie] > .back { left: auto; right: max(16px,env(safe-area-inset-right)) }
+.room-set .hourglass-item { left: 21%; bottom: 64%; width: 17%; height: 12%; min-height: 44px }
+.hourglass-item i { width: min(38px,7svh); aspect-ratio: 24/32; background: url('./art/hourglass.svg') center / contain; animation: turn-glass 5s ease-in-out infinite }
+@keyframes turn-glass { 0%,80% { transform: rotate(0) } 100% { transform: rotate(180deg) } }
+[data-detail=clessidra] .detail-body { max-width: 30em; padding: 1em; color: var(--night); background: var(--cream) }
+[data-detail=clessidra] [role=timer] { font: 500 1.2rem/1.6 Spectral,serif; font-variant-numeric: tabular-nums }

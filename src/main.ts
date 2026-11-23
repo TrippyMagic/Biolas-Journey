@@ -7,7 +7,7 @@ import './map.css'
 import '@fontsource/pixelify-sans/latin-500.css'
 import './arcade.css'
 import { resetPlayer } from './player'
-import { jumpTo } from './actors'
+import { actor, jumpTo } from './actors'
 import { syncDetail } from './detail'
 import { clearGame } from './sudoku'
 import { animate } from 'motion/mini'
@@ -140,6 +140,7 @@ world.addEventListener('click', async event => {
     progress.flight = 'equipped'
     world.dataset.flight = progress.flight
     scene.querySelector('.pack-pickup')?.remove()
+    scene.querySelector('.airplane .traveler')?.replaceWith(actor('traveler'))
     document.querySelector('#announcement')!.textContent = content.ui.equipped
     scene.querySelector<HTMLButtonElement>('.enter')?.focus()
     save()

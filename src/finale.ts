@@ -50,8 +50,16 @@ export function mountFinale(scene: HTMLElement) {
   landscape.setAttribute('aria-label', content.finale.landscapeAlt)
   const traveler = actor('traveler')
   traveler.hidden = true
-  landscape.append(actor('host'), traveler)
+  const nicco = actor('host')
+  const couple = actor('couple')
+  couple.hidden = true
+  landscape.append(nicco, traveler, couple)
   reading.append(spread)
   scene.append(reading, landscape)
-  scene.addEventListener('active', () => { traveler.hidden = false; arrive(traveler) }, { once: true })
+  scene.addEventListener('active', async () => {
+    traveler.hidden = false
+    await arrive(traveler)
+    traveler.hidden = nicco.hidden = true
+    couple.hidden = false
+  }, { once: true })
 }

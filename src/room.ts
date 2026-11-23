@@ -1,5 +1,6 @@
 import { control, openDetail, registerDetail } from './detail'
 import { content } from './content'
+import { hourglassPanel } from './hourglass'
 import { roomPlayer } from './player'
 import { loadGame, saveGame, initialGame, complete, puzzleFor, puzzles, enterDigit } from './sudoku'
 
@@ -112,11 +113,19 @@ export function mountRoom(scene: HTMLElement) {
   const computerLabel = document.createElement('span')
   computerLabel.textContent = content.computer.title
   computer.append(document.createElement('i'), computerLabel)
-  room.append(signs, record, book, computer)
+  const glass = control('', () => openDetail(scene, 'clessidra'))
+  glass.className = 'table-item hourglass-item'
+  glass.dataset.open = 'clessidra'
+  const glassLabel = document.createElement('span')
+  glassLabel.textContent = content.hourglass.title
+  glass.append(document.createElement('i'), glassLabel)
+  room.append(signs, record, book, computer, glass)
   scene.append(room)
   registerDetail(scene, (id,body) => {
     if (id === 'giradischi') return player.panel(body)
-    if (id !== 'computer') return notebook(body)
+    if (id === 'clessidra') return hourglassPanel(body)
+    if (id === 'sudoku') return notebook(body)
+    if (id !== 'computer') return
     const dialog = body.closest('dialog')!
     const screen = document.createElement('iframe')
     screen.title = content.computer.site

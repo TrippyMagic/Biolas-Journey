@@ -95,7 +95,7 @@
     ],
     "dedicationSignature": "Tuo, Nicco",
     "postScriptum": "Non capirai mai quest'ultima citazione. ;)",
-    "landscapeAlt": "La Terra azzurra è bassa nel cielo stellato, oltre i crateri del pianeta. Viola raggiunge il suo compagno che la aspetta sul pianeta."
+    "landscapeAlt": "La Terra azzurra è bassa nel cielo stellato, oltre i crateri del pianeta. Viola raggiunge il suo compagno che la aspetta sul pianeta. Nicco si volta verso Viola e la stringe a sé. Si abbracciano e si baciano."
   },
   "photoGroups": [
     {
@@ -269,20 +269,36 @@
         "fps": 6
       },
       "jump": {
-        "src": "",
-        "frameWidth": 24,
-        "frameHeight": 32,
-        "frames": 1,
-        "fps": 6
+        "src": "media/characters/viola-flight.png",
+        "frameWidth": 29,
+        "frameHeight": 91,
+        "frames": 2,
+        "fps": 2
       }
     },
     "host": {
       "idle": {
-        "src": "media/characters/compagno.svg",
-        "frameWidth": 24,
-        "frameHeight": 32,
+        "src": "media/characters/nicco-side.png",
+        "frameWidth": 22,
+        "frameHeight": 97,
         "frames": 1,
-        "fps": 6
+        "fps": 1
+      },
+      "front": {
+        "src": "media/characters/nicco-front.png",
+        "frameWidth": 32,
+        "frameHeight": 97,
+        "frames": 1,
+        "fps": 1
+      }
+    },
+    "couple": {
+      "idle": {
+        "src": "media/characters/incontro.png",
+        "frameWidth": 36,
+        "frameHeight": 97,
+        "frames": 2,
+        "fps": 0.4
       }
     }
   },
@@ -292,5 +308,10 @@
     "url": "https://www.vinted.com/",
     "open": "Apri Vinted in una nuova scheda",
     "minimize": "Minimizza"
+  },
+  "hourglass": {
+    "title": "Clessidra autistica",
+    "start": "2022-10-29",
+    "message": "Dalla prima volta che mi hai visto sono passati {0} anni, {1} mesi, {2} giorni – {3} ore, {4} minuti e {5} secondi."
   }
 }
