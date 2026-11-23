@@ -80,7 +80,7 @@ Per le pose singole usare 24×32 px e un punto di appoggio comune per i piedi. P
 
 Lo zaino è un accessorio separato. Lo stato spento mostra solo il corpo del jetpack. La fiamma attuale usa quattro celle da 8×12 px in fila in `src/art/exhaust.svg`. Per ridisegnarla tenere fermo l’ugello e alternare scintilla, fiamma corta, piena e in contrazione.
 
-Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra la sola dedica finché il campo della foto è vuoto.
+Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra una stampa più grande su telefono e desktop, con la foto intera. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
 
 Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
 

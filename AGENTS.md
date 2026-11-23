@@ -19,7 +19,7 @@ Viola appare nell’intro, salta fra le isole prima dell’apertura e raggiunge 
 
 Il primo tocco sull’intro fa cadere Viola dall’aeroplano fino al game over. Ricomincia rivela il jetpack dietro Viola sull’aeroplano. Dopo averlo indossato, Viola entra dall’alto e resta sospesa al centro della mappa fino alla scelta.
 
-Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra la sola dedica finché il campo della foto è vuoto.
+Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra una stampa più grande su telefono e desktop, con la foto intera. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
 
 Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
 

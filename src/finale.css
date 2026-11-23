@@ -16,7 +16,7 @@
   animation: planet-paper .6s .18s backwards;
 }
 .planet-print {
-  display: grid; place-items: center; width: min(64vw, 260px); height: clamp(110px,22svh,220px);
+  display: grid; place-items: center; width: min(100%, 400px); height: clamp(160px,32svh,320px);
   border: 7px solid var(--cream); border-bottom-width: 15px; border-radius: var(--radius-print);
   background: #c8c5d2; box-shadow: var(--shadow-print); color: var(--night);
   transform: rotate(-2deg);
@@ -44,8 +44,8 @@
 }
 @keyframes planet-paper { from { opacity: 0; transform: translateY(6px) } }
 @media (min-width:768px) {
-  .planet-spread:has(.planet-print) { grid-template-columns: minmax(180px,290px) minmax(260px,54ch); justify-content: center; align-items: center; gap: clamp(28px,5vw,72px) }
-  .planet-print { width: 100%; height: clamp(160px,27svh,270px) }
+  .planet-spread:has(.planet-print) { grid-template-columns: minmax(240px,440px) minmax(260px,54ch); justify-content: center; align-items: center; gap: clamp(28px,5vw,72px) }
+  .planet-print { width: 100%; height: clamp(220px,40svh,380px) }
 }
 @media (prefers-reduced-motion:reduce) {
   .planet-spread,.planet-landscape::before { animation: none }

@@ -88,7 +88,7 @@ Preferire transform e opacity. Sospendere i cicli fuori scena e liberare le sequ
 
 L’aeroplanino ospita Viola sopra il saluto. Il tocco in qualsiasi punto avvia la caduta. La mappa prolunga il movimento fino al game over. Dopo Ricomincia appare il jetpack dietro Viola sull’aeroplano. Lo zaino resta sulla schiena anche quando il motore è spento. In volo la fiamma alterna quattro fotogrammi. Il primo ingresso equipaggiato termina in sospensione fra le isole.
 
-Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra la sola dedica finché il campo della foto è vuoto.
+Le cinque sezioni dell’album seguono le sottocartelle di `public/media/photos/Biolas`. Le didascalie si modificano in `photoGroups`. La build copia i media configurati. Il finale mostra una stampa più grande su telefono e desktop, con la foto intera. Se il campo della foto è vuoto, mostra la sola dedica. Le fotografie pubblicate oltre 2 MB sono state ricompresse mantenendo risoluzione e metadati.
 
 Il primo disco del giradischi è «I miei sogni d’anarchia». Gli altri due posti sono disponibili.
 
