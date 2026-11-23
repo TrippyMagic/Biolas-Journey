@@ -1,8 +1,8 @@
 button, .signs a, [data-detail=computer] a { font-family: 'Pixelify Sans',ui-monospace,monospace; font-weight: 500 }
-.scene-traveler { --actor-size: clamp(30px,6.5svh,62px); position: absolute; z-index: 1; bottom: max(15px,4svh) }
+.actor.scene-traveler { height: clamp(90px,22svh,200px); width: auto; position: absolute; z-index: 1; bottom: calc(max(15px,4svh) + max(0px,480px - 100svh)) }
 [data-scene=giardino] .scene-traveler { right: 7% }
-[data-scene=fotografie] .scene-traveler { left: 5% }
-.room-set .scene-traveler { left: 5%; bottom: 12% }
+[data-scene=fotografie] .scene-traveler { right: 5%; top: max(12px,env(safe-area-inset-top)); bottom: auto; height: clamp(68px,15svh,138px); animation: hover-pack 2.2s ease-in-out infinite alternate }
+.room-set .scene-traveler { left: 2%; bottom: calc(12% + max(0px,480px - 100svh)) }
 .room-set .table-item { width: 22% }
 .room-set .turntable-item { left: 15% }
 .room-set .book-item { right: 39% }

@@ -255,9 +255,16 @@
   "characters": {
     "traveler": {
       "idle": {
-        "src": "media/characters/viola.svg",
-        "frameWidth": 24,
-        "frameHeight": 32,
+        "src": "media/characters/viola-side.png",
+        "frameWidth": 21,
+        "frameHeight": 91,
+        "frames": 1,
+        "fps": 6
+      },
+      "front": {
+        "src": "media/characters/viola-front.png",
+        "frameWidth": 32,
+        "frameHeight": 91,
         "frames": 1,
         "fps": 6
       },

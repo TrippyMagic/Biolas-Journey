@@ -3,12 +3,13 @@ import type { Destination } from './journey'
 import './actors.css'
 
 type Role = keyof typeof content.characters
-type Pose = 'idle' | 'jump'
+type Pose = 'idle' | 'jump' | 'front'
 
 function pose(element: HTMLElement, role: Role, state: Pose) {
   const { idle } = content.characters[role]
-  const jump = content.characters.traveler.jump
-  const clip = role === 'traveler' && state === 'jump' && jump.src ? jump : idle
+  const selected = role === 'traveler' ? content.characters.traveler[state] : idle
+  const clip = selected.src ? selected : idle
+  element.dataset.pose = state
   const frame = element.firstElementChild as HTMLElement
   element.style.aspectRatio = clip.frameWidth + ' / ' + clip.frameHeight
   frame.style.backgroundImage = 'url(' + JSON.stringify(import.meta.env.BASE_URL + clip.src) + ')'
@@ -18,12 +19,12 @@ function pose(element: HTMLElement, role: Role, state: Pose) {
     : 'none'
 }
 
-export function actor(role: Role) {
+export function actor(role: Role, state: Pose = 'idle') {
   const element = document.createElement('i')
   element.className = 'actor ' + role
   element.setAttribute('aria-hidden', 'true')
   element.append(document.createElement('i'))
-  pose(element, role, 'idle')
+  pose(element, role, state)
   return element
 }
 

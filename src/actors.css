@@ -4,9 +4,9 @@
 @keyframes sprite-frames { from { background-position: 0 0 } to { background-position: 100% 0 } }
 .intro-center > .actor { --actor-size: clamp(45px,8svh,68px); position: relative; margin: 0 auto 14px }
 .intro-center > .actor::before { content: ''; z-index: -1; position: absolute; width: 190%; height: 30%; left: -45%; bottom: -8%; background: url('./art/cloud.svg') center / 100% 100% no-repeat }
-.map-traveler { --actor-size: clamp(21px,3.4vw,38px); position: absolute; left: 28%; bottom: 40%; translate: -50% 0 }
+.map-traveler { --actor-size: clamp(10px,1.8vw,18px); position: absolute; left: 28%; bottom: 40%; translate: -50% 0 }
 .planet-landscape .actor { --actor-size: clamp(34px,6.8svh,65px); position: absolute; z-index: 1; bottom: 9% }
-.planet-landscape .traveler { right: 51% }
+.planet-landscape .traveler { right: 51%; --actor-size: clamp(12px,2.3svh,23px) }
 .planet-landscape .host { left: 51% }
 
 .actor[hidden] { display: none }
@@ -14,12 +14,12 @@
 [data-scene=intro] { cursor: pointer }
 .airplane { position: relative; width: clamp(155px,34vw,240px); aspect-ratio: 102/48; margin: 0 auto 8px; pointer-events: none }
 .airplane::after { content: ''; position: absolute; inset: 0; background: url('./art/biplane.svg') center/contain no-repeat }
-.airplane .actor { position: absolute; width: 17%; left: 42%; bottom: 39% }
+.airplane .actor { position: absolute; width: 7%; left: 44%; bottom: 39% }
 .chart > .map-traveler { left: 49%; bottom: 52%; z-index: 2 }
-[data-flight=equipped] .traveler > i::before,.pack-pickup::before { content: ''; position: absolute; background: url('./art/pack.svg') center/contain no-repeat }
+[data-flight=equipped] .traveler:not([data-pose=front]) > i::before,.pack-pickup::before { content: ''; position: absolute; background: url('./art/pack.svg') center/contain no-repeat }
 .traveler > i { position: relative }
-[data-flight=equipped] .traveler > i::before { width: 38%; height: 46%; left: -4%; top: 38% }
-[data-flight=equipped] :is(.chart > .map-traveler,.boost) > i::after { content: ''; position: absolute; left: 0; top: 81%; width: 32%; height: 34%; background: url('./art/exhaust.svg') 0 0 / 400% 100%; animation: plume .34s steps(4,jump-none) infinite }
+[data-flight=equipped] .traveler:not([data-pose=front]) > i::before { width: 82%; height: 28%; left: -45%; top: 27% }
+[data-flight=equipped] :is(.chart > .map-traveler,.boost,[data-scene=fotografie] .scene-traveler) > i::after { content: ''; position: absolute; left: -39%; top: 53%; width: 70%; height: 22%; background: url('./art/exhaust.svg') 0 0 / 400% 100%; animation: plume .34s steps(4,jump-none) infinite }
 @keyframes plume { to { background-position: 100% 0 } }
 .pack-pickup { position: absolute; z-index: 2; pointer-events: auto; left: 33%; bottom: 39%; translate: -50% 0; width: 44px; height: 44px; background: transparent }
 .pack-pickup::before { left: 50%; bottom: 0; translate: -50% 0; width: 18px; height: 26px; filter: drop-shadow(0 0 2px #ffe7aa) }
@@ -31,10 +31,10 @@
 
 .intro-center { top: 50%; transform: translate(-50%,-100%); margin-top: 34px }
 .chart > .map-traveler { animation: hover-pack 2.2s ease-in-out infinite alternate }
-@keyframes hover-pack { to { margin-bottom: 5px } }
+@keyframes hover-pack { to { transform: translateY(-5px) } }
 @media(max-height:560px) { .airplane { width: 116px } .intro-center { top: 54% } }
 
-[data-flight=equipped] .airplane .traveler > i::after { content: ''; position: absolute; left: 0; top: 81%; width: 32%; height: 34%; background: url('./art/exhaust.svg') 0 0 / 400% 100%; animation: ignition .52s steps(4,jump-none) both }
+[data-flight=equipped] .airplane .traveler > i::after { content: ''; position: absolute; left: -39%; top: 53%; width: 70%; height: 22%; background: url('./art/exhaust.svg') 0 0 / 400% 100%; animation: ignition .52s steps(4,jump-none) both }
 @keyframes ignition { 0% { background-position: 0 0; opacity: .3 } 70% { opacity: 1 } 99% { background-position: 100% 0; opacity: 1 } 100% { opacity: 0 } }
 [data-flight=equipped] .boost > i::after { height: 44%; animation-duration: .22s }
 @media(prefers-reduced-motion:reduce) { [data-flight=equipped] .airplane .traveler > i::after { display: none } }
