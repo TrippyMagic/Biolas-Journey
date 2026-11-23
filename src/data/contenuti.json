@@ -273,11 +273,11 @@
         "fps": 6
       },
       "jump": {
-        "src": "",
-        "frameWidth": 21,
+        "src": "media/characters/viola-flight.png",
+        "frameWidth": 29,
         "frameHeight": 91,
-        "frames": 1,
-        "fps": 2
+        "frames": 2,
+        "fps": 1
       }
     },
     "host": {

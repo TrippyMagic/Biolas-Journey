@@ -96,7 +96,7 @@ export function makeScene(id: Scene, progress: Progress, origin?: Destination) {
     if (id === 'fotografie') mountAlbum(el)
     if (id === 'giardino') mountGarden(el)
     if (id === 'giochi') mountRoom(el)
-    const figure = actor('traveler', id === 'giardino' ? 'front' : 'idle')
+    const figure = actor('traveler', id === 'giardino' ? 'front' : id === 'fotografie' ? 'jump' : 'idle')
     figure.classList.add('scene-traveler')
     const set = el.querySelector('.room-set') ?? el
     set.append(figure)
